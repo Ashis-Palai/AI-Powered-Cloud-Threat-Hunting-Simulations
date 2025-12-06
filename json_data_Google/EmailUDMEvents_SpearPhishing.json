@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    
+    "event_timestamp": "2025-12-06T09:00:09Z",
+    "event_type": "EMAIL_LOGS", 
+    "product_name": "Gmail", 
+    "vendor_name": "Google", 
+    "product_event_type": "GMAIL_LOG", 
+    "event_uid": "source-record-id-5555",
+    "event_details": "sess1-c4f9a1b2-8d7e-4f6c-b3a5-0e1d2f3c4b5a"
+  },
+  "principal": {
+  
+    "user": {
+      "email_address": "finance.reports@secure-docs-mail.net",
+      "display_name": "Marcus Hill - Financial Reporting"
+    }
+  },
+  "target": {
+   
+    "user": {
+      "email_address": "richard.sterling@grandbank.corp",
+      "user_display_name": "richard.sterling@grandbank.corp",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    }
+  },
+  "email": {
+    
+    "attachment": [
+     
+      {
+        "filename": "Q3_Financials_Review.pdf",
+        "size": 842312,
+        "file_type": "pdf",
+        "sha256": "4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6"
+      }
+    ]
+  },
+  "security_result": [
+    {
+      "category": "MALWARE",
+      "threat_name": "Trojan.PDF.PhishDropper.A",
+      "detection_method": [
+        "Google_Malware_Scanner",
+        "Sandbox_Analysis"
+      ],
+      "severity": "HIGH",
+      "action": "DETECTED"
+    }
+  ]
+}
