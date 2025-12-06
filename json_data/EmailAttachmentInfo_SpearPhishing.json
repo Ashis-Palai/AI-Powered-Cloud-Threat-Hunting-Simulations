@@ -1,0 +1,17 @@
+{
+  "Timestamp": "2025-12-06T09:00:09Z",
+  "NetworkMessageId": "source-record-id-5555",
+  "SenderFromAddress": "finance.reports@secure-docs-mail.net",
+  "SenderDisplayName": "Marcus Hill - Financial Reporting",
+  "SenderObjectId": "",
+  "RecipientEmailAddress": "richard.sterling@grandbank.corp",
+  "RecipientObjectId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "FileName": "Q3_Financials_Review.pdf",
+  "FileType": "pdf",
+  "SHA256": "4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6",
+  "FileSize": 842312,
+  "ThreatTypes": "Malware",
+  "ThreatNames": "Trojan.PDF.PhishDropper.A",
+  "DetectionMethods": "FileHashReputation, SafeAttachmentsSandBox, MachineLearningStaticAnalysis",
+  "ReportId": "sess1-c4f9a1b2-8d7e-4f6c-b3a5-0e1d2f3c4b5a"
+}
