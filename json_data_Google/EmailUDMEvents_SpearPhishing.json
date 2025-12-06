@@ -1,7 +1,7 @@
 {
   "metadata": {
     "event_timestamp": "2025-12-06T09:00:09Z",
-    "description": "Email from finance.reports@secure-docs-mail.net to richard.sterling@grandbank.corp contained a malicious attachment: Q3_Financials_Review.pdf (Malware/Trojan.PDF.PhishDropper.A).
+    "description": "Email from finance.reports@secure-docs-mail.net to richard.sterling@grandbank.corp contained a malicious attachment: Q3_Financials_Review.pdf (Malware/Trojan.PDF.PhishDropper.A)."
     "event_type": "EMAIL_TRANSACTION", 
     "product_event_type": "Malicious Attachment Detected"
     "product_log_id": "sess1-c4f9a1b2-8d7e-4f6c-b3a5-0e1d2f3c4b5a"
