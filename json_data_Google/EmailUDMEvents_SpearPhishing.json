@@ -1,51 +1,61 @@
 {
   "metadata": {
-    
     "event_timestamp": "2025-12-06T09:00:09Z",
-    "event_type": "EMAIL_LOGS", 
+    "description": "Email from finance.reports@secure-docs-mail.net to richard.sterling@grandbank.corp contained a malicious attachment: Q3_Financials_Review.pdf (Malware/Trojan.PDF.PhishDropper.A).
+    "event_type": "EMAIL_TRANSACTION", 
+    "product_event_type": "Malicious Attachment Detected"
+    "product_log_id": "sess1-c4f9a1b2-8d7e-4f6c-b3a5-0e1d2f3c4b5a"
     "product_name": "Gmail", 
     "vendor_name": "Google", 
     "product_event_type": "GMAIL_LOG", 
-    "event_uid": "source-record-id-5555",
-    "event_details": "sess1-c4f9a1b2-8d7e-4f6c-b3a5-0e1d2f3c4b5a"
   },
   "principal": {
   
     "user": {
       "email_address": "finance.reports@secure-docs-mail.net",
-      "display_name": "Marcus Hill - Financial Reporting"
+      "ip": "185.203.119.44"
     }
   },
   "target": {
    
     "user": {
       "email_address": "richard.sterling@grandbank.corp",
-      "user_display_name": "richard.sterling@grandbank.corp",
       "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
     }
   },
-  "email": {
-    
-    "attachment": [
-     
-      {
-        "filename": "Q3_Financials_Review.pdf",
-        "size": 842312,
-        "file_type": "pdf",
-        "sha256": "4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6"
-      }
-    ]
-  },
+  "network": {
+      "email": {
+            "from": "finance.reports@secure-docs-mail.net",
+            "to": "richard.sterling@grandbank.corp"
+               }
+             },
   "security_result": [
     {
-      "category": "MALWARE",
-      "threat_name": "Trojan.PDF.PhishDropper.A",
-      "detection_method": [
-        "Google_Malware_Scanner",
-        "Sandbox_Analysis"
-      ],
+      "category": "MAIL_PHISHING",
+      "confidence": "UNKNOWN_CONFIDENCE",
       "severity": "HIGH",
-      "action": "DETECTED"
+      "severity_details": "Confirmed detection of Trojan.PDF.PhishDropper.A malware signature in the attachment payload.",
+      "threat_name": "Trojan.PDF.PhishDropper.A",
+      "severity": "HIGH",
+      "action": "UNKNOWN_ACTION"
     }
-  ]
+  ],
+  "about": [
+  {
+    "file": {
+      "display_name": "Q3_Financials_Review.pdf",
+      "threat": [
+        {
+          "category": "SOFTWARE_MALICIOUS",
+          "threat_name": "Trojan.PDF.PhishDropper.A",
+          "verdict": "MALICIOUS"
+        }
+      ]
+    }
+  },
+  {
+    "ip": "185.203.119.44"
+  }
+]
+
 }
