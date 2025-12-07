@@ -6,15 +6,12 @@
     "product_name": "Google Cloud VPC Flow Logs",
     "vendor_name": "Google Cloud",
     "product_event_type": "NETWORK_FLOW_LOG",
-    "ingested_timestamp": "2025-12-06T09:00:17.100Z",
-    "log_type": "GCP_VPC_FLOW"
+    "ingested_timestamp": "2025-12-06T09:00:17.100Z"
   },
   "principal": {
     "user": {
       "userid": "richard.sterling",
-      "email_addresses": [
-        "richard.sterling@grandbank.corp"
-      ],
+      "email_addresses": "richard.sterling@grandbank.corp",
       "windows_sid": "user-sid-12345"
     },
     "ip": "10.10.22.55",
@@ -40,19 +37,31 @@
   "target": {
     "ip": "192.0.2.44",
     "port": 443,
-    "url": "https://malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll",
-    "location": {
-      "country_or_region": "US"
-    }
+    "hostname": "malicious-update-storage.eastus.cloudapp.azure.com",
+    "resource": {
+                  "name" : "malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll"
+                }
   },
   "network": {
+    "ip_protocol": "TCP",
+    "application_protocol": "HTTPS",
     "http": {
       "method": "GET",
       "response_code": 200,
       "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.22000.909"
     },
+    "dns_domain" : "malicious-update-storage.eastus.cloudapp.azure.com"
+    "dns": { 
+      "questions": {"name": "malicious-update-storage.eastus.cloudapp.azure.com"} ,
+      "answers": {"data":"192.0.2.44"},
+            }   ,
+
+    
     "direction": "OUTBOUND",
-    "protocol": "TCP"
+    "sent_bytes" : 875 ,
+    "received_bytes" : 514,902 ,
+    "session_duration" : {"nano": 420,000,000},
+    "session_id": "sess1-c4f9a1b2-8d7e-4f6c-b3a5-0e1d2f3c4b5a"
   },
   "security_result": [
     {
@@ -63,12 +72,21 @@
     }
   ],
   "about": [
-    {
-      "ip": "192.0.2.44",
-      "labels": [
-        "Malware Distribution",
-        "Command and Control"
-      ]
-    }
-  ]
+  {
+    "file": {
+      "display_name": "updcore.dll",
+      "full_path": "C:\\Users\\richard.sterling\\AppData\\Local\\Temp\\updcore.dll",
+      "directory": "C:\\Users\\richard.sterling\\AppData\\Local\\Temp\\",
+      "name": "updcore.dll",
+      "size": 514902, 
+      "sha256": "a3b1c2d4e5f60e9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a",
+      "md5": "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+      
+      "mime_type": "application/x-msdownload", 
+      "state": "CREATION" 
+    },
+    "type": "RESOURCE" 
+  }
+]
+
 }
