@@ -11,13 +11,11 @@
   },
   "principal": {
     "user": {
-      "email_address": "finance.reports@secure-docs-mail.net",
       "ip": "185.203.119.44"
     }
   },
   "target": {
     "user": {
-      "email_address": "richard.sterling@grandbank.corp",
       "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
     }
   },
