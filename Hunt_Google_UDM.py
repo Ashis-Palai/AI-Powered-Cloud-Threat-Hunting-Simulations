@@ -124,6 +124,7 @@ def parse_cli():
                         help="Optional OR substring match: field=subvalue")
     parser.add_argument("--output", action="append", default=[],
                         help="Fields to return from matching events")
+    parser.add_argument("--raw", action="store_true", help="Output raw JSON results (without header text)")
 
     return parser.parse_args()
 
@@ -189,6 +190,10 @@ if __name__ == "__main__":
     )
 
     # Display results
-    print("\n=== HUNT RESULTS ===")
-    for entry in results:
-        print(json.dumps(entry, indent=2))
+    if args.raw:
+        # Print raw JSON (no "=== HUNT RESULTS ===" text)
+        print(json.dumps(results, indent=2))
+    else:
+        print("\n=== HUNT RESULTS ===")
+        for entry in results:
+            print(json.dumps(entry, indent=2))
