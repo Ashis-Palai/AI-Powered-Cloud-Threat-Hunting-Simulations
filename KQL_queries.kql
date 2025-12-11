@@ -105,7 +105,7 @@
 // );
 
 // .show table SignInLogs ingestion json mappings
-// .show ingestion failures
+.show ingestion failures
 
 
 // .create table EmailAttachmentInfo (
@@ -263,6 +263,8 @@
 // with (
 //     format = "multijson",
 //     ingestionMappingReference = "DeviceNetworkEvents_Mapping")
+
+// .show ingestion failures 
 
 // DeviceNetworkEvents
 // EmailAttachmentInfo
@@ -658,58 +660,6 @@
 // | project attachTime, TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP, attachSHA
 
 
-// let MaliciousEmail = EmailAttachmentInfo
-// | where ThreatTypes == "Malware"
-// | project 
-//     TimeGenerated,
-//     Step="1 - Malicious Email Delivered",
-//     Actor=RecipientEmailAddress,
-//     ProcessName="N/A",
-//     CommandLine="N/A",
-//     NetworkAction="N/A",
-//     Evidence=strcat("Attachment Delivered: ", FileName),
-//     AdditionalDetails=strcat("SHA256=", SHA256, " | ReportId=", ReportId),
-//     CorrelationKey=RecipientEmailAddress;
-// let ProcessActivity = DeviceProcessEvents
-// | project 
-//     TimeGenerated,
-//     Step="2 - Process Executed After Attachment",
-//     Actor=InitiatingProcessAccountUpn,
-//     ProcessName=InitiatingProcessFileName,
-//     CommandLine=InitiatingProcessCommandLine,
-//     NetworkAction="N/A",
-//     Evidence=strcat("Process Started: ", InitiatingProcessFileName),
-//     AdditionalDetails=strcat("PID=", tostring(InitiatingProcessId), 
-//                              " | Parent=", InitiatingProcessParentFileName),
-//     CorrelationKey=InitiatingProcessAccountUpn;
-// let NetworkEvents = DeviceNetworkEvents
-// | project 
-//     TimeGenerated,
-//     Step = "3 - Network Activity Triggered by Process",
-//     Actor = InitiatingProcessAccountUpn,
-//     ProcessName = InitiatingProcessFileName,
-//     CommandLine = InitiatingProcessCommandLine,
-//     NetworkAction = strcat("Outbound → ", RemoteUrl, " (", RemoteIP, ":", RemotePort, ")"),
-//     Evidence = case(
-//         (RemoteUrl contains ".exe") or (RemoteUrl contains ".dll") or (RemoteUrl contains ".zip"),
-//         strcat("Potential Payload Download: ", RemoteUrl),
-//         strcat("Network Connection Initiated")
-//     ),
-//     AdditionalDetails = strcat("Protocol=", toupper(Protocol), " | Direction=", RemoteIPType),
-//     CorrelationKey = InitiatingProcessAccountUpn;
-// union MaliciousEmail, ProcessActivity, NetworkEvents
-// | sort by TimeGenerated asc
-// | project 
-//     TimeGenerated,
-//     Step,
-//     ProcessName,
-//     CommandLine,
-//     NetworkAction,
-//     Evidence,
-//     AdditionalDetails
-
-
-
 let MaliciousEmail = EmailAttachmentInfo
 | where ThreatTypes == "Malware"
 | project 
@@ -718,8 +668,11 @@ let MaliciousEmail = EmailAttachmentInfo
     Actor=RecipientEmailAddress,
     ProcessName="N/A",
     CommandLine="N/A",
+    ParentProcess="N/A",
+    GrandParentProcess="N/A",
     NetworkAction="N/A",
     Evidence=strcat("Attachment Delivered: ", FileName),
+    IOC = FileName,
     AdditionalDetails=strcat("SHA256=", SHA256, " | ReportId=", ReportId),
     CorrelationKey=RecipientEmailAddress;
 let ProcessActivity = DeviceProcessEvents
@@ -729,43 +682,51 @@ let ProcessActivity = DeviceProcessEvents
     Actor=InitiatingProcessAccountUpn,
     ProcessName=FileName,
     CommandLine=ProcessCommandLine,
+    ParentProcess=InitiatingProcessFileName,
+    GrandParentProcess=InitiatingProcessParentFileName,
     NetworkAction="N/A",
     Evidence=strcat("Process Started: ", FileName),
-    AdditionalDetails=strcat("PID=", tostring(ProcessId), 
-                             " | Parent=", InitiatingProcessFileName),
+    IOC = iff(ProcessCommandLine has "http", ProcessCommandLine, "None"),
     CorrelationKey=InitiatingProcessAccountUpn;
 let NetworkEvents = DeviceNetworkEvents
 | project 
     TimeGenerated,
-    Step = "3 - Network Activity Triggered by Process",
-    Actor = InitiatingProcessAccountUpn,
-    ProcessName = InitiatingProcessFileName,
-    CommandLine = InitiatingProcessCommandLine,
-    NetworkAction = strcat("Outbound → ", RemoteUrl, " (", RemoteIP, ":", RemotePort, ")"),
+    RemoteIP,
+    Step="3 - Network Activity Triggered by Process",
+    Actor=InitiatingProcessAccountUpn,
+    ProcessName=InitiatingProcessFileName,
+    CommandLine=InitiatingProcessCommandLine,
+    ParentProcess=InitiatingProcessParentFileName,
+    GrandParentProcess="Unknown",
+    NetworkAction=strcat("Outbound → ", RemoteUrl, " (", RemoteIP, ":", RemotePort, ")"),
     Evidence = case(
-        (RemoteUrl contains ".exe") or (RemoteUrl contains ".dll") or (RemoteUrl contains ".zip"),
-        strcat("Potential Payload Download: ", RemoteUrl),
+        RemoteUrl matches regex @".*\.(exe|dll|zip)$",
+        strcat("Payload Likely Downloaded: ", RemoteUrl),
         "Network Connection Initiated"
     ),
-    AdditionalDetails = strcat("Protocol=", toupper(Protocol), " | Direction=", RemoteIPType ),
-    CorrelationKey = InitiatingProcessAccountUpn;
-let UnifiedTimeline = 
+    IOC = strcat(RemoteUrl, " | ", RemoteIP),
+    AdditionalDetails=strcat("Protocol=", Protocol, " | Direction=", LocalIPType),
+    CorrelationKey=InitiatingProcessAccountUpn;
+let Timeline =
 union MaliciousEmail, ProcessActivity, NetworkEvents
 | sort by TimeGenerated asc
 | serialize
-| extend EventOrder = row_number()
-| extend  TimeDelta = iff(EventOrder == 1, 0s, TimeGenerated - prev(TimeGenerated));
-UnifiedTimeline
+| extend EventOrder=row_number()
+| extend SeqTimeDelta = iff(EventOrder == 1, 0s, TimeGenerated - prev(TimeGenerated))
 | project 
     TimeGenerated,
     EventOrder,
-    TimeDelta,
+    SeqTimeDelta,
     Step,
     Actor,
     ProcessName,
-    CommandLine
-  
-
-
-
-
+    CommandLine,
+    ParentProcess,
+    GrandParentProcess,
+    NetworkAction,
+    RemoteIP,
+    Evidence,
+    IOC,
+    AdditionalDetails;
+    Timeline
+    
