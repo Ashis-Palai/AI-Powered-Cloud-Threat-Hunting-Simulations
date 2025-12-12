@@ -11,7 +11,7 @@
     "hostname": "ceo-laptop01.grandbank.corp",
     "asset_id": "WIN11-LAPTOP-CEODEV-5566",
     "ip": "10.10.22.55",
-    "port": "50432",
+    "port": 50432,
     "user": {
       "userid": "user-sid-12345",
       "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
@@ -86,7 +86,7 @@
     "hostname": "ceo-laptop01.grandbank.corp",
     "asset_id": "WIN11-LAPTOP-CEODEV-5566",
     "ip": "10.10.22.55",
-    "port": "50438",
+    "port": 50438,
     "user": {
       "userid": "user-sid-12345",
       "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
@@ -161,7 +161,7 @@
     "hostname": "ceo-laptop01.grandbank.corp",
     "asset_id": "WIN11-LAPTOP-CEODEV-5566",
     "ip": "10.10.22.55",
-    "port": "50455",
+    "port": 50455,
     "user": {
       "userid": "user-sid-12345",
       "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
