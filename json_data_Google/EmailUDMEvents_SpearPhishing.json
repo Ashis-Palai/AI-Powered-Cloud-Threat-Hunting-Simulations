@@ -30,7 +30,7 @@
       "severity": "HIGH",
       "severity_details": "Confirmed detection of Trojan.PDF.PhishDropper.A malware signature in the attachment payload.",
       "threat_name": "Trojan.PDF.PhishDropper.A",
-      "action": "ALLOW"
+      "action": "ALLOW" ,
       "action_details":"DELIVERED_TO_INBOX"
     }
   ],
