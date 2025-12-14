@@ -6,29 +6,19 @@ def load_all_json_files(directory):
     events = []
 
     for file_name in os.listdir(directory):
+        # Skip files with "inline" in the name
         if file_name.endswith(".json") and "inline" not in file_name.lower():
             full_path = os.path.join(directory, file_name)
             
             try:
                 with open(full_path, "r") as f:
-                    content = f.read().strip()
-                    
-                    # Handle multiple objects not in a list (split by newlines)
-                    if content.startswith("{") and not content.startswith("["):
-                        # Try splitting by lines
-                        try:
-                            objects = [json.loads(line) for line in content.splitlines() if line.strip()]
-                            events.extend(objects)
-                        except json.JSONDecodeError:
-                            # Fallback: single object
-                            events.append(json.loads(content))
+                    data = json.load(f)  # Load the JSON file
+
+                    # Always handle list or single object
+                    if isinstance(data, list):
+                        events.extend(data)  # Add all elements if it's a list
                     else:
-                        # Standard JSON (list or single object)
-                        data = json.loads(content)
-                        if isinstance(data, list):
-                            events.extend(data)
-                        else:
-                            events.append(data)
+                        events.append(data)  # Add the object itself
 
                 print(f"[+] Loaded: {file_name}")
 
