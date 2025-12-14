@@ -64,7 +64,7 @@ Each notebook contains the scenario description, synthetic logs, hypotheses, que
 
 | MITRE TTP     | Technique Name                           | Cloud Platform Focus     | Notebook Link |
 |---------------|--------------------------------------------|---------------------------|----------------|
-| T1566.001     | Spearphishing Attachment                   | M365 / Azure / GCP        | [View Notebook (T1566.001)](link_to_your_T1566_notebook_file) |
+| T1566.001     | Spearphishing Attachment                   | M365 / Azure / GCP        | [View Notebook (T1566.001)](https://github.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/blob/main/Hunting_NoteBooks/AI_Assisted_Cloud_Threat_Hunting_Spearphishing_Attachments.ipynb) |
 | T1078.004     | Valid Accounts: Cloud Accounts             | AWS / Azure / GCP         | Planned        |
 | T1535         | Unused/Additional Cloud Accounts           | AWS / Azure               | Planned        |
 | T1071.001     | Application Layer Protocol: Web Protocols  | Multi-Cloud               | Planned        |
