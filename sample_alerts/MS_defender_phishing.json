@@ -1,0 +1,138 @@
+{
+  "id": "da637578995287051192_756343937",
+  "title": "Malware detected in email attachment",
+  "description": "A user received an email containing a malicious attachment. Microsoft Defender for Office 365 detected and quarantined the attachment. The user opened the attachment prior to remediation.",
+  "category": "Initial Access",
+  "severity": "high",
+  "status": "new",
+  "classification": "truePositive",
+  "determination": "malware",
+  "investigationState": "running",
+
+  "createdDateTime": "2025-11-30T10:00:00Z",
+  "firstActivityDateTime": "2025-11-30T09:59:00Z",
+  "lastActivityDateTime": "2025-11-30T10:00:00Z",
+  "lastUpdateDateTime": "2025-11-30T10:00:00Z",
+  "resolvedDateTime": null,
+
+  "productName": "Microsoft Defender for Office 365",
+  "serviceSource": "microsoftDefenderForOffice365",
+  "detectionSource": "microsoftDefenderForOffice365",
+  "detectorId": "MDO_Malware_Attachment_Rule",
+
+  "alertPolicyId": "MalwareFilterPolicy-Contoso",
+  "alertWebUrl": "security.microsoft.com",
+  "incidentId": "INC756343937",
+  "incidentWebUrl": "security.microsoft.com",
+  "providerAlertId": "756343937",
+  "tenantId": "b3c1b5fc-828c-45fa-a1e1-10d74f6d6e9c",
+
+  "actorDisplayName": "Unknown Sender",
+
+  "additionalData": {
+    "emailSenderIp": "192.168.1.101",
+    "recipientUser": "april.adams@contoso.com"
+  },
+
+  "customDetails": {
+    "reportedBy": "april.adams@contoso.com",
+    "businessUnit": "Retail Banking Operations",
+    "priorityScore": "7.8",
+    "soarIncidentId": "SOAR-IR-2025-44312",
+    "playbookExecuted": "Phishing-Analysis-v4",
+    "emailReturnPath": "mailer@invoice-alerts-secure.net",
+    "emailAuthenticationResults": "SPF=fail; DKIM=fail; DMARC=fail",
+    "campaignTag": "AgentTesla-Financial-Sector-2025",
+    "geoLocationSenderIp": "Lagos, Nigeria",
+    "firstTimeSenderToOrg": true,
+    "isVipUser": false,
+    "internalRiskScore": "High due to failed authentication checks and malicious attachment behavior"
+  },
+
+  "comments": [
+    {
+      "comment": "User reported an unexpected external email containing an attachment claiming to be a payment notice.",
+      "createdByDisplayName": "John Martinez (Security Analyst)",
+      "createdDateTime": "2025-11-30T10:05:00Z"
+    },
+    {
+      "comment": "Threat intelligence review confirms the attachment contains an obfuscated payload consistent with Agent Tesla campaigns targeting financial organizations.",
+      "createdByDisplayName": "Priya Sharma (Threat Intelligence Team)",
+      "createdDateTime": "2025-11-30T10:08:00Z"
+    }
+  ],
+
+  "evidence": [
+    {
+      "entityType": "file",
+      "createdDateTime": "2025-11-30T09:59:30Z",
+      "roles": ["suspicious"],
+      "detailedRoles": [
+        "Malicious attachment delivered via email and opened by user"
+      ],
+      "tags": ["Email", "Malware", "Attachment"],
+      "verdict": "malicious",
+      "detectionStatus": "detected",
+      "remediationStatus": "running",
+      "remediationStatusDetails": "Attachment quarantined and investigation in progress",
+
+      "fileDetails": {
+        "fileName": "invoice_report.pdf.exe",
+        "filePath": "Inbox",
+        "sha256": "a4752c71d81afd3d5865d24ddb11a6b0c615062fcc448d24050c2172d2cbccd6",
+        "fileSize": 64000
+      },
+
+      "mdeDeviceId": "device-12345"
+    },
+    {
+      "entityType": "user",
+      "createdDateTime": "2025-11-30T09:59:30Z",
+      "roles": ["compromised"],
+      "detailedRoles": [
+        "User opened a malicious email attachment"
+      ],
+      "tags": ["Email", "User"],
+      "verdict": "suspicious",
+      "remediationStatus": "unremediated",
+      "remediationStatusDetails": "Mailbox under investigation; no remediation completed yet",
+
+      "displayName": "April Adams",
+      "primaryAddress": "april.adams@contoso.com",
+      "upn": "april.adams@contoso.com",
+
+      "userAccount": {
+        "accountName": "April Adams",
+        "displayName": "April Adams",
+        "domainName": "contoso.com",
+        "userPrincipalName": "april.adams@contoso.com",
+        "azureAdUserId": "11118379-2a59-1111-ac3c-a51eb4a3c627",
+        "activeDirectoryObjectGuid": "11118379-2a59-1111-ac3c-a51eb4a3c627",
+        "userSid": "S-1-5-21-11118379-123456789-987654321-1001",
+
+        "resourceAccessEvents": [
+          {
+            "accessDateTime": "2025-11-30T10:05:00Z",
+            "accountId": "11118379-2a59-1111-ac3c-a51eb4a3c627",
+            "ipAddress": "192.168.100.45",
+            "resourceIdentifier": "file://invoice_report.pdf.exe"
+          }
+        ]
+      }
+    }
+  ],
+
+  "threatDisplayName": "PowerShell Reverse Shell",
+  "threatFamilyName": "ReverseShell",
+
+  "mitreTechniques": ["T1566.001"],
+
+  "recommendedActions": [
+    "Verify the malicious attachment has been fully quarantined.",
+    "Notify the affected user and provide security awareness guidance.",
+    "Search for similar emails across the organization.",
+    "Perform a full antivirus and EDR scan on the affected endpoint."
+  ],
+
+  "systemTags": ["Email", "Malware", "Attachment"]
+}
