@@ -5,4 +5,26 @@ AND (
     security_result.severity_details:*"malware"*
 )
 
+----
+principal.hostname="ceo-laptop01.grandbank.corp"
+AND (
+    metadata.event_type="NETWORK_HTTP" OR
+    network.direction="OUTBOUND" OR
+    security_result.category="NETWORK_MALICIOUS"
+)
+----
+
+custom query 
+
+!python3 Hunt_Google_UDM.py --events merged_events.json \
+--mandatory "principal.hostname=ceo-laptop01.grandbank.corp" \
+--contains "metadata.event_type=NETWORK_HTTP" \
+--contains "network.direction=OUTBOUND" \
+--contains "security_result.category=NETWORK_MALICIOUS" \
+--output "metadata.event_timestamp" \
+--output "target.ip" \
+--output "target.hostname" \
+--output "about.file.name"
+
+----------
 
