@@ -1,0 +1,77 @@
+title: Suspicious Attachment Initiated Script Execution Followed by Payload Download and C2
+id: a92d7f2e-6c41-4e62-9a6c-b3d7a3e9b001
+status: experimental
+description: |
+  Detects a potential compromise where a malicious email attachment is followed
+  by script-based execution, payload download from an external source,
+  execution via a signed binary proxy, and PowerShell-driven C2 activity.
+author: AI-Assisted Threat Hunting (BAS)
+date: 2025-12-14
+references:
+  - https://attack.mitre.org/techniques/T1566/001/
+  - https://attack.mitre.org/techniques/T1059/001/
+  - https://attack.mitre.org/techniques/T1105/
+  - https://attack.mitre.org/techniques/T1218/011/
+tags:
+  - attack.initial_access
+  - attack.execution
+  - attack.command_and_control
+  - attack.t1566.001
+  - attack.t1059.001
+  - attack.t1105
+  - attack.t1218.011
+
+logsource:
+  category:
+    - email
+    - process_creation
+    - network_connection
+  product: generic
+
+detection:
+  email_attachment:
+    EventType: EmailAttachment
+    ThreatType: Malware
+
+  script_execution:
+    Image|endswith:
+      - powershell.exe
+      - cmd.exe
+    CommandLine|contains:
+      - "-nop"
+      - "-w hidden"
+
+  payload_download:
+    DestinationHostname|re: '.*'
+    DestinationPort:
+      - 80
+      - 443
+    Url|endswith:
+      - ".exe"
+      - ".dll"
+      - ".zip"
+
+  lolbin_execution:
+    Image|endswith: rundll32.exe
+
+  c2_activity:
+    Image|endswith: powershell.exe
+    DestinationPort:
+      - 4444
+      - 1337
+      - 8081
+
+  condition: >
+    email_attachment
+    followed_by script_execution
+    followed_by payload_download
+    followed_by lolbin_execution
+    followed_by c2_activity
+    within 15m
+
+falsepositives:
+  - Legitimate software installers
+  - Enterprise automation scripts
+  - IT administrative activity
+
+level: high
