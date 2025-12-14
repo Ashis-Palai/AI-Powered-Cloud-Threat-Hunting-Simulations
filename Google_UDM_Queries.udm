@@ -1,0 +1,8 @@
+metadata.event_type="EMAIL_TRANSACTION"
+AND (
+    metadata.description:*"malicious attachment"* OR
+    security_result.category="MAIL_PHISHING" OR
+    security_result.severity_details:*"malware"*
+)
+
+
