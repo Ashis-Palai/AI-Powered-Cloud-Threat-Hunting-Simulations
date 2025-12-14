@@ -89,8 +89,8 @@ Each notebook contains the scenario description, synthetic logs, hypotheses, que
 This repository is a personal initiative to share and refine cloud threat hunting methodologies.  
 Contributions, suggestions, or collaborative efforts are welcome.
 
-Feel free to reach out via **[Your LinkedIn Profile]** or **[Your Email]**.
+Feel free to reach out via **[email]cyberprofessional45@gmail.com**.
 
 ---
+**License:** MIT License
 
-**License:** _Specify your license here (e.g., MIT License)_
