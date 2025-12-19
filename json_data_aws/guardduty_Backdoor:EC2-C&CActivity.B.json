@@ -1,0 +1,172 @@
+{
+  "accountId": "123456789012",
+  "arn": "arn:aws:guardduty:us-east-1:123456789012:detector/12abc34d567e8fa901bc2d34e56789ab/finding/bd1234cc5678aa9012bb3456ccddeeff",
+  "createdAt": "2025-12-14T10:52:06.214Z",
+  "id": "bd1234cc5678aa9012bb3456ccddeeff",
+  "region": "us-east-1",
+  "schemaVersion": "2.0",
+  "severity": 7.4,
+  "type": "Backdoor:EC2/C&CActivity",
+  "updatedAt": "2025-12-14T10:52:06.214Z",
+  "confidence": 0.92,
+  "partition": "aws",
+  "title": "EC2 instance communicating with a known command-and-control server",
+  "description": "An EC2 instance is communicating with an IP address associated with known command-and-control infrastructure, indicating a possible backdoor compromise.",
+  "associatedAttackSequenceArn": "arn:aws:guardduty:us-east-1:123456789012:attack-sequence/seq-9f8e7d6c5b4a3210",
+
+  "resource": {
+    "resourceType": "Instance",
+    "instanceDetails": {
+      "availabilityZone": "us-east-1a",
+      "instanceId": "i-0abc1234def567890",
+      "instanceState": "running",
+      "instanceType": "t3.medium",
+      "launchTime": "2025-12-01T06:12:44.000Z",
+      "imageId": "ami-0a1b2c3d4e5f67890",
+      "imageDescription": "Amazon Linux 2 AMI",
+      "platform": "LINUX",
+
+      "iamInstanceProfile": {
+        "arn": "arn:aws:iam::123456789012:instance-profile/WebAppInstanceProfile",
+        "id": "AIPAJFEXAMPLE123"
+      },
+
+      "networkInterfaces": [
+        {
+          "networkInterfaceId": "eni-0a1b2c3d4e5f67890",
+          "privateDnsName": "ip-10-0-1-25.ec2.internal",
+          "privateIpAddress": "10.0.1.25",
+          "publicDnsName": "ec2-54-210-123-45.compute-1.amazonaws.com",
+          "publicIp": "54.210.123.45",
+          "subnetId": "subnet-0abc1234def567890",
+          "vpcId": "vpc-0123abcd4567efgh8",
+          "ipv6Addresses": [],
+
+          "privateIpAddresses": [
+            {
+              "privateDnsName": "ip-10-0-1-26.ec2.internal",
+              "privateIpAddress": "10.0.1.26"
+            }
+          ],
+
+          "securityGroups": [
+            {
+              "groupId": "sg-0a1b2c3d4e5f67890",
+              "groupName": "webapp-sg"
+            }
+          ]
+        }
+      ],
+
+      "productCodes": [
+        {
+          "productCodeId": "aw0evgkw8e5c1q413zgy5pjce",
+          "productCodeType": "marketplace"
+        }
+      ],
+
+      "tags": [
+        {
+          "key": "Name",
+          "value": "webapp-prod-ec2"
+        },
+        {
+          "key": "Environment",
+          "value": "production"
+        },
+        {
+          "key": "Application",
+          "value": "customer-portal"
+        }
+      ],
+
+      "outpostArn": ""
+    }
+  },
+
+  "service": {
+    "serviceName": "GuardDuty",
+    "featureName": "EC2 Threat Detection",
+    "detectorId": "12abc34d567e8fa901bc2d34e56789ab",
+    "archived": false,
+    "count": 1,
+    "eventFirstSeen": "2025-12-14T10:43:12.087Z",
+    "eventLastSeen": "2025-12-14T10:45:06.214Z",
+    "resourceRole": "TARGET",
+
+    "action": {
+      "actionType": "NETWORK_CONNECTION",
+      "networkConnectionAction": {
+        "blocked": false,
+        "connectionDirection": "OUTBOUND",
+        "protocol": "TCP",
+        "localNetworkInterface": "eni-0a1b2c3d4e5f67890",
+
+        "localIpDetails": {
+          "ipAddressV4": "10.0.1.25"
+        },
+
+        "localPortDetails": {
+          "port": 45678,
+          "portName": "ephemeral"
+        },
+
+        "remoteIpDetails": {
+          "ipAddressV4": "1.2.3.4",
+          "city": {
+            "cityName": "Amsterdam"
+          },
+          "country": {
+            "countryCode": "NL",
+            "countryName": "Netherlands"
+          },
+          "geoLocation": {
+            "lat": 52.3676,
+            "lon": 4.9041
+          },
+          "organization": {
+            "asn": "AS13335",
+            "asnOrg": "Cloudflare, Inc.",
+            "isp": "Cloudflare",
+            "org": "Cloudflare, Inc."
+          }
+        },
+
+        "remotePortDetails": {
+          "port": 4444,
+          "portName": "unknown"
+        }
+      }
+    },
+
+    "detection": {
+      "anomaly": {
+        "profiles": {
+          "network-connection": [
+            {
+              "observations": {
+                "text": [
+                  "Outbound TCP connections to IP address 1.2.3.4 on port 4444 were observed."
+                ]
+              },
+              "profileSubtype": "RARE",
+              "profileType": "FREQUENCY"
+            }
+          ]
+        }
+      }
+    },
+
+    "evidence": {
+      "threatIntelligenceDetails": [
+        {
+          "threatFileSha256": "",
+          "threatListName": "AWSGuardDutyKnownC2IPs",
+          "threatNames": [
+            "KnownCommandAndControlServer"
+          ]
+        }
+      ]
+    }
+  }
+}
