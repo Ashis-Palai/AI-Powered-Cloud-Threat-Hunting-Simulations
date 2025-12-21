@@ -1,0 +1,81 @@
+{
+  "accountId": "123456789012",
+  "arn": "arn:aws:guardduty:us-east-1:123456789012:detector/12abc34d567e8fa901bc2d34e56789ab/finding/dc7890ef1234aa9012bb3456ddeeff99",
+  "createdAt": "2025-12-14T10:42:32.904Z",
+  "id": "dc7890ef1234aa9012bb3456ddeeff99",
+  "region": "us-east-1",
+  "schemaVersion": "2.0",
+  "severity": 6.3,
+  "type": "Discovery:Runtime/SuspiciousCommand",
+  "updatedAt": "2025-12-14T10:42:32.904Z",
+  "confidence": 0.81,
+  "partition": "aws",
+  "title": "Suspicious discovery commands executed in runtime workload",
+  "description": "After a reverse shell was established, the runtime workload executed discovery-related commands indicative of post-compromise reconnaissance activity.",
+  "associatedAttackSequenceArn": "arn:aws:guardduty:us-east-1:123456789012:attack-sequence/seq-9f8e7d6c5b4a3210",
+
+  "resource": {
+    "resourceType": "Container",
+    "containerDetails": {
+      "containerRuntime": "containerd",
+      "id": "9f3c2a1b7d8e4f56a0c123456789abcd",
+      "image": "public.ecr.aws/nginx/nginx:1.25",
+      "imagePrefix": "public.ecr.aws/nginx",
+      "name": "webapp-backend",
+      "securityContext": {
+        "allowPrivilegeEscalation": true,
+        "privileged": true
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/var/run/docker.sock",
+          "name": "docker-socket"
+        }
+      ]
+    }
+  },
+
+  "service": {
+    "serviceName": "GuardDuty",
+    "featureName": "Runtime Monitoring",
+    "detectorId": "12abc34d567e8fa901bc2d34e56789ab",
+    "archived": false,
+    "count": 3,
+    "eventFirstSeen": "2025-12-14T10:42:32.904Z",
+    "eventLastSeen": "2025-12-14T10:42:41.118Z",
+    "resourceRole": "TARGET",
+
+    "runtimeDetails": {
+      "context": {
+        "commandLineExample": "whoami; cat /etc/passwd; env",
+        "toolCategory": "Discovery",
+        "toolName": "Post-compromise enumeration"
+      },
+      "process": {
+        "name": "sh",
+        "executablePath": "/bin/sh",
+        "pid": 438,
+        "namespacePid": 438,
+        "uuid": "proc-shell-92fd7c1a",
+        "parentUuid": "proc-python3-b81f9a6d",
+        "pwd": "/",
+        "startTime": "2025-12-14T10:42:31.887Z",
+        "user": "www-data",
+        "userId": 33,
+        "euid": 33,
+        "lineage": [
+          {
+            "name": "python3",
+            "executablePath": "/usr/bin/python3",
+            "pid": 421,
+            "namespacePid": 421,
+            "uuid": "proc-python3-b81f9a6d",
+            "startTime": "2025-12-14T10:41:51.902Z",
+            "userId": 33,
+            "euid": 33
+          }
+        ]
+      }
+    }
+  }
+}
