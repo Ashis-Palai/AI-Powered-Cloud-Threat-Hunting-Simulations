@@ -37,7 +37,7 @@
     "action": {
       "actionType": "AWS_API_CALL",
       "awsApiCallAction": {
-        "api": "sts:GetCallerIdentity, iam:SimulateCustomPolicy, s3:ListBuckets, secretsmanager:ListSecrets",
+        "api": "sts:GetCallerIdentity, iam:SimulateCustomPolicy, s3:ListBuckets",
         "serviceName": "sts, iam, s3, secretsmanager",
         "callerType": "AssumedRole",
         "userAgent": "aws-cli/2.15.0 Python/3.11 botocore/2.4.0",
