@@ -1,0 +1,59 @@
+{
+  "eventVersion": "1.11",
+  "eventTime": "2025-12-14T10:45:38.906Z",
+  "eventSource": "s3.amazonaws.com",
+  "eventName": "ListBuckets",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "54.210.123.45",
+  "userAgent": "aws-cli/2.15.0 Python/3.11 botocore/2.4.0",
+
+  "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "AROAEXAMPLEID:ecs-task-session",
+    "arn": "arn:aws:sts::123456789012:assumed-role/WebAppEcsTaskRole/ecs-task-session",
+    "accountId": "123456789012",
+    "accessKeyId": "ASIAZEXAMPLE123456",
+    "sessionContext": {
+      "sessionIssuer": {
+        "type": "Role",
+        "principalId": "AROAEXAMPLEID",
+        "arn": "arn:aws:iam::123456789012:role/WebAppEcsTaskRole",
+        "accountId": "123456789012",
+        "userName": "WebAppEcsTaskRole"
+      },
+      "attributes": {
+        "creationDate": "2025-12-14T10:43:12Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+
+  "requestParameters": {
+    "maxBuckets": 10000
+  },
+
+  "responseElements": {
+    "buckets": [
+      {
+        "name": "prod-app-data",
+        "creationDate": "2023-06-11T09:12:44Z"
+      },
+      {
+        "name": "prod-app-backups",
+        "creationDate": "2023-08-02T14:55:19Z"
+      }
+    ],
+    "owner": {
+      "id": "79a59df900b949e55d96a1e698f0example",
+      "displayName": "webapp-account-owner"
+    }
+  },
+  "requestID": "c1d2e3f4-5678-4abc-9def-223344556677",
+  "eventID": "c2e9d7b1-3f9a-4b2f-9c21-998877665544",
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "readOnly": true,
+  "eventCategory": "Management",
+  "recipientAccountId": "123456789012",
+  "sessionCredentialFromConsole": false
+}
