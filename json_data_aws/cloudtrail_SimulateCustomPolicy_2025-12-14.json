@@ -1,0 +1,69 @@
+{
+  "eventVersion": "1.11",
+  "eventTime": "2025-12-14T10:45:31.492Z",
+  "eventSource": "iam.amazonaws.com",
+  "eventName": "SimulateCustomPolicy",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "54.210.123.45",
+  "userAgent": "aws-cli/2.15.0 Python/3.11 botocore/2.4.0",
+
+  "userIdentity": {
+    "type": "AssumedRole",
+    "principalId": "AROAEXAMPLEID:ecs-task-session",
+    "arn": "arn:aws:sts::123456789012:assumed-role/WebAppEcsTaskRole/ecs-task-session",
+    "accountId": "123456789012",
+    "accessKeyId": "ASIAZEXAMPLE123456",
+    "sessionContext": {
+      "sessionIssuer": {
+        "type": "Role",
+        "principalId": "AROAEXAMPLEID",
+        "arn": "arn:aws:iam::123456789012:role/WebAppEcsTaskRole",
+        "accountId": "123456789012",
+        "userName": "WebAppEcsTaskRole"
+      },
+      "attributes": {
+        "creationDate": "2025-12-14T10:43:12Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+
+  "requestParameters": {
+    "ActionNames": [
+      "s3:ListBucket"
+    ],
+    "PolicyInputList": [
+      "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"s3:ListAllMyBuckets\"],\"Resource\":[\"*\"]}]}"
+    ]
+  },
+
+  "responseElements": {
+    "EvaluationResults": [
+      {
+        "EvalActionName": "s3:ListBuckets",
+        "EvalResourceName": "*",
+        "EvalDecision": "allowed"
+      }
+    ],
+    "IsTruncated": false
+  },
+
+  "requestID": "b4c2f0e7-9c88-4e1a-8c2b-1234567890ab",
+  "eventID": "a9d1f4e6-5678-4c2b-9abc-112233445566",
+  "eventType": "AwsApiCall",
+  "apiVersion": "2010-05-08",
+  "managementEvent": true,
+  "readOnly": true,
+  "eventCategory": "Management",
+
+  "recipientAccountId": "123456789012",
+
+  "sessionCredentialFromConsole": false,
+
+  "tlsDetails": {
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "iam.amazonaws.com",
+    "keyExchange": "ECDHE"
+  }
+}
