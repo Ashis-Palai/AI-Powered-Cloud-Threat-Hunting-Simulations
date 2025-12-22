@@ -1,0 +1,94 @@
+{
+  "accountId": "123456789012",
+  "arn": "arn:aws:guardduty:us-east-1:123456789012:detector/12abc34d567e8fa901bc2d34e56789ab/finding/iam7890bb2233cc4455ddeeff66778899",
+  "createdAt": "2025-12-14T10:46:12.907Z",
+  "id": "iam7890bb2233cc4455ddeeff66778899",
+  "region": "us-east-1",
+  "schemaVersion": "2.0",
+  "severity": 6.8,
+  "type": "Discovery:IAMUser/AnomalousBehavior",
+  "updatedAt": "2025-12-14T10:46:12.907Z",
+  "confidence": 0.76,
+  "partition": "aws",
+  "title": "Unusual IAM discovery activity observed",
+  "description": "An IAM principal exhibited anomalous discovery behavior by invoking identity, permission simulation, and resource listing APIs that are unusual compared to its historical usage patterns.",
+  "associatedAttackSequenceArn": "arn:aws:guardduty:us-east-1:123456789012:attack-sequence/seq-9f8e7d6c5b4a3210",
+
+  "resource": {
+    "resourceType": "AccessKey",
+    "accessKeyDetails": {
+      "accessKeyId": "ASIAZEXAMPLE123456",
+      "principalId": "AROAEXAMPLEID:ecs-task-session",
+      "userName": "WebAppEcsTaskRole",
+      "userType": "AssumedRole"
+    }
+  },
+
+  "service": {
+    "serviceName": "GuardDuty",
+    "featureName": "IAM Threat Detection",
+    "detectorId": "12abc34d567e8fa901bc2d34e56789ab",
+    "archived": false,
+    "count": 4,
+    "eventFirstSeen": "2025-12-14T10:45:21.334Z",
+    "eventLastSeen": "2025-12-14T10:46:08.902Z",
+    "resourceRole": "TARGET",
+
+    "action": {
+      "actionType": "AWS_API_CALL",
+      "awsApiCallAction": {
+        "api": "sts:GetCallerIdentity, iam:SimulateCustomPolicy, s3:ListBuckets, secretsmanager:ListSecrets",
+        "serviceName": "sts, iam, s3, secretsmanager",
+        "callerType": "AssumedRole",
+        "userAgent": "aws-cli/2.15.0 Python/3.11 botocore/2.4.0",
+
+        "affectedResources": {
+          "AWS::Account": "123456789012"
+        },
+
+        "domainDetails": {
+          "domain": "sts.amazonaws.com"
+        },
+
+        "remoteIpDetails": {
+          "ipAddressV4": "54.210.123.45",
+          "city": {
+            "cityName": "Ashburn"
+          },
+          "country": {
+            "countryCode": "US",
+            "countryName": "United States"
+          },
+          "geoLocation": {
+            "lat": 39.0438,
+            "lon": -77.4874
+          },
+          "organization": {
+            "asn": "AS14618",
+            "asnOrg": "Amazon.com, Inc.",
+            "isp": "Amazon AWS",
+            "org": "Amazon Web Services"
+          }
+        }
+      }
+    },
+
+    "detection": {
+      "anomaly": {
+        "profiles": {
+          "api-usage": [
+            {
+              "observations": {
+                "text": [
+                  "The IAM principal invoked identity, policy simulation, and resource listing APIs that are unusual compared to its historical behavior."
+                ]
+              },
+              "profileSubtype": "UNSEEN",
+              "profileType": "FREQUENCY"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
