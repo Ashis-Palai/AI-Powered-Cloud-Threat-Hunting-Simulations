@@ -47,7 +47,7 @@
 
     "runtimeDetails": {
       "context": {
-        "commandLineExample": "aws sts get-caller-identity; aws iam simulate-custom-policy --policy-input-list '{\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"s3:ListBucket\"],\"Resource\":[\"*\"]}]}'; aws s3 ls; aws secretsmanager list-secrets",
+        "commandLineExample": "aws sts get-caller-identity; aws iam simulate-custom-policy --policy-input-list '{\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"s3:ListAllMyBuckets\"],\"Resource\":[\"*\"]}]}'; aws s3 ls",
         "toolCategory": "Discovery",
         "toolName": "AWS CLI Cloud Enumeration"
       },
