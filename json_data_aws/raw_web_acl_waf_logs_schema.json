@@ -1,0 +1,111 @@
+# web acl waf logs
+{
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["ALLOW", "BLOCK", "CAPTCHA", "CHALLENGE"],
+      "description": "The terminating action applied to the request."
+    },
+    "args": { "type": "string", "description": "The query string." },
+    "captchaResponse": {
+      "type": ["object", "null"],
+      "description": "Populated when CAPTCHA action is applied.",
+      "properties": {
+        "responseCode": { "type": "integer", "description": "Response code for terminating CAPTCHA." },
+        "failureReason": { "type": "string", "description": "Reason for failure if CAPTCHA is terminating." },
+        "solveTimestamp": { "type": "integer", "description": "Timestamp if CAPTCHA is non-terminating." }
+      }
+    },
+    "cfDistributionTenantId": { "type": ["string", "null"], "description": "CloudFront distribution tenant ID (optional)." },
+    "challengeResponse": {
+      "type": ["object", "null"],
+      "description": "Populated when Challenge action is applied.",
+      "properties": {
+        "responseCode": { "type": "integer", "description": "Response code for terminating Challenge." },
+        "failureReason": { "type": "string", "description": "Reason for failure if Challenge is terminating." },
+        "solveTimestamp": { "type": "integer", "description": "Timestamp if Challenge is non-terminating." }
+      }
+    },
+    "clientAsn": { "type": ["integer", "null"], "description": "ASN of request origin. Logged only if ASN match used." },
+    "clientIp": { "type": "string", "description": "Client IP address." },
+    "country": { "type": "string", "description": "Source country, '-' if unknown." },
+    "excludedRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "exclusionType": { "type": "string", "enum": ["COUNT"], "description": "Indicates rule is excluded via Count action." },
+          "ruleId": { "type": "string", "description": "ID of excluded rule." }
+        }
+      }
+    },
+    "formatVersion": { "type": "integer", "description": "Format version of the log." },
+    "forwardedAsn": { "type": ["integer", "null"], "description": "ASN of forwarded entity (optional)." },
+    "headers": { "type": "array", "items": { "type": "object" }, "description": "List of headers." },
+    "httpMethod": { "type": "string", "description": "HTTP method." },
+    "httpRequest": { "type": "object", "description": "Metadata about the HTTP request." },
+    "httpSourceId": { "type": "string", "description": "ID of the associated resource in ARN format." },
+    "httpSourceName": {
+      "type": "string",
+      "enum": ["CF", "APIGW", "ALB", "APPSYNC", "COGNITOIDP", "APPRUNNER", "VERIFIED_ACCESS"],
+      "description": "Source of the request."
+    },
+    "httpVersion": { "type": "string", "description": "HTTP version." },
+    "ja3Fingerprint": { "type": ["string", "null"], "maxLength": 32, "description": "JA3 TLS fingerprint." },
+    "ja4Fingerprint": { "type": ["string", "null"], "maxLength": 36, "description": "JA4 TLS fingerprint." },
+    "labels": { "type": "array", "items": { "type": "string" }, "description": "Labels applied by rules, first 100 logged." },
+    "nonTerminatingMatchingRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["COUNT", "CAPTCHA", "CHALLENGE"], "description": "Action applied." },
+          "ruleId": { "type": "string", "description": "ID of non-terminating rule." },
+          "ruleMatchDetails": { "type": "array", "items": { "type": "object" }, "description": "Details of matched rules (SQLi/XSS)." },
+          "captchaResponse": { "type": ["object", "null"], "description": "Nested CAPTCHA info if applicable." },
+          "challengeResponse": { "type": ["object", "null"], "description": "Nested Challenge info if applicable." },
+          "overriddenAction": { "type": ["string", "null"], "description": "Configured action if overridden." }
+        }
+      }
+    },
+    "oversizeFields": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["REQUEST_BODY", "REQUEST_JSON_BODY", "REQUEST_HEADERS", "REQUEST_COOKIES"] },
+      "description": "Fields over AWS WAF inspection limit."
+    },
+    "rateBasedRuleList": { "type": "array", "items": { "type": "object" }, "description": "Rate-based rules applied." },
+    "rateBasedRuleId": { "type": ["string", "null"], "description": "ID of rate-based rule that acted on request." },
+    "rateBasedRuleName": { "type": ["string", "null"], "description": "Name of rate-based rule." },
+    "limitKey": { "type": "string", "enum": ["IP", "FORWARDED_IP", "CUSTOMKEYS", "CONSTANT"], "description": "Type of aggregation for rate-based rules." },
+    "limitValue": { "type": ["string", "null"], "description": "Limit value, 'INVALID' if IP is invalid." },
+    "maxRateAllowed": { "type": "integer", "description": "Maximum requests allowed in the evaluation window." },
+    "evaluationWindowSec": { "type": "integer", "description": "Time window in seconds." },
+    "customValues": { "type": "array", "items": { "type": "string" }, "description": "Unique values identified by rate-based rule." },
+    "requestHeadersInserted": { "type": "array", "items": { "type": "object" }, "description": "Headers inserted for custom handling." },
+    "requestId": { "type": "string", "description": "Request ID from host service." },
+    "responseCodeSent": { "type": "integer", "description": "Response code sent with custom response." },
+    "ruleGroupId": { "type": ["string", "null"], "description": "ID of rule group." },
+    "ruleGroupList": { "type": "array", "items": { "type": "object" }, "description": "List of rule groups that acted on the request." },
+    "terminatingRule": {
+      "type": ["object", "null"],
+      "description": "Rule that terminated the request.",
+      "properties": {
+        "action": { "type": "string", "enum": ["ALLOW", "BLOCK", "CAPTCHA", "CHALLENGE"] },
+        "ruleId": { "type": "string" },
+        "ruleMatchDetails": { "type": "array", "items": { "type": "object" } },
+        "captchaResponse": { "type": ["object", "null"] },
+        "challengeResponse": { "type": ["object", "null"] },
+        "overriddenAction": { "type": ["string", "null"] }
+      }
+    },
+    "terminatingRuleId": { "type": "string", "description": "ID of rule that terminated the request, 'Default_Action' if none." },
+    "terminatingRuleMatchDetails": { "type": "array", "items": { "type": "object" }, "description": "Details for terminating rule matches (SQLi/XSS)." },
+    "terminatingRuleType": { "type": "string", "enum": ["RATE_BASED", "REGULAR", "GROUP", "MANAGED_RULE_GROUP"] },
+    "timestamp": { "type": "integer", "description": "Timestamp in milliseconds." },
+    "uri": { "type": "string", "description": "Request URI." },
+    "fragment": { "type": ["string", "null"], "description": "Fragment part of URL after '#'." },
+    "webaclId": { "type": "string", "description": "GUID of the Web ACL." }
+  },
+  "required": ["action", "clientIp", "country", "formatVersion", "httpMethod", "httpSourceId", "httpSourceName", "timestamp", "uri", "webaclId"]
+}
