@@ -1,4 +1,3 @@
-# web acl waf logs
 {
   "type": "object",
   "properties": {
