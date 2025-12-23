@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AWS VPC Flow Log Schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "description": "VPC Flow Logs version. Default is 2. Custom format version is highest among specified fields.",
+      "examples": [2]
+    },
+    "account-id": {
+      "type": "string",
+      "description": "AWS account ID of the owner of the source network interface."
+    },
+    "interface-id": {
+      "type": "string",
+      "description": "ID of the network interface for which traffic is recorded. '-' for flows from NAT gateway."
+    },
+    "srcaddr": {
+      "type": "string",
+      "description": "Source IP address. For outgoing traffic, it's the interface's private IP. For NAT gateway, see pkt-srcaddr."
+    },
+    "dstaddr": {
+      "type": "string",
+      "description": "Destination IP address. For NAT gateway, see pkt-dstaddr."
+    },
+    "srcport": {
+      "type": "integer",
+      "description": "Source port number."
+    },
+    "dstport": {
+      "type": "integer",
+      "description": "Destination port number."
+    },
+    "protocol": {
+      "type": "integer",
+      "description": "IANA protocol number of the traffic."
+    },
+    "packets": {
+      "type": "integer",
+      "description": "Number of packets transferred during the flow."
+    },
+    "bytes": {
+      "type": "integer",
+      "description": "Number of bytes transferred during the flow."
+    },
+    "start": {
+      "type": "integer",
+      "description": "Unix timestamp of the first packet in the aggregation interval."
+    },
+    "end": {
+      "type": "integer",
+      "description": "Unix timestamp of the last packet in the aggregation interval."
+    },
+    "action": {
+      "type": "string",
+      "enum": ["ACCEPT", "REJECT"],
+      "description": "Action associated with the traffic.",
+      "x-enumDescriptions": {
+        "ACCEPT": "The traffic was accepted.",
+        "REJECT": "The traffic was rejected (e.g., blocked by security groups or network ACLs)."
+      }
+    },
+    "log-status": {
+      "type": "string",
+      "enum": ["OK", "NODATA", "SKIPDATA"],
+      "description": "Logging status of the flow log.",
+      "x-enumDescriptions": {
+        "OK": "Data is logging normally to the chosen destinations.",
+        "NODATA": "No network traffic during aggregation interval.",
+        "SKIPDATA": "Some flow log records were skipped due to internal AWS constraints or errors."
+      }
+    },
+    "vpc-id": { "type": "string" },
+    "subnet-id": { "type": "string", "description": "'-' for NAT gateway flows." },
+    "instance-id": { "type": "string", "description": "'-' for requester-managed network interfaces." },
+    "tcp-flags": { "type": "integer", "description": "Bitmask for TCP flags. FIN=1, SYN=2, RST=4, SYN-ACK=18, 0 if none." },
+    "type": {
+      "type": "string",
+      "enum": ["IPv4", "IPv6", "EFA"],
+      "x-enumDescriptions": {
+        "IPv4": "IPv4 traffic.",
+        "IPv6": "IPv6 traffic.",
+        "EFA": "Elastic Fabric Adapter traffic."
+      }
+    },
+    "pkt-srcaddr": { "type": "string" },
+    "pkt-dstaddr": { "type": "string" },
+    "region": { "type": "string" },
+    "az-id": { "type": "string" },
+    "sublocation-type": {
+      "type": "string",
+      "enum": ["wavelength", "outpost", "localzone", "-"],
+      "x-enumDescriptions": {
+        "wavelength": "Traffic from Wavelength Zone.",
+        "outpost": "Traffic from AWS Outpost.",
+        "localzone": "Traffic from AWS Local Zone.",
+        "-": "Not from a sublocation."
+      }
+    },
+    "sublocation-id": { "type": "string", "description": "'-' if not from a sublocation." },
+    "pkt-src-aws-service": {
+      "type": "string",
+      "enum": ["AMAZON","AMAZON_APPFLOW","AMAZON_CONNECT","API_GATEWAY","AURORA_DSQL","CHIME_MEETINGS","CHIME_VOICECONNECTOR","CLOUD9","CLOUDFRONT","CLOUDFRONT_ORIGIN_FACING","CODEBUILD","DYNAMODB","EBS","EC2","EC2_INSTANCE_CONNECT","GLOBALACCELERATOR","IVS_LOW_LATENCY","IVS_REALTIME","KINESIS_VIDEO_STREAMS","MEDIA_PACKAGE_V2","ROUTE53","ROUTE53_HEALTHCHECKS","ROUTE53_HEALTHCHECKS_PUBLISHING","ROUTE53_RESOLVER","S3","WORKSPACES_GATEWAYS"],
+      "description": "AWS service for the pkt-srcaddr field.",
+      "x-enumDescriptions": {
+        "AMAZON": "Amazon-owned IP ranges",
+        "AMAZON_APPFLOW": "AWS AppFlow IP ranges",
+        "AMAZON_CONNECT": "Amazon Connect IP ranges",
+        "API_GATEWAY": "API Gateway IP ranges",
+        "AURORA_DSQL": "Aurora DSQL IP ranges",
+        "CHIME_MEETINGS": "Chime Meetings IP ranges",
+        "CHIME_VOICECONNECTOR": "Chime Voice Connector IP ranges",
+        "CLOUD9": "Cloud9 IP ranges",
+        "CLOUDFRONT": "CloudFront IP ranges",
+        "CLOUDFRONT_ORIGIN_FACING": "CloudFront Origin-Facing IP ranges",
+        "CODEBUILD": "CodeBuild IP ranges",
+        "DYNAMODB": "DynamoDB IP ranges",
+        "EBS": "EBS IP ranges",
+        "EC2": "EC2 IP ranges",
+        "EC2_INSTANCE_CONNECT": "EC2 Instance Connect IP ranges",
+        "GLOBALACCELERATOR": "Global Accelerator IP ranges",
+        "IVS_LOW_LATENCY": "IVS Low Latency IP ranges",
+        "IVS_REALTIME": "IVS Realtime IP ranges",
+        "KINESIS_VIDEO_STREAMS": "Kinesis Video Streams IP ranges",
+        "MEDIA_PACKAGE_V2": "MediaPackage V2 IP ranges",
+        "ROUTE53": "Route 53 IP ranges",
+        "ROUTE53_HEALTHCHECKS": "Route 53 Health Checks IP ranges",
+        "ROUTE53_HEALTHCHECKS_PUBLISHING": "Route 53 Health Checks Publishing IP ranges",
+        "ROUTE53_RESOLVER": "Route 53 Resolver IP ranges",
+        "S3": "S3 IP ranges",
+        "WORKSPACES_GATEWAYS": "WorkSpaces Gateways IP ranges"
+      }
+    },
+    "pkt-dst-aws-service": { "$ref": "#/properties/pkt-src-aws-service" },
+    "flow-direction": {
+      "type": "string",
+      "enum": ["ingress", "egress"],
+      "x-enumDescriptions": {
+        "ingress": "Traffic entering the interface.",
+        "egress": "Traffic leaving the interface."
+      }
+    },
+    "traffic-path": {
+      "type": ["integer", "string"],
+      "enum": [1,2,3,4,5,6,7,8,"-"],
+      "x-enumDescriptions": {
+        "1": "Through another resource in the same VPC, including AWS-managed interface or Outpost local gateway",
+        "2": "Through an internet gateway or a gateway VPC endpoint",
+        "3": "Through a virtual private gateway",
+        "4": "Through an intra-region VPC peering connection",
+        "5": "Through an inter-region VPC peering connection",
+        "6": "Through a Local Zone or Wavelength Zone",
+        "7": "Through a gateway VPC endpoint (Nitro-based instances only)",
+        "8": "Through an internet gateway (Nitro-based instances only)",
+        "-": "No applicable path"
+      }
+    },
+    "ecs-cluster-arn": { "type": "string" },
+    "ecs-cluster-name": { "type": "string" },
+    "ecs-container-instance-arn": { "type": "string" },
+    "ecs-container-instance-id": { "type": "string" },
+    "ecs-container-id": { "type": "string" },
+    "ecs-second-container-id": { "type": "string" },
+    "ecs-service-name": { "type": "string" },
+    "ecs-task-definition-arn": { "type": "string" },
+    "ecs-task-arn": { "type": "string" },
+    "ecs-task-id": { "type": "string" },
+    "reject-reason": {
+      "type": "string",
+      "enum": ["BPA","EC","-"],
+      "x-enumDescriptions": {
+        "BPA": "Rejected due to VPC Block Public Access (BPA).",
+        "EC": "Rejected by VPC Endpoint due to encryption controls.",
+        "-": "Other reject reasons or not applicable."
+      }
+    },
+    "resource-id": { "type": "string", "description": "'-' if not a regional NAT gateway." },
+    "encryption-status": {
+      "type": ["integer","string"],
+      "enum": [0,1,2,3,"-"],
+      "x-enumDescriptions": {
+        "0": "Not encrypted.",
+        "1": "Nitro-encrypted by system hardware.",
+        "2": "Application-encrypted (see TCP port 443 rules for endpoints).",
+        "3": "Nitro-encrypted and application-encrypted.",
+        "-": "VPC Encryption Controls not enabled or status unknown."
+      }
+    }
+  },
+  "required": ["version","account-id","interface-id","srcaddr","dstaddr","srcport","dstport","protocol","packets","bytes","start","end","action","log-status"]
+}
