@@ -74,7 +74,7 @@
     "vpc-id": { "type": "string" },
     "subnet-id": { "type": "string", "description": "'-' for NAT gateway flows." },
     "instance-id": { "type": "string", "description": "'-' for requester-managed network interfaces." },
-    "tcp-flags": { "type": "integer", "description": "Bitmask for TCP flags. FIN=1, SYN=2, RST=4, SYN-ACK=18, 0 if none." },
+    "tcp-flags": { "type": "integer", "description": "Bitmask for TCP flags. FIN=1, SYN=2, RST=4, SYN-ACK=18,SYN-PSH=24,PSH=16 0 if none." },
     "type": {
       "type": "string",
       "enum": ["IPv4", "IPv6", "EFA"],
