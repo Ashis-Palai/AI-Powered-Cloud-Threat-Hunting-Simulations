@@ -3,7 +3,7 @@
 A repository of interactive Jupyter notebooks demonstrating **hypothesis-driven**, **AI-assisted** cloud threat hunting across multi-cloud environments (AWS, Azure, GCP).  
 All modules are aligned with the **MITRE ATT&CK** framework and use realistic, synthetic logs that mirror real-world attack behaviors.
 
-To provide an AI-assisted Breach and Attack Simulation platform focused on cloud environments that generates high-fidelity synthetic attack telemetry aligned to MITRE ATT&CK.
+Focused on cloud environments that generates high-fidelity synthetic attack telemetry aligned to MITRE ATT&CK.
 The platform enables organizations and third-party risk teams to safely, continuously, and auditable validate detection, response, and compliance posture against real-world cloud attack scenarios—without executing live attacks—while aligning with SOC 2, GDPR, CAIQ, CIS, and Responsible AI principles.
 
 ---
