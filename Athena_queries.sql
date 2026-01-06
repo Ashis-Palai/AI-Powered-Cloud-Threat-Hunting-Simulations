@@ -101,22 +101,8 @@ CREATE EXTERNAL TABLE threat_hunting_db.guardduty_findings (
   createdat                     STRING,
   updatedat                     STRING,
   associatedattacksequencearn   STRING,
-  resource STRUCT<
-    resourcetype: STRING
-  >,
-  service STRUCT<
-    servicename: STRING,
-    featurename: STRING,
-    detectorid: STRING,
-    archived: BOOLEAN,
-    count: INT,
-    eventfirstseen: STRING,
-    eventlastseen: STRING,
-    resourcerole: STRING,
-    action: STRING,
-    detection: STRING,
-    runtimedetails: STRING
-  >
+  resource                       STRING,  
+  service                        STRING 
 )
 PARTITIONED BY (
   year  STRING,
@@ -275,3 +261,41 @@ WHERE year = '2025' AND month = '12' AND day = '14'
   AND type LIKE '%Runtime%'
 ORDER BY event_time ASC;
 ******************************
+DROP TABLE IF EXISTS threat_hunting_db.guardduty_findings;
+SELECT typeof(resource)
+FROM threat_hunting_db.guardduty_findings
+LIMIT 1;
+**************************************
+SELECT
+  'guardduty' AS source,
+  from_iso8601_timestamp(createdat) AS event_time,
+  type AS activity_type,
+  severity,
+  confidence,
+  json_extract_scalar(json_parse(resource), '$.resourcetype') AS who_type,
+  json_extract_scalar(json_parse(resource), '$.accesskeydetails.accesskeyid') AS access_key,
+  json_extract_scalar(json_parse(resource), '$.accesskeydetails.principalid') AS principal_id,
+  json_extract_scalar(json_parse(resource), '$.accesskeydetails.username') AS role_name,
+  json_extract_scalar(json_parse(service), '$.action.awsapicallaction.api') AS what_api,
+  json_extract_scalar(json_parse(service), '$.action.awsapicallaction.callertype') AS how_caller,
+  json_extract_scalar(json_parse(service), '$.action.awsapicallaction.remoteipdetails.ipaddressv4') AS source_ip,
+  title AS summary
+FROM threat_hunting_db.guardduty_findings
+WHERE year='2025' AND month='12' AND day='14'
+  AND from_iso8601_timestamp(createdat) BETWEEN timestamp '2025-12-14 10:42:00' AND timestamp '2025-12-14 10:47:00'
+  AND type LIKE '%IAM%'
+
+UNION ALL
+SELECT
+  'cloudtrail' AS source,
+  from_iso8601_timestamp(eventtime) AS event_time,
+  eventname AS activity_type,
+  NULL AS severity,
+  NULL AS confidence, useridentity.type AS who_type,useridentity.accesskeyid AS access_key,useridentity.principalid AS principal_id,
+  useridentity.sessioncontext.sessionissuer.username AS role_name,eventname AS what_api,useridentity.sessioncontext.sessionissuer.arn AS how_caller,
+  sourceipaddress AS source_ip,eventsource AS summary
+FROM threat_hunting_db.cloudtrail_logs
+WHERE year='2025' AND month='12' AND day='14'
+  AND from_iso8601_timestamp(eventtime) BETWEEN timestamp '2025-12-14 10:42:00' AND timestamp '2025-12-14 10:47:00'
+ORDER BY event_time ASC;
+
