@@ -1,0 +1,105 @@
+title: Attachment-Initiated Script Execution Followed by Payload Download, LOLBin Abuse, and C2
+id: d1f8c8e3-4a42-4d9a-9a7b-8f7e9e2a4c21
+status: experimental
+description: |
+  Detects a potential endpoint compromise where a malicious attachment delivery
+  is followed by script or interpreter execution, external payload download,
+  secondary execution via common LOLBins, and outbound command-and-control
+  or reverse shell activity. Detection is based on behavioral sequencing rather
+  than single indicators, making it cloud and platform agnostic.
+author: AI-Assisted Threat Hunting (BAS)
+date: 2025-12-14
+references:
+  - https://attack.mitre.org/techniques/T1566/001/
+  - https://attack.mitre.org/techniques/T1059/
+  - https://attack.mitre.org/techniques/T1105/
+  - https://attack.mitre.org/techniques/T1218/
+  - https://attack.mitre.org/techniques/T1071/
+tags:
+  - attack.initial_access
+  - attack.execution
+  - attack.command_and_control
+  - attack.t1566.001
+  - attack.t1059
+  - attack.t1105
+  - attack.t1218
+  - attack.t1071
+
+logsource:
+  category:
+    - email
+    - process_creation
+    - network_connection
+  product: generic
+
+detection:
+
+  # 1. Malicious Attachment Delivery
+  email_attachment:
+    EventType: EmailAttachment
+    ThreatType: Malware
+
+  # 2. Script / Interpreter Execution
+  script_execution:
+    Image|endswith:
+      - powershell.exe
+      - pwsh.exe
+      - cmd.exe
+      - bash
+      - sh
+      - python
+      - python3
+    CommandLine|contains:
+      - Invoke-WebRequest
+      - IEX
+      - curl
+      - wget
+      - "-nop"
+      - "-w hidden"
+
+  # 3. External Payload Download
+  payload_download:
+    NetworkDirection: outbound
+    DestinationPort:
+      - 80
+      - 443
+    Url|endswith:
+      - ".exe"
+      - ".dll"
+      - ".zip"
+      - ".bin"
+    DestinationHostname|re: '^(?!.*(microsoft|windowsupdate|google|amazonaws|github)).*'
+
+  # 4. Secondary Execution via LOLBins
+  lolbin_execution:
+    Image|endswith:
+      - rundll32.exe
+      - regsvr32.exe
+      - mshta.exe
+      - installutil.exe
+      - wmic.exe
+
+  # 5. Outbound C2 / Reverse Shell Activity
+  c2_activity:
+    NetworkDirection: outbound
+    DestinationPort:
+      - 4444
+      - 1337
+      - 8081
+      - 9001
+    DestinationIP|re: '^(?!10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[0-1])\.).*'
+
+  condition: >
+    email_attachment
+    followed_by script_execution
+    followed_by payload_download
+    followed_by lolbin_execution
+    followed_by c2_activity
+    within 15m
+
+falsepositives:
+  - Legitimate software installers using scripting engines
+  - Enterprise automation and patching tools
+  - Administrative troubleshooting activity
+
+level: high
