@@ -299,3 +299,18 @@ WHERE year='2025' AND month='12' AND day='14'
   AND from_iso8601_timestamp(eventtime) BETWEEN timestamp '2025-12-14 10:42:00' AND timestamp '2025-12-14 10:47:00'
 ORDER BY event_time ASC;
 
+*****************************************
+SELECT
+  'guardduty' AS source,
+  json_extract_scalar(json_parse(resource), '$.instancedetails.instanceid') AS instance_id,
+  json_extract_scalar(json_parse(resource), '$.instancedetails.networkinterfaces[0].privateipaddress') AS source_ip,
+  json_extract_scalar(json_parse(service), '$.action.networkconnectionaction.remoteipdetails.ipaddressv4') AS destination_ip,
+  json_extract_scalar(json_parse(service), '$.action.networkconnectionaction.localportdetails.port') AS source_port,
+  json_extract_scalar(json_parse(service), '$.action.networkconnectionaction.remoteportdetails.port') AS destination_port,
+  json_extract_scalar(json_parse(service), '$.action.networkconnectionaction.protocol') AS protocol,
+  json_extract_scalar(json_parse(service), '$.action.networkconnectionaction.connectiondirection') AS direction,
+  from_iso8601_timestamp(createdat) AS event_time
+FROM threat_hunting_db.guardduty_findings
+WHERE type LIKE '%EC2%'
+  AND from_iso8601_timestamp(createdat) BETWEEN timestamp '2025-12-14 10:41:00' AND timestamp '2025-12-14 10:59:00'
+ORDER BY event_time ASC;
