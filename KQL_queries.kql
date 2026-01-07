@@ -824,4 +824,110 @@ with (
 
 
 **********************************
+.create table StorageBlobLogs (
+    TimeGenerated: datetime,
+    Type: string,
+    SourceSystem: string,
+    Category: string,
+    OperationName: string,
+    ServiceType: string,
+    AccountName: string,
+    AccessTier: string,
+    Location: string,
+    Protocol: string,
+    TlsVersion: string,
+    StatusCode: string,
+    StatusText: string,
+    DurationMs: real,
+    ServerLatencyMs: real,
+    CallerIpAddress: string,
+    UserAgentHeader: string,
+    Uri: string,
+    DestinationUri: string,
+    SourceUri: string,
+    ClientRequestId: string,
+    CorrelationId: string,
+    AuthenticationType: string,
+    AuthenticationHash: string,
+    RequesterAudience: string,
+    RequesterTokenIssuer: string,
+    RequesterTenantId: string,
+    RequesterObjectId: string,
+    RequesterAppId: string,
+    RequesterUpn: string,
+    AuthorizationDetails: dynamic,
+    RequestHeaderSize: long,
+    RequestBodySize: long,
+    ResponseHeaderSize: long,
+    ResponseBodySize: long,
+    ContentLengthHeader: long,
+    ResponseMd5: string,
+    OperationCount: int,
+    MetricResponseType: string,
+    SchemaVersion: string,
+    _ResourceId: string,
+    _SubscriptionId: string,
+    TenantId: string,
+    _IsBillable: string,
+    _BilledSize: real
+)
 
+.create-or-alter table StorageBlobLogs ingestion json mapping "StorageBlobLogsMap"
+```[
+  { "column": "TimeGenerated", "path": "$.TimeGenerated" },
+  { "column": "Type", "path": "$.Type" },
+  { "column": "SourceSystem", "path": "$.SourceSystem" },
+  { "column": "Category", "path": "$.Category" },
+  { "column": "OperationName", "path": "$.OperationName" },
+  { "column": "ServiceType", "path": "$.ServiceType" },
+  { "column": "AccountName", "path": "$.AccountName" },
+  { "column": "AccessTier", "path": "$.AccessTier" },
+  { "column": "Location", "path": "$.Location" },
+  { "column": "Protocol", "path": "$.Protocol" },
+  { "column": "TlsVersion", "path": "$.TlsVersion" },
+  { "column": "StatusCode", "path": "$.StatusCode" },
+  { "column": "StatusText", "path": "$.StatusText" },
+  { "column": "DurationMs", "path": "$.DurationMs" },
+  { "column": "ServerLatencyMs", "path": "$.ServerLatencyMs" },
+  { "column": "CallerIpAddress", "path": "$.CallerIpAddress" },
+  { "column": "UserAgentHeader", "path": "$.UserAgentHeader" },
+  { "column": "Uri", "path": "$.Uri" },
+  { "column": "DestinationUri", "path": "$.DestinationUri" },
+  { "column": "SourceUri", "path": "$.SourceUri" },
+  { "column": "ClientRequestId", "path": "$.ClientRequestId" },
+  { "column": "CorrelationId", "path": "$.CorrelationId" },
+  { "column": "AuthenticationType", "path": "$.AuthenticationType" },
+  { "column": "AuthenticationHash", "path": "$.AuthenticationHash" },
+  { "column": "RequesterAudience", "path": "$.RequesterAudience" },
+  { "column": "RequesterTokenIssuer", "path": "$.RequesterTokenIssuer" },
+  { "column": "RequesterTenantId", "path": "$.RequesterTenantId" },
+  { "column": "RequesterObjectId", "path": "$.RequesterObjectId" },
+  { "column": "RequesterAppId", "path": "$.RequesterAppId" },
+  { "column": "RequesterUpn", "path": "$.RequesterUpn" },
+  { "column": "AuthorizationDetails", "path": "$.AuthorizationDetails" },
+  { "column": "RequestHeaderSize", "path": "$.RequestHeaderSize" },
+  { "column": "RequestBodySize", "path": "$.RequestBodySize" },
+  { "column": "ResponseHeaderSize", "path": "$.ResponseHeaderSize" },
+  { "column": "ResponseBodySize", "path": "$.ResponseBodySize" },
+  { "column": "ContentLengthHeader", "path": "$.ContentLengthHeader" },
+  { "column": "ResponseMd5", "path": "$.ResponseMd5" },
+  { "column": "OperationCount", "path": "$.OperationCount" },
+  { "column": "MetricResponseType", "path": "$.MetricResponseType" },
+  { "column": "SchemaVersion", "path": "$.SchemaVersion" },
+  { "column": "_ResourceId", "path": "$._ResourceId" },
+  { "column": "_SubscriptionId", "path": "$._SubscriptionId" },
+  { "column": "TenantId", "path": "$.TenantId" },
+  { "column": "_IsBillable", "path": "$._IsBillable" },
+  { "column": "_BilledSize", "path": "$._BilledSize" }
+]```
+
+.ingest into table StorageBlobLogs
+(
+  h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/json_data_azure_T1190/inline_storagebloblogs_ExploitPublicFacingApp.json"
+)
+with (
+  format = "json",
+  ingestionMappingReference = "StorageBlobLogsMap"
+)
+
+**************************************
