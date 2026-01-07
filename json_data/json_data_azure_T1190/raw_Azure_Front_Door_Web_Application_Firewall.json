@@ -1,0 +1,142 @@
+{
+  "type": "object",
+  "description": "Raw log schema for Azure Front Door Web Application Firewall events",
+  "properties": {
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the WAF event was generated."
+    },
+    "category": {
+      "type": "string",
+      "const": "FrontdoorWebApplicationFirewallLog",
+      "description": "Log category for Azure Front Door WAF."
+    },
+    "operationName": {
+      "type": "string",
+      "description": "Azure operation associated with the request."
+    },
+    "properties": {
+      "type": "object",
+      "description": "WAF event properties.",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "Allow",
+            "Block",
+            "Log",
+            "AnomalyScoring",
+            "JSChallengeIssued",
+            "JSChallengePass",
+            "JSChallengeValid",
+            "JSChallengeBlock"
+          ],
+          "description": "Action taken by Azure Front Door WAF on the request."
+        },
+        "clientIP": {
+          "type": "string",
+          "description": "Client IP address derived from X-Forwarded-For or request source."
+        },
+        "clientPort": {
+          "type": ["string", "null"],
+          "description": "Client source port."
+        },
+        "socketIP": {
+          "type": ["string", "null"],
+          "description": "Source IP address observed at the TCP connection level."
+        },
+        "requestUri": {
+          "type": "string",
+          "description": "Full URI of the incoming request."
+        },
+        "host": {
+          "type": "string",
+          "description": "Host header of the request."
+        },
+        "ruleName": {
+          "type": ["string", "null"],
+          "description": "Name of the managed WAF rule that matched the request."
+        },
+        "policy": {
+          "type": "string",
+          "description": "Name of the Front Door WAF policy that evaluated the request."
+        },
+        "policyMode": {
+          "type": "string",
+          "enum": ["Prevention", "Detection"],
+          "description": "Operational mode of the WAF policy."
+        },
+        "trackingReference": {
+          "type": "string",
+          "description": "Unique identifier for correlating Front Door requests (X-Azure-Ref)."
+        },
+        "details": {
+          "type": ["object", "null"],
+          "description": "Details of rule evaluation and matched request components.",
+          "properties": {
+            "matches": {
+              "type": "array",
+              "description": "List of matched request elements.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "matchVariableName": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "description": "Name of the HTTP request variable that matched."
+                  },
+                  "matchVariableValue": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "description": "Value that triggered the rule match."
+                  }
+                },
+                "required": ["matchVariableName", "matchVariableValue"]
+              }
+            }
+          }
+        },
+        "anomalyScore": {
+          "type": ["integer", "null"],
+          "description": "Cumulative anomaly score assigned to the request when anomaly scoring is enabled."
+        },
+        "jsChallenge": {
+          "type": ["object", "null"],
+          "description": "JS Challenge lifecycle details when applicable.",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "Issued",
+                "Passed",
+                "Valid",
+                "Blocked"
+              ],
+              "description": "Outcome of the JS challenge evaluation."
+            },
+            "reason": {
+              "type": ["string", "null"],
+              "description": "Reason for JS challenge failure or block."
+            }
+          }
+        }
+      },
+      "required": [
+        "action",
+        "clientIP",
+        "requestUri",
+        "host",
+        "policy",
+        "policyMode",
+        "trackingReference"
+      ]
+    }
+  },
+  "required": [
+    "time",
+    "category",
+    "operationName",
+    "properties"
+  ]
+}
