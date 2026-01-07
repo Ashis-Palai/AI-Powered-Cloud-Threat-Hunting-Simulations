@@ -730,3 +730,98 @@ union MaliciousEmail, ProcessActivity, NetworkEvents
     AdditionalDetails;
     Timeline
     
+*******************************************
+
+.create table AzureActivity (
+    TimeGenerated: datetime,
+    EventSubmissionTimestamp: datetime,
+    Type: string,
+    SourceSystem: string,
+    Category: string,
+    CategoryValue: string,
+    Level: string,
+    ActivityStatus: string,
+    ActivityStatusValue: string,
+    ActivitySubstatus: string,
+    ActivitySubstatusValue: string,
+    OperationId: string,
+    OperationName: string,
+    OperationNameValue: string,
+    CorrelationId: string,
+    EventDataId: string,
+    Caller: string,
+    CallerIpAddress: string,
+    Authorization: string,
+    Authorization_d: dynamic,
+    Claims: string,
+    Claims_d: dynamic,
+    HTTPRequest: string,
+    Properties: string,
+    Properties_d: dynamic,
+    Resource: string,
+    ResourceGroup: string,
+    ResourceId: string,
+    _ResourceId: string,
+    ResourceProvider: string,
+    ResourceProviderValue: string,
+    SubscriptionId: string,
+    _SubscriptionId: string,
+    Hierarchy: string,
+    TenantId: string,
+    _IsBillable: string,
+    _BilledSize: real
+)
+
+.create-or-alter table AzureActivity ingestion json mapping "AzureActivityMap"
+```[
+  { "column": "TimeGenerated", "path": "$.TimeGenerated" },
+  { "column": "EventSubmissionTimestamp", "path": "$.EventSubmissionTimestamp" },
+  { "column": "Type", "path": "$.Type" },
+  { "column": "SourceSystem", "path": "$.SourceSystem" },
+  { "column": "Category", "path": "$.Category" },
+  { "column": "CategoryValue", "path": "$.CategoryValue" },
+  { "column": "Level", "path": "$.Level" },
+  { "column": "ActivityStatus", "path": "$.ActivityStatus" },
+  { "column": "ActivityStatusValue", "path": "$.ActivityStatusValue" },
+  { "column": "ActivitySubstatus", "path": "$.ActivitySubstatus" },
+  { "column": "ActivitySubstatusValue", "path": "$.ActivitySubstatusValue" },
+  { "column": "OperationId", "path": "$.OperationId" },
+  { "column": "OperationName", "path": "$.OperationName" },
+  { "column": "OperationNameValue", "path": "$.OperationNameValue" },
+  { "column": "CorrelationId", "path": "$.CorrelationId" },
+  { "column": "EventDataId", "path": "$.EventDataId" },
+  { "column": "Caller", "path": "$.Caller" },
+  { "column": "CallerIpAddress", "path": "$.CallerIpAddress" },
+  { "column": "Authorization", "path": "$.Authorization" },
+  { "column": "Authorization_d", "path": "$.Authorization_d" },
+  { "column": "Claims", "path": "$.Claims" },
+  { "column": "Claims_d", "path": "$.Claims_d" },
+  { "column": "HTTPRequest", "path": "$.HTTPRequest" },
+  { "column": "Properties", "path": "$.Properties" },
+  { "column": "Properties_d", "path": "$.Properties_d" },
+  { "column": "Resource", "path": "$.Resource" },
+  { "column": "ResourceGroup", "path": "$.ResourceGroup" },
+  { "column": "ResourceId", "path": "$.ResourceId" },
+  { "column": "_ResourceId", "path": "$._ResourceId" },
+  { "column": "ResourceProvider", "path": "$.ResourceProvider" },
+  { "column": "ResourceProviderValue", "path": "$.ResourceProviderValue" },
+  { "column": "SubscriptionId", "path": "$.SubscriptionId" },
+  { "column": "_SubscriptionId", "path": "$._SubscriptionId" },
+  { "column": "Hierarchy", "path": "$.Hierarchy" },
+  { "column": "TenantId", "path": "$.TenantId" },
+  { "column": "_IsBillable", "path": "$._IsBillable" },
+  { "column": "_BilledSize", "path": "$._BilledSize" }
+]```
+
+.ingest into table AzureActivity
+(
+  h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/json_data_azure_T1190/Inline_AzureActivity_ExploitPublicFacingApp.json"
+)
+with (
+  format = "multijson",
+  ingestionMappingReference = "AzureActivityMap"
+)
+
+
+**********************************
+
