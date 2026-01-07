@@ -1,343 +1,343 @@
-// .create table SignInLogs (
-//     TimeGenerated: datetime,
-//     ResourceId: string,
-//     Category: string,
-//     OperationName: string,
-//     Type: string,
-//     AADTenantId: string,
-//     Id: string,
-//     CreatedDateTime: datetime,
-//     UserDisplayName: string,
-//     UserPrincipalName: string,
-//     UserId: string,
-//     AppId: string,
-//     AppDisplayName: string,
-//     ResourceDisplayName: string,
-//     ResourceIdentity: string,
-//     ResourceServicePrincipalId: string,
-//     ServicePrincipalId: string,
-//     ServicePrincipalName: string,
-//     Identity: string,
-//     SignInIdentifier: string,
-//     SignInIdentifierType: string,
-//     ClientAppUsed: string,
-//     UserAgent: string,
-//     IPAddress: string,
-//     Location: string,
-//     LocationDetails: dynamic,
-//     DeviceDetail: dynamic,
-//     Status: dynamic,
-//     AuthenticationRequirement: string,
-//     AuthenticationProtocol: string,
-//     DurationMs: long,
-//     IncomingTokenType: string,
-//     SessionId: string,
-//     RiskLevelAggregated: string,
-//     RiskLevelDuringSignIn: string,
-//     RiskState: string,
-//     RiskDetail: string,
-//     NetworkLocationDetails: string,
-//     IsInteractive: bool,
-//     TokenIssuerType: string,
-//     CorrelationId: string,
-//     UserType: string,
-//     CrossTenantAccessType: string,
-//     HomeTenantName: string,
-//     _IsBillable: string
-// )
+.create table SignInLogs (
+    TimeGenerated: datetime,
+    ResourceId: string,
+    Category: string,
+    OperationName: string,
+    Type: string,
+    AADTenantId: string,
+    Id: string,
+    CreatedDateTime: datetime,
+    UserDisplayName: string,
+    UserPrincipalName: string,
+    UserId: string,
+    AppId: string,
+    AppDisplayName: string,
+    ResourceDisplayName: string,
+    ResourceIdentity: string,
+    ResourceServicePrincipalId: string,
+    ServicePrincipalId: string,
+    ServicePrincipalName: string,
+    Identity: string,
+    SignInIdentifier: string,
+    SignInIdentifierType: string,
+    ClientAppUsed: string,
+    UserAgent: string,
+    IPAddress: string,
+    Location: string,
+    LocationDetails: dynamic,
+    DeviceDetail: dynamic,
+    Status: dynamic,
+    AuthenticationRequirement: string,
+    AuthenticationProtocol: string,
+    DurationMs: long,
+    IncomingTokenType: string,
+    SessionId: string,
+    RiskLevelAggregated: string,
+    RiskLevelDuringSignIn: string,
+    RiskState: string,
+    RiskDetail: string,
+    NetworkLocationDetails: string,
+    IsInteractive: bool,
+    TokenIssuerType: string,
+    CorrelationId: string,
+    UserType: string,
+    CrossTenantAccessType: string,
+    HomeTenantName: string,
+    _IsBillable: string
+)
 
-// .create-or-alter table SignInLogs ingestion json mapping "SignInLogMap"
-// ```[
-//   {"column":"TimeGenerated","path":"$.TimeGenerated"},
-//   {"column":"ResourceId","path":"$.ResourceId"},
-//   {"column":"Category","path":"$.Category"},
-//   {"column":"OperationName","path":"$.OperationName"},
-//   {"column":"Type","path":"$.Type"},
-//   {"column":"AADTenantId","path":"$.AADTenantId"},
-//   {"column":"Id","path":"$.Id"},
-//   {"column":"CreatedDateTime","path":"$.CreatedDateTime"},
-//   {"column":"UserDisplayName","path":"$.UserDisplayName"},
-//   {"column":"UserPrincipalName","path":"$.UserPrincipalName"},
-//   {"column":"UserId","path":"$.UserId"},
-//   {"column":"AppId","path":"$.AppId"},
-//   {"column":"AppDisplayName","path":"$.AppDisplayName"},
-//   {"column":"ResourceDisplayName","path":"$.ResourceDisplayName"},
-//   {"column":"ResourceIdentity","path":"$.ResourceIdentity"},
-//   {"column":"ResourceServicePrincipalId","path":"$.ResourceServicePrincipalId"},
-//   {"column":"ServicePrincipalId","path":"$.ServicePrincipalId"},
-//   {"column":"ServicePrincipalName","path":"$.ServicePrincipalName"},
-//   {"column":"Identity","path":"$.Identity"},
-//   {"column":"SignInIdentifier","path":"$.SignInIdentifier"},
-//   {"column":"SignInIdentifierType","path":"$.SignInIdentifierType"},
-//   {"column":"ClientAppUsed","path":"$.ClientAppUsed"},
-//   {"column":"UserAgent","path":"$.UserAgent"},
-//   {"column":"IPAddress","path":"$.IPAddress"},
-//   {"column":"Location","path":"$.Location"},
-//   {"column":"LocationDetails","path":"$.LocationDetails"},
-//   {"column":"DeviceDetail","path":"$.DeviceDetail"},
-//   {"column":"Status","path":"$.Status"},
-//   {"column":"AuthenticationRequirement","path":"$.AuthenticationRequirement"},
-//   {"column":"AuthenticationProtocol","path":"$.AuthenticationProtocol"},
-//   {"column":"DurationMs","path":"$.DurationMs"},
-//   {"column":"IncomingTokenType","path":"$.IncomingTokenType"},
-//   {"column":"SessionId","path":"$.SessionId"},
-//   {"column":"RiskLevelAggregated","path":"$.RiskLevelAggregated"},
-//   {"column":"RiskLevelDuringSignIn","path":"$.RiskLevelDuringSignIn"},
-//   {"column":"RiskState","path":"$.RiskState"},
-//   {"column":"RiskDetail","path":"$.RiskDetail"},
-//   {"column":"NetworkLocationDetails","path":"$.NetworkLocationDetails"},
-//   {"column":"IsInteractive","path":"$.IsInteractive"},
-//   {"column":"TokenIssuerType","path":"$.TokenIssuerType"},
-//   {"column":"CorrelationId","path":"$.CorrelationId"},
-//   {"column":"UserType","path":"$.UserType"},
-//   {"column":"CrossTenantAccessType","path":"$.CrossTenantAccessType"},
-//   {"column":"HomeTenantName","path":"$.HomeTenantName"},
-//   {"column":"_IsBillable","path":"$._IsBillable"}
-// ]```
+.create-or-alter table SignInLogs ingestion json mapping "SignInLogMap"
+```[
+  {"column":"TimeGenerated","path":"$.TimeGenerated"},
+  {"column":"ResourceId","path":"$.ResourceId"},
+  {"column":"Category","path":"$.Category"},
+  {"column":"OperationName","path":"$.OperationName"},
+  {"column":"Type","path":"$.Type"},
+  {"column":"AADTenantId","path":"$.AADTenantId"},
+  {"column":"Id","path":"$.Id"},
+  {"column":"CreatedDateTime","path":"$.CreatedDateTime"},
+  {"column":"UserDisplayName","path":"$.UserDisplayName"},
+  {"column":"UserPrincipalName","path":"$.UserPrincipalName"},
+  {"column":"UserId","path":"$.UserId"},
+  {"column":"AppId","path":"$.AppId"},
+  {"column":"AppDisplayName","path":"$.AppDisplayName"},
+  {"column":"ResourceDisplayName","path":"$.ResourceDisplayName"},
+  {"column":"ResourceIdentity","path":"$.ResourceIdentity"},
+  {"column":"ResourceServicePrincipalId","path":"$.ResourceServicePrincipalId"},
+  {"column":"ServicePrincipalId","path":"$.ServicePrincipalId"},
+  {"column":"ServicePrincipalName","path":"$.ServicePrincipalName"},
+  {"column":"Identity","path":"$.Identity"},
+  {"column":"SignInIdentifier","path":"$.SignInIdentifier"},
+  {"column":"SignInIdentifierType","path":"$.SignInIdentifierType"},
+  {"column":"ClientAppUsed","path":"$.ClientAppUsed"},
+  {"column":"UserAgent","path":"$.UserAgent"},
+  {"column":"IPAddress","path":"$.IPAddress"},
+  {"column":"Location","path":"$.Location"},
+  {"column":"LocationDetails","path":"$.LocationDetails"},
+  {"column":"DeviceDetail","path":"$.DeviceDetail"},
+  {"column":"Status","path":"$.Status"},
+  {"column":"AuthenticationRequirement","path":"$.AuthenticationRequirement"},
+  {"column":"AuthenticationProtocol","path":"$.AuthenticationProtocol"},
+  {"column":"DurationMs","path":"$.DurationMs"},
+  {"column":"IncomingTokenType","path":"$.IncomingTokenType"},
+  {"column":"SessionId","path":"$.SessionId"},
+  {"column":"RiskLevelAggregated","path":"$.RiskLevelAggregated"},
+  {"column":"RiskLevelDuringSignIn","path":"$.RiskLevelDuringSignIn"},
+  {"column":"RiskState","path":"$.RiskState"},
+  {"column":"RiskDetail","path":"$.RiskDetail"},
+  {"column":"NetworkLocationDetails","path":"$.NetworkLocationDetails"},
+  {"column":"IsInteractive","path":"$.IsInteractive"},
+  {"column":"TokenIssuerType","path":"$.TokenIssuerType"},
+  {"column":"CorrelationId","path":"$.CorrelationId"},
+  {"column":"UserType","path":"$.UserType"},
+  {"column":"CrossTenantAccessType","path":"$.CrossTenantAccessType"},
+  {"column":"HomeTenantName","path":"$.HomeTenantName"},
+  {"column":"_IsBillable","path":"$._IsBillable"}
+]```
 
-// .ingest into table SignInLogs
-// (
-//     h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/signin_data.json"
-// )
-// with (
-//     format = "json",
-//     ingestionMappingReference = "SignInLogMap"
-// );
+.ingest into table SignInLogs
+(
+    h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/signin_data.json"
+)
+with (
+    format = "json",
+    ingestionMappingReference = "SignInLogMap"
+);
 
-// .show table SignInLogs ingestion json mappings
+.show table SignInLogs ingestion json mappings
 .show ingestion failures
 
 
-// .create table EmailAttachmentInfo (
-//     TimeGenerated: datetime,
-//     NetworkMessageId: string,
-//     SenderFromAddress: string,
-//     SenderDisplayName: string,
-//     SenderObjectId: string,
-//     RecipientEmailAddress: string,
-//     RecipientObjectId: string,
-//     FileName: string,
-//     FileType: string,
-//     SHA256: string,
-//     FileSize: long,
-//     ThreatTypes: string,
-//     ThreatNames: string,
-//     DetectionMethods: string,
-//     ReportId: string,
-//     RawJson: dynamic
-// );
+.create table EmailAttachmentInfo (
+    TimeGenerated: datetime,
+    NetworkMessageId: string,
+    SenderFromAddress: string,
+    SenderDisplayName: string,
+    SenderObjectId: string,
+    RecipientEmailAddress: string,
+    RecipientObjectId: string,
+    FileName: string,
+    FileType: string,
+    SHA256: string,
+    FileSize: long,
+    ThreatTypes: string,
+    ThreatNames: string,
+    DetectionMethods: string,
+    ReportId: string,
+    RawJson: dynamic
+);
 
-// .create table EmailAttachmentInfo ingestion json mapping 'EmailAttachmentInfo_Mapping' ```[ 
-//   { "column":"TimeGenerated", "path":"$.Timestamp", "datatype":"datetime" },
-//   { "column":"NetworkMessageId", "path":"$.NetworkMessageId", "datatype":"string" },
-//   { "column":"SenderFromAddress", "path":"$.SenderFromAddress", "datatype":"string" },
-//   { "column":"SenderDisplayName", "path":"$.SenderDisplayName", "datatype":"string" },
-//   { "column":"SenderObjectId", "path":"$.SenderObjectId", "datatype":"string" },
-//   { "column":"RecipientEmailAddress", "path":"$.RecipientEmailAddress", "datatype":"string" },
-//   { "column":"RecipientObjectId", "path":"$.RecipientObjectId", "datatype":"string" },
-//   { "column":"FileName", "path":"$.FileName", "datatype":"string" },
-//   { "column":"FileType", "path":"$.FileType", "datatype":"string" },
-//   { "column":"SHA256", "path":"$.SHA256", "datatype":"string" },
-//   { "column":"FileSize", "path":"$.FileSize", "datatype":"long" },
-//   { "column":"ThreatTypes", "path":"$.ThreatTypes", "datatype":"string" },
-//   { "column":"ThreatNames", "path":"$.ThreatNames", "datatype":"string" },
-//   { "column":"DetectionMethods", "path":"$.DetectionMethods", "datatype":"string" },
-//   { "column":"ReportId", "path":"$.ReportId", "datatype":"string" },
-//   { "column":"RawJson", "path":"$", "datatype":"dynamic" }
-// ]```
+.create table EmailAttachmentInfo ingestion json mapping 'EmailAttachmentInfo_Mapping' ```[ 
+  { "column":"TimeGenerated", "path":"$.Timestamp", "datatype":"datetime" },
+  { "column":"NetworkMessageId", "path":"$.NetworkMessageId", "datatype":"string" },
+  { "column":"SenderFromAddress", "path":"$.SenderFromAddress", "datatype":"string" },
+  { "column":"SenderDisplayName", "path":"$.SenderDisplayName", "datatype":"string" },
+  { "column":"SenderObjectId", "path":"$.SenderObjectId", "datatype":"string" },
+  { "column":"RecipientEmailAddress", "path":"$.RecipientEmailAddress", "datatype":"string" },
+  { "column":"RecipientObjectId", "path":"$.RecipientObjectId", "datatype":"string" },
+  { "column":"FileName", "path":"$.FileName", "datatype":"string" },
+  { "column":"FileType", "path":"$.FileType", "datatype":"string" },
+  { "column":"SHA256", "path":"$.SHA256", "datatype":"string" },
+  { "column":"FileSize", "path":"$.FileSize", "datatype":"long" },
+  { "column":"ThreatTypes", "path":"$.ThreatTypes", "datatype":"string" },
+  { "column":"ThreatNames", "path":"$.ThreatNames", "datatype":"string" },
+  { "column":"DetectionMethods", "path":"$.DetectionMethods", "datatype":"string" },
+  { "column":"ReportId", "path":"$.ReportId", "datatype":"string" },
+  { "column":"RawJson", "path":"$", "datatype":"dynamic" }
+]```
 
 
-// .ingest into table EmailAttachmentInfo
-// (
-//     h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/EmailAttachmentInfo_SpearPhishing_oneline.json"
-// )
-// with (
-//     format = "json",
-//     ingestionMappingReference = "EmailAttachmentInfo_Mapping"
-// );
+.ingest into table EmailAttachmentInfo
+(
+    h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/EmailAttachmentInfo_SpearPhishing_oneline.json"
+)
+with (
+    format = "json",
+    ingestionMappingReference = "EmailAttachmentInfo_Mapping"
+);
 
-// .create table DeviceNetworkEvents (
-//     TimeGenerated: datetime,
-//     DeviceId: string,
-//     DeviceName: string,
-//     ActionType: string,
-//     RemoteIP: string,
-//     RemotePort: long,
-//     RemoteUrl: string,
-//     LocalIP: string,
-//     LocalPort: long,
-//     Protocol: string,
-//     LocalIPType: string,
-//     RemoteIPType: string,
-//     InitiatingProcessSHA1: string,
-//     InitiatingProcessSHA256: string,
-//     InitiatingProcessMD5: string,
-//     InitiatingProcessFileName: string,
-//     InitiatingProcessFileSize: long,
-//     InitiatingProcessVersionInfoCompanyName: string,
-//     InitiatingProcessVersionInfoProductName: string,
-//     InitiatingProcessVersionInfoProductVersion: string,
-//     InitiatingProcessVersionInfoInternalFileName: string,
-//     InitiatingProcessVersionInfoOriginalFileName: string,
-//     InitiatingProcessVersionInfoFileDescription: string,
-//     InitiatingProcessId: long,
-//     InitiatingProcessCommandLine: string,
-//     InitiatingProcessCreationTime: datetime,
-//     InitiatingProcessFolderPath: string,
-//     InitiatingProcessParentFileName: string,
-//     InitiatingProcessParentId: long,
-//     InitiatingProcessParentCreationTime: datetime,
-//     InitiatingProcessAccountDomain: string,
-//     InitiatingProcessAccountName: string,
-//     InitiatingProcessAccountSid: string,
-//     InitiatingProcessAccountUpn: string,
-//     InitiatingProcessAccountObjectId: string,
-//     InitiatingProcessIntegrityLevel: string,
-//     InitiatingProcessTokenElevation: string,
-//     ReportId: long,
-//     AppGuardContainerId: string,
-//     AdditionalFields: dynamic,
-//     InitiatingProcessSessionId: long,
-//     IsInitiatingProcessRemoteSession: bool,
-//     InitiatingProcessRemoteSessionDeviceName: string,
-//     InitiatingProcessRemoteSessionIP: string,
-//     ProcessUniqueId: string,
-//     InitiatingProcessUniqueId: string,
-//     RawJson: dynamic
-// );
+.create table DeviceNetworkEvents (
+    TimeGenerated: datetime,
+    DeviceId: string,
+    DeviceName: string,
+    ActionType: string,
+    RemoteIP: string,
+    RemotePort: long,
+    RemoteUrl: string,
+    LocalIP: string,
+    LocalPort: long,
+    Protocol: string,
+    LocalIPType: string,
+    RemoteIPType: string,
+    InitiatingProcessSHA1: string,
+    InitiatingProcessSHA256: string,
+    InitiatingProcessMD5: string,
+    InitiatingProcessFileName: string,
+    InitiatingProcessFileSize: long,
+    InitiatingProcessVersionInfoCompanyName: string,
+    InitiatingProcessVersionInfoProductName: string,
+    InitiatingProcessVersionInfoProductVersion: string,
+    InitiatingProcessVersionInfoInternalFileName: string,
+    InitiatingProcessVersionInfoOriginalFileName: string,
+    InitiatingProcessVersionInfoFileDescription: string,
+    InitiatingProcessId: long,
+    InitiatingProcessCommandLine: string,
+    InitiatingProcessCreationTime: datetime,
+    InitiatingProcessFolderPath: string,
+    InitiatingProcessParentFileName: string,
+    InitiatingProcessParentId: long,
+    InitiatingProcessParentCreationTime: datetime,
+    InitiatingProcessAccountDomain: string,
+    InitiatingProcessAccountName: string,
+    InitiatingProcessAccountSid: string,
+    InitiatingProcessAccountUpn: string,
+    InitiatingProcessAccountObjectId: string,
+    InitiatingProcessIntegrityLevel: string,
+    InitiatingProcessTokenElevation: string,
+    ReportId: long,
+    AppGuardContainerId: string,
+    AdditionalFields: dynamic,
+    InitiatingProcessSessionId: long,
+    IsInitiatingProcessRemoteSession: bool,
+    InitiatingProcessRemoteSessionDeviceName: string,
+    InitiatingProcessRemoteSessionIP: string,
+    ProcessUniqueId: string,
+    InitiatingProcessUniqueId: string,
+    RawJson: dynamic
+);
 
-// .create table DeviceNetworkEvents ingestion json mapping 'DeviceNetworkEvents_Mapping' ```[ 
-//   { "column":"TimeGenerated", "path":"$.Timestamp", "datatype":"datetime" },
-//   { "column":"DeviceId", "path":"$.DeviceId", "datatype":"string" },
-//   { "column":"DeviceName", "path":"$.DeviceName", "datatype":"string" },
-//   { "column":"ActionType", "path":"$.ActionType", "datatype":"string" },
-//   { "column":"RemoteIP", "path":"$.RemoteIP", "datatype":"string" },
-//   { "column":"RemotePort", "path":"$.RemotePort", "datatype":"long" },
-//   { "column":"RemoteUrl", "path":"$.RemoteUrl", "datatype":"string" },
-//   { "column":"LocalIP", "path":"$.LocalIP", "datatype":"string" },
-//   { "column":"LocalPort", "path":"$.LocalPort", "datatype":"long" },
-//   { "column":"Protocol", "path":"$.Protocol", "datatype":"string" },
-//   { "column":"LocalIPType", "path":"$.LocalIPType", "datatype":"string" },
-//   { "column":"RemoteIPType", "path":"$.RemoteIPType", "datatype":"string" },
-//   { "column":"InitiatingProcessSHA1", "path":"$.InitiatingProcessSHA1", "datatype":"string" },
-//   { "column":"InitiatingProcessSHA256", "path":"$.InitiatingProcessSHA256", "datatype":"string" },
-//   { "column":"InitiatingProcessMD5", "path":"$.InitiatingProcessMD5", "datatype":"string" },
-//   { "column":"InitiatingProcessFileName", "path":"$.InitiatingProcessFileName", "datatype":"string" },
-//   { "column":"InitiatingProcessFileSize", "path":"$.InitiatingProcessFileSize", "datatype":"long" },
-//   { "column":"InitiatingProcessVersionInfoCompanyName", "path":"$.InitiatingProcessVersionInfoCompanyName", "datatype":"string" },
-//   { "column":"InitiatingProcessVersionInfoProductName", "path":"$.InitiatingProcessVersionInfoProductName", "datatype":"string" },
-//   { "column":"InitiatingProcessVersionInfoProductVersion", "path":"$.InitiatingProcessVersionInfoProductVersion", "datatype":"string" },
-//   { "column":"InitiatingProcessVersionInfoInternalFileName", "path":"$.InitiatingProcessVersionInfoInternalFileName", "datatype":"string" },
-//   { "column":"InitiatingProcessVersionInfoOriginalFileName", "path":"$.InitiatingProcessVersionInfoOriginalFileName", "datatype":"string" },
-//   { "column":"InitiatingProcessVersionInfoFileDescription", "path":"$.InitiatingProcessVersionInfoFileDescription", "datatype":"string" },
-//   { "column":"InitiatingProcessId", "path":"$.InitiatingProcessId", "datatype":"long" },
-//   { "column":"InitiatingProcessCommandLine", "path":"$.InitiatingProcessCommandLine", "datatype":"string" },
-//   { "column":"InitiatingProcessCreationTime", "path":"$.InitiatingProcessCreationTime", "datatype":"datetime" },
-//   { "column":"InitiatingProcessFolderPath", "path":"$.InitiatingProcessFolderPath", "datatype":"string" },
-//   { "column":"InitiatingProcessParentFileName", "path":"$.InitiatingProcessParentFileName", "datatype":"string" },
-//   { "column":"InitiatingProcessParentId", "path":"$.InitiatingProcessParentId", "datatype":"long" },
-//   { "column":"InitiatingProcessParentCreationTime", "path":"$.InitiatingProcessParentCreationTime", "datatype":"datetime" },
-//   { "column":"InitiatingProcessAccountDomain", "path":"$.InitiatingProcessAccountDomain", "datatype":"string" },
-//   { "column":"InitiatingProcessAccountName", "path":"$.InitiatingProcessAccountName", "datatype":"string" },
-//   { "column":"InitiatingProcessAccountSid", "path":"$.InitiatingProcessAccountSid", "datatype":"string" },
-//   { "column":"InitiatingProcessAccountUpn", "path":"$.InitiatingProcessAccountUpn", "datatype":"string" },
-//   { "column":"InitiatingProcessAccountObjectId", "path":"$.InitiatingProcessAccountObjectId", "datatype":"string" },
-//   { "column":"InitiatingProcessIntegrityLevel", "path":"$.InitiatingProcessIntegrityLevel", "datatype":"string" },
-//   { "column":"InitiatingProcessTokenElevation", "path":"$.InitiatingProcessTokenElevation", "datatype":"string" },
-//   { "column":"ReportId", "path":"$.ReportId", "datatype":"long" },
-//   { "column":"AppGuardContainerId", "path":"$.AppGuardContainerId", "datatype":"string" },
-//   { "column":"AdditionalFields", "path":"$.AdditionalFields", "datatype":"dynamic" },
-//   { "column":"InitiatingProcessSessionId", "path":"$.InitiatingProcessSessionId", "datatype":"long" },
-//   { "column":"IsInitiatingProcessRemoteSession", "path":"$.IsInitiatingProcessRemoteSession", "datatype":"bool" },
-//   { "column":"InitiatingProcessRemoteSessionDeviceName", "path":"$.InitiatingProcessRemoteSessionDeviceName", "datatype":"string" },
-//   { "column":"InitiatingProcessRemoteSessionIP", "path":"$.InitiatingProcessRemoteSessionIP", "datatype":"string" },
-//   { "column":"ProcessUniqueId", "path":"$.ProcessUniqueId", "datatype":"string" },
-//   { "column":"InitiatingProcessUniqueId", "path":"$.InitiatingProcessUniqueId", "datatype":"string" },
-//   { "column":"RawJson", "path":"$", "datatype":"dynamic" }
-// ]```
+.create table DeviceNetworkEvents ingestion json mapping 'DeviceNetworkEvents_Mapping' ```[ 
+  { "column":"TimeGenerated", "path":"$.Timestamp", "datatype":"datetime" },
+  { "column":"DeviceId", "path":"$.DeviceId", "datatype":"string" },
+  { "column":"DeviceName", "path":"$.DeviceName", "datatype":"string" },
+  { "column":"ActionType", "path":"$.ActionType", "datatype":"string" },
+  { "column":"RemoteIP", "path":"$.RemoteIP", "datatype":"string" },
+  { "column":"RemotePort", "path":"$.RemotePort", "datatype":"long" },
+  { "column":"RemoteUrl", "path":"$.RemoteUrl", "datatype":"string" },
+  { "column":"LocalIP", "path":"$.LocalIP", "datatype":"string" },
+  { "column":"LocalPort", "path":"$.LocalPort", "datatype":"long" },
+  { "column":"Protocol", "path":"$.Protocol", "datatype":"string" },
+  { "column":"LocalIPType", "path":"$.LocalIPType", "datatype":"string" },
+  { "column":"RemoteIPType", "path":"$.RemoteIPType", "datatype":"string" },
+  { "column":"InitiatingProcessSHA1", "path":"$.InitiatingProcessSHA1", "datatype":"string" },
+  { "column":"InitiatingProcessSHA256", "path":"$.InitiatingProcessSHA256", "datatype":"string" },
+  { "column":"InitiatingProcessMD5", "path":"$.InitiatingProcessMD5", "datatype":"string" },
+  { "column":"InitiatingProcessFileName", "path":"$.InitiatingProcessFileName", "datatype":"string" },
+  { "column":"InitiatingProcessFileSize", "path":"$.InitiatingProcessFileSize", "datatype":"long" },
+  { "column":"InitiatingProcessVersionInfoCompanyName", "path":"$.InitiatingProcessVersionInfoCompanyName", "datatype":"string" },
+  { "column":"InitiatingProcessVersionInfoProductName", "path":"$.InitiatingProcessVersionInfoProductName", "datatype":"string" },
+  { "column":"InitiatingProcessVersionInfoProductVersion", "path":"$.InitiatingProcessVersionInfoProductVersion", "datatype":"string" },
+  { "column":"InitiatingProcessVersionInfoInternalFileName", "path":"$.InitiatingProcessVersionInfoInternalFileName", "datatype":"string" },
+  { "column":"InitiatingProcessVersionInfoOriginalFileName", "path":"$.InitiatingProcessVersionInfoOriginalFileName", "datatype":"string" },
+  { "column":"InitiatingProcessVersionInfoFileDescription", "path":"$.InitiatingProcessVersionInfoFileDescription", "datatype":"string" },
+  { "column":"InitiatingProcessId", "path":"$.InitiatingProcessId", "datatype":"long" },
+  { "column":"InitiatingProcessCommandLine", "path":"$.InitiatingProcessCommandLine", "datatype":"string" },
+  { "column":"InitiatingProcessCreationTime", "path":"$.InitiatingProcessCreationTime", "datatype":"datetime" },
+  { "column":"InitiatingProcessFolderPath", "path":"$.InitiatingProcessFolderPath", "datatype":"string" },
+  { "column":"InitiatingProcessParentFileName", "path":"$.InitiatingProcessParentFileName", "datatype":"string" },
+  { "column":"InitiatingProcessParentId", "path":"$.InitiatingProcessParentId", "datatype":"long" },
+  { "column":"InitiatingProcessParentCreationTime", "path":"$.InitiatingProcessParentCreationTime", "datatype":"datetime" },
+  { "column":"InitiatingProcessAccountDomain", "path":"$.InitiatingProcessAccountDomain", "datatype":"string" },
+  { "column":"InitiatingProcessAccountName", "path":"$.InitiatingProcessAccountName", "datatype":"string" },
+  { "column":"InitiatingProcessAccountSid", "path":"$.InitiatingProcessAccountSid", "datatype":"string" },
+  { "column":"InitiatingProcessAccountUpn", "path":"$.InitiatingProcessAccountUpn", "datatype":"string" },
+  { "column":"InitiatingProcessAccountObjectId", "path":"$.InitiatingProcessAccountObjectId", "datatype":"string" },
+  { "column":"InitiatingProcessIntegrityLevel", "path":"$.InitiatingProcessIntegrityLevel", "datatype":"string" },
+  { "column":"InitiatingProcessTokenElevation", "path":"$.InitiatingProcessTokenElevation", "datatype":"string" },
+  { "column":"ReportId", "path":"$.ReportId", "datatype":"long" },
+  { "column":"AppGuardContainerId", "path":"$.AppGuardContainerId", "datatype":"string" },
+  { "column":"AdditionalFields", "path":"$.AdditionalFields", "datatype":"dynamic" },
+  { "column":"InitiatingProcessSessionId", "path":"$.InitiatingProcessSessionId", "datatype":"long" },
+  { "column":"IsInitiatingProcessRemoteSession", "path":"$.IsInitiatingProcessRemoteSession", "datatype":"bool" },
+  { "column":"InitiatingProcessRemoteSessionDeviceName", "path":"$.InitiatingProcessRemoteSessionDeviceName", "datatype":"string" },
+  { "column":"InitiatingProcessRemoteSessionIP", "path":"$.InitiatingProcessRemoteSessionIP", "datatype":"string" },
+  { "column":"ProcessUniqueId", "path":"$.ProcessUniqueId", "datatype":"string" },
+  { "column":"InitiatingProcessUniqueId", "path":"$.InitiatingProcessUniqueId", "datatype":"string" },
+  { "column":"RawJson", "path":"$", "datatype":"dynamic" }
+]```
 
-// .ingest into table DeviceNetworkEvents
-// (
-//     h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/DeviceNetworkEvents_SpearPhishing_ndjson.json"
-// )
-// with (
-//     format = "multijson",
-//     ingestionMappingReference = "DeviceNetworkEvents_Mapping")
+.ingest into table DeviceNetworkEvents
+(
+    h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/DeviceNetworkEvents_SpearPhishing_ndjson.json"
+)
+with (
+    format = "multijson",
+    ingestionMappingReference = "DeviceNetworkEvents_Mapping")
 
-// .show ingestion failures 
+.show ingestion failures 
 
-// DeviceNetworkEvents
-// EmailAttachmentInfo
-// | where ThreatTypes == "Malware"
-// | project TimeGenerated, RecipientEmailAddress, FileName, SHA256, ThreatNames, DetectionMethods
+DeviceNetworkEvents
+EmailAttachmentInfo
+| where ThreatTypes == "Malware"
+| project TimeGenerated, RecipientEmailAddress, FileName, SHA256, ThreatNames, DetectionMethods
+| order by TimeGenerated asc
+
+DeviceNetworkEvents
+| where InitiatingProcessFileName =~ "powershell.exe"
+    or InitiatingProcessFileName in ("curl.exe", "certutil.exe", "mshta.exe", "wscript.exe", "cscript.exe")
+| project TimeGenerated, InitiatingProcessFileName, RemoteUrl, RemoteIP, InitiatingProcessCommandLine
+| order by TimeGenerated asc
+
+DeviceNetworkEvents
+// | where RemoteUrl has_any ("http", "https")
+| where RemoteIP != "" and ActionType == "ConnectionSuccess"
+// | extend Domain = parse_url(RemoteUrl)
+| project TimeGenerated, RemoteUrl,RemoteIP, InitiatingProcessFileName
+// | project Domain
 // | order by TimeGenerated asc
 
-// DeviceNetworkEvents
-// | where InitiatingProcessFileName =~ "powershell.exe"
-//     or InitiatingProcessFileName in ("curl.exe", "certutil.exe", "mshta.exe", "wscript.exe", "cscript.exe")
-// | project TimeGenerated, InitiatingProcessFileName, RemoteUrl, RemoteIP, InitiatingProcessCommandLine
-// | order by TimeGenerated asc
-
-// DeviceNetworkEvents
-// // | where RemoteUrl has_any ("http", "https")
-// | where RemoteIP != "" and ActionType == "ConnectionSuccess"
-// // | extend Domain = parse_url(RemoteUrl)
-// | project TimeGenerated, RemoteUrl,RemoteIP, InitiatingProcessFileName
-// // | project Domain
-// // | order by TimeGenerated asc
-
-// DeviceNetworkEvents
-// | where InitiatingProcessFileName endswith ".exe"
-//     and InitiatingProcessFileName !~ "powershell.exe"
-// | project TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP
-// | order by TimeGenerated asc
+DeviceNetworkEvents
+| where InitiatingProcessFileName endswith ".exe"
+    and InitiatingProcessFileName !~ "powershell.exe"
+| project TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP
+| order by TimeGenerated asc
 
 
-// EmailAttachmentInfo
-// | where ThreatTypes == "Malware"
-// | project TimeGenerated, RecipientEmailAddress, FileName, ThreatNames, SHA256
+EmailAttachmentInfo
+| where ThreatTypes == "Malware"
+| project TimeGenerated, RecipientEmailAddress, FileName, ThreatNames, SHA256
 
-// let TargetUser = EmailAttachmentInfo
-//     | where ThreatTypes == "Malware"
-//     | project RecipientEmailAddress;
-// DeviceNetworkEvents
-// | where InitiatingProcessAccountUpn in (TargetUser)
-// | project TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP
-// | order by TimeGenerated asc
+let TargetUser = EmailAttachmentInfo
+    | where ThreatTypes == "Malware"
+    | project RecipientEmailAddress;
+DeviceNetworkEvents
+| where InitiatingProcessAccountUpn in (TargetUser)
+| project TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP
+| order by TimeGenerated asc
 
-// let TargetUser = EmailAttachmentInfo
-//     | where ThreatTypes == "Malware"
-//     | project RecipientEmailAddress;
-// DeviceNetworkEvents
-// | where InitiatingProcessAccountUpn in (TargetUser)
-// | where InitiatingProcessFileName in~ ("powershell.exe","wscript.exe","cscript.exe","mshta.exe")
-// | project TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteIP, RemoteUrl
-
-
-// let TargetUser = EmailAttachmentInfo
-//     | where ThreatTypes == "Malware"
-//     | project RecipientEmailAddress;
-// DeviceNetworkEvents
-// | where InitiatingProcessAccountUpn in (TargetUser)
-// | extend FileLower = tolower(InitiatingProcessFileName)
-// | extend Ext = tolower(strcat(".", split(InitiatingProcessFileName, ".")[-1]))
-// | where Ext in (".exe", ".dll", ".sys", ".scr", ".cpl", ".ocx",".bat", ".cmd", ".com", ".ps1", ".psm1", ".vbs",".vbe", ".js", ".jse", ".wsf", ".wsh", ".msi",
-//                 ".msp", ".jar", ".py", ".rb")
-// | where FileLower !in ("powershell.exe", "pwsh.exe", "cmd.exe")
-// | project TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine
-
-// let TargetUser = EmailAttachmentInfo
-//     | where ThreatTypes == "Malware"
-//     | project RecipientEmailAddress;
-// DeviceNetworkEvents
-// | where InitiatingProcessAccountUpn in (TargetUser)
-// | where RemoteUrl has_any ("http","https") or RemoteIP != ""
-// | project TimeGenerated, InitiatingProcessFileName, RemoteUrl, RemoteIP
-// | order by TimeGenerated asc
+let TargetUser = EmailAttachmentInfo
+    | where ThreatTypes == "Malware"
+    | project RecipientEmailAddress;
+DeviceNetworkEvents
+| where InitiatingProcessAccountUpn in (TargetUser)
+| where InitiatingProcessFileName in~ ("powershell.exe","wscript.exe","cscript.exe","mshta.exe")
+| project TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteIP, RemoteUrl
 
 
-// DeviceNetworkEvents
-// | project InitiatingProcessCommandLine
+let TargetUser = EmailAttachmentInfo
+    | where ThreatTypes == "Malware"
+    | project RecipientEmailAddress;
+DeviceNetworkEvents
+| where InitiatingProcessAccountUpn in (TargetUser)
+| extend FileLower = tolower(InitiatingProcessFileName)
+| extend Ext = tolower(strcat(".", split(InitiatingProcessFileName, ".")[-1]))
+| where Ext in (".exe", ".dll", ".sys", ".scr", ".cpl", ".ocx",".bat", ".cmd", ".com", ".ps1", ".psm1", ".vbs",".vbe", ".js", ".jse", ".wsf", ".wsh", ".msi",
+                ".msp", ".jar", ".py", ".rb")
+| where FileLower !in ("powershell.exe", "pwsh.exe", "cmd.exe")
+| project TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine
+
+let TargetUser = EmailAttachmentInfo
+    | where ThreatTypes == "Malware"
+    | project RecipientEmailAddress;
+DeviceNetworkEvents
+| where InitiatingProcessAccountUpn in (TargetUser)
+| where RemoteUrl has_any ("http","https") or RemoteIP != ""
+| project TimeGenerated, InitiatingProcessFileName, RemoteUrl, RemoteIP
+| order by TimeGenerated asc
+
+
+DeviceNetworkEvents
+| project InitiatingProcessCommandLine
 
 
 
@@ -345,319 +345,319 @@
 
 
 
-// EmailAttachmentInfo
-// | where ThreatTypes == "Malware" or ThreatNames != ""
-// | project attachTime = TimeGenerated, Recipient=RecipientEmailAddress, Sender=SenderFromAddress, FileName=FileName, SHA256, ThreatNames, DetectionMethods, ReportId
-// | order by attachTime asc
+EmailAttachmentInfo
+| where ThreatTypes == "Malware" or ThreatNames != ""
+| project attachTime = TimeGenerated, Recipient=RecipientEmailAddress, Sender=SenderFromAddress, FileName=FileName, SHA256, ThreatNames, DetectionMethods, ReportId
+| order by attachTime asc
 
-// .create table EmailEvents (
-//     TimeGenerated: datetime,
-//     NetworkMessageId: string,
-//     InternetMessageId: string,
-//     SenderMailFromAddress: string,
-//     SenderFromAddress: string,
-//     SenderDisplayName: string,
-//     SenderObjectId: string,
-//     SenderMailFromDomain: string,
-//     SenderFromDomain: string,
-//     SenderIPv4: string,
-//     SenderIPv6: string,
-//     RecipientEmailAddress: string,
-//     RecipientObjectId: string,
-//     Subject: string,
-//     EmailClusterId: long,
-//     EmailDirection: string,
-//     DeliveryAction: string,
-//     DeliveryLocation: string,
-//     ThreatTypes: string,
-//     ThreatNames: string,
-//     DetectionMethods: string,
-//     ConfidenceLevel: string,
-//     BulkComplaintLevel: int,
-//     EmailAction: string,
-//     EmailActionPolicy: string,
-//     EmailActionPolicyGuid: string,
-//     AuthenticationDetails: string,
-//     AttachmentCount: int,
-//     UrlCount: int,
-//     EmailLanguage: string,
-//     Connectors: string,
-//     OrgLevelAction: string,
-//     OrgLevelPolicy: string,
-//     UserLevelAction: string,
-//     UserLevelPolicy: string,
-//     ReportId: string,
-//     AdditionalFields: string,
-//     LatestDeliveryLocation: string,
-//     LatestDeliveryAction: string,
-//     RawJson: dynamic
-// )
-
-
-// .create table EmailEvents ingestion json mapping 'EmailEvents_Mapping' ```[
-//   { "column": "TimeGenerated", "path": "$.Timestamp", "datatype": "datetime" },
-//   { "column": "NetworkMessageId", "path": "$.NetworkMessageId", "datatype": "string" },
-//   { "column": "InternetMessageId", "path": "$.InternetMessageId", "datatype": "string" },
-//   { "column": "SenderMailFromAddress", "path": "$.SenderMailFromAddress", "datatype": "string" },
-//   { "column": "SenderFromAddress", "path": "$.SenderFromAddress", "datatype": "string" },
-//   { "column": "SenderDisplayName", "path": "$.SenderDisplayName", "datatype": "string" },
-//   { "column": "SenderObjectId", "path": "$.SenderObjectId", "datatype": "string" },
-//   { "column": "SenderMailFromDomain", "path": "$.SenderMailFromDomain", "datatype": "string" },
-//   { "column": "SenderFromDomain", "path": "$.SenderFromDomain", "datatype": "string" },
-//   { "column": "SenderIPv4", "path": "$.SenderIPv4", "datatype": "string" },
-//   { "column": "SenderIPv6", "path": "$.SenderIPv6", "datatype": "string" },
-//   { "column": "RecipientEmailAddress", "path": "$.RecipientEmailAddress", "datatype": "string" },
-//   { "column": "RecipientObjectId", "path": "$.RecipientObjectId", "datatype": "string" },
-//   { "column": "Subject", "path": "$.Subject", "datatype": "string" },
-//   { "column": "EmailClusterId", "path": "$.EmailClusterId", "datatype": "long" },
-//   { "column": "EmailDirection", "path": "$.EmailDirection", "datatype": "string" },
-//   { "column": "DeliveryAction", "path": "$.DeliveryAction", "datatype": "string" },
-//   { "column": "DeliveryLocation", "path": "$.DeliveryLocation", "datatype": "string" },
-//   { "column": "ThreatTypes", "path": "$.ThreatTypes", "datatype": "string" },
-//   { "column": "ThreatNames", "path": "$.ThreatNames", "datatype": "string" },
-//   { "column": "DetectionMethods", "path": "$.DetectionMethods", "datatype": "string" },
-//   { "column": "ConfidenceLevel", "path": "$.ConfidenceLevel", "datatype": "string" },
-//   { "column": "BulkComplaintLevel", "path": "$.BulkComplaintLevel", "datatype": "int" },
-//   { "column": "EmailAction", "path": "$.EmailAction", "datatype": "string" },
-//   { "column": "EmailActionPolicy", "path": "$.EmailActionPolicy", "datatype": "string" },
-//   { "column": "EmailActionPolicyGuid", "path": "$.EmailActionPolicyGuid", "datatype": "string" },
-//   { "column": "AuthenticationDetails", "path": "$.AuthenticationDetails", "datatype": "string" },
-//   { "column": "AttachmentCount", "path": "$.AttachmentCount", "datatype": "int" },
-//   { "column": "UrlCount", "path": "$.UrlCount", "datatype": "int" },
-//   { "column": "EmailLanguage", "path": "$.EmailLanguage", "datatype": "string" },
-//   { "column": "Connectors", "path": "$.Connectors", "datatype": "string" },
-//   { "column": "OrgLevelAction", "path": "$.OrgLevelAction", "datatype": "string" },
-//   { "column": "OrgLevelPolicy", "path": "$.OrgLevelPolicy", "datatype": "string" },
-//   { "column": "UserLevelAction", "path": "$.UserLevelAction", "datatype": "string" },
-//   { "column": "UserLevelPolicy", "path": "$.UserLevelPolicy", "datatype": "string" },
-//   { "column": "ReportId", "path": "$.ReportId", "datatype": "string" },
-//   { "column": "AdditionalFields", "path": "$.AdditionalFields", "datatype": "string" },
-//   { "column": "LatestDeliveryLocation", "path": "$.LatestDeliveryLocation", "datatype": "string" },
-//   { "column": "LatestDeliveryAction", "path": "$.LatestDeliveryAction", "datatype": "string" },
-//   { "column": "RawJson", "path": "$", "datatype": "dynamic" }
-// ]```
-
-// .ingest into table EmailEvents
-// (
-//     h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/EmailEvents_SpearPhishing_one_line.json"
-// )
-// with (
-//     format = "json",
-//     ingestionMappingReference = "EmailEvents_Mapping"
-// );
+.create table EmailEvents (
+    TimeGenerated: datetime,
+    NetworkMessageId: string,
+    InternetMessageId: string,
+    SenderMailFromAddress: string,
+    SenderFromAddress: string,
+    SenderDisplayName: string,
+    SenderObjectId: string,
+    SenderMailFromDomain: string,
+    SenderFromDomain: string,
+    SenderIPv4: string,
+    SenderIPv6: string,
+    RecipientEmailAddress: string,
+    RecipientObjectId: string,
+    Subject: string,
+    EmailClusterId: long,
+    EmailDirection: string,
+    DeliveryAction: string,
+    DeliveryLocation: string,
+    ThreatTypes: string,
+    ThreatNames: string,
+    DetectionMethods: string,
+    ConfidenceLevel: string,
+    BulkComplaintLevel: int,
+    EmailAction: string,
+    EmailActionPolicy: string,
+    EmailActionPolicyGuid: string,
+    AuthenticationDetails: string,
+    AttachmentCount: int,
+    UrlCount: int,
+    EmailLanguage: string,
+    Connectors: string,
+    OrgLevelAction: string,
+    OrgLevelPolicy: string,
+    UserLevelAction: string,
+    UserLevelPolicy: string,
+    ReportId: string,
+    AdditionalFields: string,
+    LatestDeliveryLocation: string,
+    LatestDeliveryAction: string,
+    RawJson: dynamic
+)
 
 
+.create table EmailEvents ingestion json mapping 'EmailEvents_Mapping' ```[
+  { "column": "TimeGenerated", "path": "$.Timestamp", "datatype": "datetime" },
+  { "column": "NetworkMessageId", "path": "$.NetworkMessageId", "datatype": "string" },
+  { "column": "InternetMessageId", "path": "$.InternetMessageId", "datatype": "string" },
+  { "column": "SenderMailFromAddress", "path": "$.SenderMailFromAddress", "datatype": "string" },
+  { "column": "SenderFromAddress", "path": "$.SenderFromAddress", "datatype": "string" },
+  { "column": "SenderDisplayName", "path": "$.SenderDisplayName", "datatype": "string" },
+  { "column": "SenderObjectId", "path": "$.SenderObjectId", "datatype": "string" },
+  { "column": "SenderMailFromDomain", "path": "$.SenderMailFromDomain", "datatype": "string" },
+  { "column": "SenderFromDomain", "path": "$.SenderFromDomain", "datatype": "string" },
+  { "column": "SenderIPv4", "path": "$.SenderIPv4", "datatype": "string" },
+  { "column": "SenderIPv6", "path": "$.SenderIPv6", "datatype": "string" },
+  { "column": "RecipientEmailAddress", "path": "$.RecipientEmailAddress", "datatype": "string" },
+  { "column": "RecipientObjectId", "path": "$.RecipientObjectId", "datatype": "string" },
+  { "column": "Subject", "path": "$.Subject", "datatype": "string" },
+  { "column": "EmailClusterId", "path": "$.EmailClusterId", "datatype": "long" },
+  { "column": "EmailDirection", "path": "$.EmailDirection", "datatype": "string" },
+  { "column": "DeliveryAction", "path": "$.DeliveryAction", "datatype": "string" },
+  { "column": "DeliveryLocation", "path": "$.DeliveryLocation", "datatype": "string" },
+  { "column": "ThreatTypes", "path": "$.ThreatTypes", "datatype": "string" },
+  { "column": "ThreatNames", "path": "$.ThreatNames", "datatype": "string" },
+  { "column": "DetectionMethods", "path": "$.DetectionMethods", "datatype": "string" },
+  { "column": "ConfidenceLevel", "path": "$.ConfidenceLevel", "datatype": "string" },
+  { "column": "BulkComplaintLevel", "path": "$.BulkComplaintLevel", "datatype": "int" },
+  { "column": "EmailAction", "path": "$.EmailAction", "datatype": "string" },
+  { "column": "EmailActionPolicy", "path": "$.EmailActionPolicy", "datatype": "string" },
+  { "column": "EmailActionPolicyGuid", "path": "$.EmailActionPolicyGuid", "datatype": "string" },
+  { "column": "AuthenticationDetails", "path": "$.AuthenticationDetails", "datatype": "string" },
+  { "column": "AttachmentCount", "path": "$.AttachmentCount", "datatype": "int" },
+  { "column": "UrlCount", "path": "$.UrlCount", "datatype": "int" },
+  { "column": "EmailLanguage", "path": "$.EmailLanguage", "datatype": "string" },
+  { "column": "Connectors", "path": "$.Connectors", "datatype": "string" },
+  { "column": "OrgLevelAction", "path": "$.OrgLevelAction", "datatype": "string" },
+  { "column": "OrgLevelPolicy", "path": "$.OrgLevelPolicy", "datatype": "string" },
+  { "column": "UserLevelAction", "path": "$.UserLevelAction", "datatype": "string" },
+  { "column": "UserLevelPolicy", "path": "$.UserLevelPolicy", "datatype": "string" },
+  { "column": "ReportId", "path": "$.ReportId", "datatype": "string" },
+  { "column": "AdditionalFields", "path": "$.AdditionalFields", "datatype": "string" },
+  { "column": "LatestDeliveryLocation", "path": "$.LatestDeliveryLocation", "datatype": "string" },
+  { "column": "LatestDeliveryAction", "path": "$.LatestDeliveryAction", "datatype": "string" },
+  { "column": "RawJson", "path": "$", "datatype": "dynamic" }
+]```
 
-// let attachments = EmailAttachmentInfo | where ThreatTypes == "Malware" or ThreatNames != "" 
-// | project ReportId, NetworkMessageId, attachTime=TimeGenerated, Recipient=RecipientEmailAddress, Sender=SenderFromAddress, FileName, SHA256, ThreatTypes, ThreatNames, DetectionMethods;
-// EmailEvents
-// | where NetworkMessageId in (attachments | project NetworkMessageId)
-// | join kind=leftouter attachments on NetworkMessageId
-// | project emailTime=TimeGenerated, attachTime, Sender, SenderFromAddress, Recipient, Subject, DeliveryAction, AuthenticationDetails, NetworkMessageId, ReportId, FileName, SHA256, ThreatTypes, ThreatNames, DetectionMethods
-// | order by emailTime asc, attachTime asc
-
-// .create table DeviceProcessEvents (
-//     TimeGenerated: datetime,
-//     DeviceId: string,
-//     DeviceName: string,
-//     ActionType: string,
-//     FileName: string,
-//     FolderPath: string,
-//     SHA1: string,
-//     SHA256: string,
-//     MD5: string,
-//     FileSize: long,
-//     ProcessVersionInfoCompanyName: string,
-//     ProcessVersionInfoProductName: string,
-//     ProcessVersionInfoProductVersion: string,
-//     ProcessVersionInfoInternalFileName: string,
-//     ProcessVersionInfoOriginalFileName: string,
-//     ProcessVersionInfoFileDescription: string,
-//     ProcessId: long,
-//     ProcessCommandLine: string,
-//     ProcessIntegrityLevel: string,
-//     ProcessTokenElevation: string,
-//     ProcessCreationTime: datetime,
-//     AccountDomain: string,
-//     AccountName: string,
-//     AccountSid: string,
-//     AccountUpn: string,
-//     AccountObjectId: string,
-//     LogonId: long,
-//     InitiatingProcessAccountDomain: string,
-//     InitiatingProcessAccountName: string,
-//     InitiatingProcessAccountSid: string,
-//     InitiatingProcessAccountUpn: string,
-//     InitiatingProcessAccountObjectId: string,
-//     InitiatingProcessLogonId: long,
-//     InitiatingProcessIntegrityLevel: string,
-//     InitiatingProcessTokenElevation: string,
-//     InitiatingProcessSHA1: string,
-//     InitiatingProcessSHA256: string,
-//     InitiatingProcessMD5: string,
-//     InitiatingProcessFileName: string,
-//     InitiatingProcessFileSize: long,
-//     InitiatingProcessVersionInfoCompanyName: string,
-//     InitiatingProcessVersionInfoProductName: string,
-//     InitiatingProcessVersionInfoProductVersion: string,
-//     InitiatingProcessVersionInfoInternalFileName: string,
-//     InitiatingProcessVersionInfoOriginalFileName: string,
-//     InitiatingProcessVersionInfoFileDescription: string,
-//     InitiatingProcessId: long,
-//     InitiatingProcessCommandLine: string,
-//     InitiatingProcessCreationTime: datetime,
-//     InitiatingProcessFolderPath: string,
-//     InitiatingProcessParentId: long,
-//     InitiatingProcessParentFileName: string,
-//     InitiatingProcessParentCreationTime: datetime,
-//     InitiatingProcessSignerType: string,
-//     InitiatingProcessSignatureStatus: string,
-//     ReportId: string,
-//     AppGuardContainerId: string,
-//     AdditionalFields: string,
-//     InitiatingProcessSessionId: long,
-//     IsInitiatingProcessRemoteSession: bool,
-//     InitiatingProcessRemoteSessionDeviceName: string,
-//     InitiatingProcessRemoteSessionIP: string,
-//     CreatedProcessSessionId: long,
-//     IsProcessRemoteSession: bool,
-//     ProcessRemoteSessionDeviceName: string,
-//     ProcessRemoteSessionIP: string,
-//     ProcessUniqueId: string,
-//     InitiatingProcessUniqueId: string,
-//     RawJson: dynamic
-// )
-
-// .create table DeviceProcessEvents ingestion json mapping 'DeviceProcessEvents_Mapping'```[
-//   { "column": "TimeGenerated", "path": "$.Timestamp", "datatype": "datetime" },
-//   { "column": "DeviceId", "path": "$.DeviceId", "datatype": "string" },
-//   { "column": "DeviceName", "path": "$.DeviceName", "datatype": "string" },
-//   { "column": "ActionType", "path": "$.ActionType", "datatype": "string" },
-//   { "column": "FileName", "path": "$.FileName", "datatype": "string" },
-//   { "column": "FolderPath", "path": "$.FolderPath", "datatype": "string" },
-//   { "column": "SHA1", "path": "$.SHA1", "datatype": "string" },
-//   { "column": "SHA256", "path": "$.SHA256", "datatype": "string" },
-//   { "column": "MD5", "path": "$.MD5", "datatype": "string" },
-//   { "column": "FileSize", "path": "$.FileSize", "datatype": "long" },
-//   { "column": "ProcessVersionInfoCompanyName", "path": "$.ProcessVersionInfoCompanyName", "datatype": "string" },
-//   { "column": "ProcessVersionInfoProductName", "path": "$.ProcessVersionInfoProductName", "datatype": "string" },
-//   { "column": "ProcessVersionInfoProductVersion", "path": "$.ProcessVersionInfoProductVersion", "datatype": "string" },
-//   { "column": "ProcessVersionInfoInternalFileName", "path": "$.ProcessVersionInfoInternalFileName", "datatype": "string" },
-//   { "column": "ProcessVersionInfoOriginalFileName", "path": "$.ProcessVersionInfoOriginalFileName", "datatype": "string" },
-//   { "column": "ProcessVersionInfoFileDescription", "path": "$.ProcessVersionInfoFileDescription", "datatype": "string" },
-//   { "column": "ProcessId", "path": "$.ProcessId", "datatype": "long" },
-//   { "column": "ProcessCommandLine", "path": "$.ProcessCommandLine", "datatype": "string" },
-//   { "column": "ProcessIntegrityLevel", "path": "$.ProcessIntegrityLevel", "datatype": "string" },
-//   { "column": "ProcessTokenElevation", "path": "$.ProcessTokenElevation", "datatype": "string" },
-//   { "column": "ProcessCreationTime", "path": "$.ProcessCreationTime", "datatype": "datetime" },
-//   { "column": "AccountDomain", "path": "$.AccountDomain", "datatype": "string" },
-//   { "column": "AccountName", "path": "$.AccountName", "datatype": "string" },
-//   { "column": "AccountSid", "path": "$.AccountSid", "datatype": "string" },
-//   { "column": "AccountUpn", "path": "$.AccountUpn", "datatype": "string" },
-//   { "column": "AccountObjectId", "path": "$.AccountObjectId", "datatype": "string" },
-//   { "column": "LogonId", "path": "$.LogonId", "datatype": "long" },
-//   { "column": "InitiatingProcessAccountDomain", "path": "$.InitiatingProcessAccountDomain", "datatype": "string" },
-//   { "column": "InitiatingProcessAccountName", "path": "$.InitiatingProcessAccountName", "datatype": "string" },
-//   { "column": "InitiatingProcessAccountSid", "path": "$.InitiatingProcessAccountSid", "datatype": "string" },
-//   { "column": "InitiatingProcessAccountUpn", "path": "$.InitiatingProcessAccountUpn", "datatype": "string" },
-//   { "column": "InitiatingProcessAccountObjectId", "path": "$.InitiatingProcessAccountObjectId", "datatype": "string" },
-//   { "column": "InitiatingProcessLogonId", "path": "$.InitiatingProcessLogonId", "datatype": "long" },
-//   { "column": "InitiatingProcessIntegrityLevel", "path": "$.InitiatingProcessIntegrityLevel", "datatype": "string" },
-//   { "column": "InitiatingProcessTokenElevation", "path": "$.InitiatingProcessTokenElevation", "datatype": "string" },
-//   { "column": "InitiatingProcessSHA1", "path": "$.InitiatingProcessSHA1", "datatype": "string" },
-//   { "column": "InitiatingProcessSHA256", "path": "$.InitiatingProcessSHA256", "datatype": "string" },
-//   { "column": "InitiatingProcessMD5", "path": "$.InitiatingProcessMD5", "datatype": "string" },
-//   { "column": "InitiatingProcessFileName", "path": "$.InitiatingProcessFileName", "datatype": "string" },
-//   { "column": "InitiatingProcessFileSize", "path": "$.InitiatingProcessFileSize", "datatype": "long" },
-//   { "column": "InitiatingProcessVersionInfoCompanyName", "path": "$.InitiatingProcessVersionInfoCompanyName", "datatype": "string" },
-//   { "column": "InitiatingProcessVersionInfoProductName", "path": "$.InitiatingProcessVersionInfoProductName", "datatype": "string" },
-//   { "column": "InitiatingProcessVersionInfoProductVersion", "path": "$.InitiatingProcessVersionInfoProductVersion", "datatype": "string" },
-//   { "column": "InitiatingProcessVersionInfoInternalFileName", "path": "$.InitiatingProcessVersionInfoInternalFileName", "datatype": "string" },
-//   { "column": "InitiatingProcessVersionInfoOriginalFileName", "path": "$.InitiatingProcessVersionInfoOriginalFileName", "datatype": "string" },
-//   { "column": "InitiatingProcessVersionInfoFileDescription", "path": "$.InitiatingProcessVersionInfoFileDescription", "datatype": "string" },
-//   { "column": "InitiatingProcessId", "path": "$.InitiatingProcessId", "datatype": "long" },
-//   { "column": "InitiatingProcessCommandLine", "path": "$.InitiatingProcessCommandLine", "datatype": "string" },
-//   { "column": "InitiatingProcessCreationTime", "path": "$.InitiatingProcessCreationTime", "datatype": "datetime" },
-//   { "column": "InitiatingProcessFolderPath", "path": "$.InitiatingProcessFolderPath", "datatype": "string" },
-//   { "column": "InitiatingProcessParentId", "path": "$.InitiatingProcessParentId", "datatype": "long" },
-//   { "column": "InitiatingProcessParentFileName", "path": "$.InitiatingProcessParentFileName", "datatype": "string" },
-//   { "column": "InitiatingProcessParentCreationTime", "path": "$.InitiatingProcessParentCreationTime", "datatype": "datetime" },
-//   { "column": "InitiatingProcessSignerType", "path": "$.InitiatingProcessSignerType", "datatype": "string" },
-//   { "column": "InitiatingProcessSignatureStatus", "path": "$.InitiatingProcessSignatureStatus", "datatype": "string" },
-//   { "column": "ReportId", "path": "$.ReportId", "datatype": "string" },
-//   { "column": "AppGuardContainerId", "path": "$.AppGuardContainerId", "datatype": "string" },
-//   { "column": "AdditionalFields", "path": "$.AdditionalFields", "datatype": "string" },
-//   { "column": "InitiatingProcessSessionId", "path": "$.InitiatingProcessSessionId", "datatype": "long" },
-//   { "column": "IsInitiatingProcessRemoteSession", "path": "$.IsInitiatingProcessRemoteSession", "datatype": "bool" },
-//   { "column": "InitiatingProcessRemoteSessionDeviceName", "path": "$.InitiatingProcessRemoteSessionDeviceName", "datatype": "string" },
-//   { "column": "InitiatingProcessRemoteSessionIP", "path": "$.InitiatingProcessRemoteSessionIP", "datatype": "string" },
-//   { "column": "CreatedProcessSessionId", "path": "$.CreatedProcessSessionId", "datatype": "long" },
-//   { "column": "IsProcessRemoteSession", "path": "$.IsProcessRemoteSession", "datatype": "bool" },
-//   { "column": "ProcessRemoteSessionDeviceName", "path": "$.ProcessRemoteSessionDeviceName", "datatype": "string" },
-//   { "column": "ProcessRemoteSessionIP", "path": "$.ProcessRemoteSessionIP", "datatype": "string" },
-//   { "column": "ProcessUniqueId", "path": "$.ProcessUniqueId", "datatype": "string" },
-//   { "column": "InitiatingProcessUniqueId", "path": "$.InitiatingProcessUniqueId", "datatype": "string" },
-//   { "column": "RawJson", "path": "$", "datatype": "dynamic" }
-// ]```
-
-
-// .ingest into table DeviceProcessEvents
-// (
-//     h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/DeviceProcessEvents__Inlines_SpearPhishing.json"
-// )
-// with (
-//     format = "multijson",
-//     ingestionMappingReference = "DeviceProcessEvents_Mapping"
-// );
-
-
-// let attachments = EmailAttachmentInfo
-//     | where ThreatTypes == "Malware"
-//     | project Recipient=RecipientEmailAddress, attachTime=TimeGenerated, attachSHA=SHA256;
-// attachments
-// | join kind=inner DeviceProcessEvents on $left.Recipient == $right.InitiatingProcessAccountUpn
-// | where TimeGenerated >= attachTime - 5m and TimeGenerated <= attachTime + 30m
-// | project time_=TimeGenerated,child=FileName, parent=InitiatingProcessFileName,g_parent=InitiatingProcessParentFileName, child_cmd=ProcessCommandLine,parent_cmd=InitiatingProcessCommandLine, parent_accnt=InitiatingProcessAccountUpn,attachSHA
-// | order by time_ asc
+.ingest into table EmailEvents
+(
+    h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/EmailEvents_SpearPhishing_one_line.json"
+)
+with (
+    format = "json",
+    ingestionMappingReference = "EmailEvents_Mapping"
+);
 
 
 
-// let attachments = EmailAttachmentInfo
-//     | where ThreatTypes == "Malware"
-//     | project Recipient=RecipientEmailAddress, attachTime=TimeGenerated, attachSHA=SHA256;
-// attachments
-// | join kind=inner (
-//     DeviceNetworkEvents
-//     | where tolower(InitiatingProcessFileName) has_any("powershell","curl","certutil","bitsadmin","wget")
-//     | where tolower(InitiatingProcessCommandLine) has_any("invoke-webrequest","downloadfile","-uri","curl","wget","bitsadmin","certutil -urlcache")
-//     | project EventTime=TimeGenerated, InitiatingProcessAccountUpn, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP, RemotePort, ReportId
-// ) on $left.Recipient==$right.InitiatingProcessAccountUpn
-// | where EventTime >= attachTime - 1h and EventTime <= attachTime + 1h
-// | project Recipient, attachTime, attachSHA, EventTime, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP, RemotePort, ReportId
-// | order by EventTime asc
+let attachments = EmailAttachmentInfo | where ThreatTypes == "Malware" or ThreatNames != "" 
+| project ReportId, NetworkMessageId, attachTime=TimeGenerated, Recipient=RecipientEmailAddress, Sender=SenderFromAddress, FileName, SHA256, ThreatTypes, ThreatNames, DetectionMethods;
+EmailEvents
+| where NetworkMessageId in (attachments | project NetworkMessageId)
+| join kind=leftouter attachments on NetworkMessageId
+| project emailTime=TimeGenerated, attachTime, Sender, SenderFromAddress, Recipient, Subject, DeliveryAction, AuthenticationDetails, NetworkMessageId, ReportId, FileName, SHA256, ThreatTypes, ThreatNames, DetectionMethods
+| order by emailTime asc, attachTime asc
+
+.create table DeviceProcessEvents (
+    TimeGenerated: datetime,
+    DeviceId: string,
+    DeviceName: string,
+    ActionType: string,
+    FileName: string,
+    FolderPath: string,
+    SHA1: string,
+    SHA256: string,
+    MD5: string,
+    FileSize: long,
+    ProcessVersionInfoCompanyName: string,
+    ProcessVersionInfoProductName: string,
+    ProcessVersionInfoProductVersion: string,
+    ProcessVersionInfoInternalFileName: string,
+    ProcessVersionInfoOriginalFileName: string,
+    ProcessVersionInfoFileDescription: string,
+    ProcessId: long,
+    ProcessCommandLine: string,
+    ProcessIntegrityLevel: string,
+    ProcessTokenElevation: string,
+    ProcessCreationTime: datetime,
+    AccountDomain: string,
+    AccountName: string,
+    AccountSid: string,
+    AccountUpn: string,
+    AccountObjectId: string,
+    LogonId: long,
+    InitiatingProcessAccountDomain: string,
+    InitiatingProcessAccountName: string,
+    InitiatingProcessAccountSid: string,
+    InitiatingProcessAccountUpn: string,
+    InitiatingProcessAccountObjectId: string,
+    InitiatingProcessLogonId: long,
+    InitiatingProcessIntegrityLevel: string,
+    InitiatingProcessTokenElevation: string,
+    InitiatingProcessSHA1: string,
+    InitiatingProcessSHA256: string,
+    InitiatingProcessMD5: string,
+    InitiatingProcessFileName: string,
+    InitiatingProcessFileSize: long,
+    InitiatingProcessVersionInfoCompanyName: string,
+    InitiatingProcessVersionInfoProductName: string,
+    InitiatingProcessVersionInfoProductVersion: string,
+    InitiatingProcessVersionInfoInternalFileName: string,
+    InitiatingProcessVersionInfoOriginalFileName: string,
+    InitiatingProcessVersionInfoFileDescription: string,
+    InitiatingProcessId: long,
+    InitiatingProcessCommandLine: string,
+    InitiatingProcessCreationTime: datetime,
+    InitiatingProcessFolderPath: string,
+    InitiatingProcessParentId: long,
+    InitiatingProcessParentFileName: string,
+    InitiatingProcessParentCreationTime: datetime,
+    InitiatingProcessSignerType: string,
+    InitiatingProcessSignatureStatus: string,
+    ReportId: string,
+    AppGuardContainerId: string,
+    AdditionalFields: string,
+    InitiatingProcessSessionId: long,
+    IsInitiatingProcessRemoteSession: bool,
+    InitiatingProcessRemoteSessionDeviceName: string,
+    InitiatingProcessRemoteSessionIP: string,
+    CreatedProcessSessionId: long,
+    IsProcessRemoteSession: bool,
+    ProcessRemoteSessionDeviceName: string,
+    ProcessRemoteSessionIP: string,
+    ProcessUniqueId: string,
+    InitiatingProcessUniqueId: string,
+    RawJson: dynamic
+)
+
+.create table DeviceProcessEvents ingestion json mapping 'DeviceProcessEvents_Mapping'```[
+  { "column": "TimeGenerated", "path": "$.Timestamp", "datatype": "datetime" },
+  { "column": "DeviceId", "path": "$.DeviceId", "datatype": "string" },
+  { "column": "DeviceName", "path": "$.DeviceName", "datatype": "string" },
+  { "column": "ActionType", "path": "$.ActionType", "datatype": "string" },
+  { "column": "FileName", "path": "$.FileName", "datatype": "string" },
+  { "column": "FolderPath", "path": "$.FolderPath", "datatype": "string" },
+  { "column": "SHA1", "path": "$.SHA1", "datatype": "string" },
+  { "column": "SHA256", "path": "$.SHA256", "datatype": "string" },
+  { "column": "MD5", "path": "$.MD5", "datatype": "string" },
+  { "column": "FileSize", "path": "$.FileSize", "datatype": "long" },
+  { "column": "ProcessVersionInfoCompanyName", "path": "$.ProcessVersionInfoCompanyName", "datatype": "string" },
+  { "column": "ProcessVersionInfoProductName", "path": "$.ProcessVersionInfoProductName", "datatype": "string" },
+  { "column": "ProcessVersionInfoProductVersion", "path": "$.ProcessVersionInfoProductVersion", "datatype": "string" },
+  { "column": "ProcessVersionInfoInternalFileName", "path": "$.ProcessVersionInfoInternalFileName", "datatype": "string" },
+  { "column": "ProcessVersionInfoOriginalFileName", "path": "$.ProcessVersionInfoOriginalFileName", "datatype": "string" },
+  { "column": "ProcessVersionInfoFileDescription", "path": "$.ProcessVersionInfoFileDescription", "datatype": "string" },
+  { "column": "ProcessId", "path": "$.ProcessId", "datatype": "long" },
+  { "column": "ProcessCommandLine", "path": "$.ProcessCommandLine", "datatype": "string" },
+  { "column": "ProcessIntegrityLevel", "path": "$.ProcessIntegrityLevel", "datatype": "string" },
+  { "column": "ProcessTokenElevation", "path": "$.ProcessTokenElevation", "datatype": "string" },
+  { "column": "ProcessCreationTime", "path": "$.ProcessCreationTime", "datatype": "datetime" },
+  { "column": "AccountDomain", "path": "$.AccountDomain", "datatype": "string" },
+  { "column": "AccountName", "path": "$.AccountName", "datatype": "string" },
+  { "column": "AccountSid", "path": "$.AccountSid", "datatype": "string" },
+  { "column": "AccountUpn", "path": "$.AccountUpn", "datatype": "string" },
+  { "column": "AccountObjectId", "path": "$.AccountObjectId", "datatype": "string" },
+  { "column": "LogonId", "path": "$.LogonId", "datatype": "long" },
+  { "column": "InitiatingProcessAccountDomain", "path": "$.InitiatingProcessAccountDomain", "datatype": "string" },
+  { "column": "InitiatingProcessAccountName", "path": "$.InitiatingProcessAccountName", "datatype": "string" },
+  { "column": "InitiatingProcessAccountSid", "path": "$.InitiatingProcessAccountSid", "datatype": "string" },
+  { "column": "InitiatingProcessAccountUpn", "path": "$.InitiatingProcessAccountUpn", "datatype": "string" },
+  { "column": "InitiatingProcessAccountObjectId", "path": "$.InitiatingProcessAccountObjectId", "datatype": "string" },
+  { "column": "InitiatingProcessLogonId", "path": "$.InitiatingProcessLogonId", "datatype": "long" },
+  { "column": "InitiatingProcessIntegrityLevel", "path": "$.InitiatingProcessIntegrityLevel", "datatype": "string" },
+  { "column": "InitiatingProcessTokenElevation", "path": "$.InitiatingProcessTokenElevation", "datatype": "string" },
+  { "column": "InitiatingProcessSHA1", "path": "$.InitiatingProcessSHA1", "datatype": "string" },
+  { "column": "InitiatingProcessSHA256", "path": "$.InitiatingProcessSHA256", "datatype": "string" },
+  { "column": "InitiatingProcessMD5", "path": "$.InitiatingProcessMD5", "datatype": "string" },
+  { "column": "InitiatingProcessFileName", "path": "$.InitiatingProcessFileName", "datatype": "string" },
+  { "column": "InitiatingProcessFileSize", "path": "$.InitiatingProcessFileSize", "datatype": "long" },
+  { "column": "InitiatingProcessVersionInfoCompanyName", "path": "$.InitiatingProcessVersionInfoCompanyName", "datatype": "string" },
+  { "column": "InitiatingProcessVersionInfoProductName", "path": "$.InitiatingProcessVersionInfoProductName", "datatype": "string" },
+  { "column": "InitiatingProcessVersionInfoProductVersion", "path": "$.InitiatingProcessVersionInfoProductVersion", "datatype": "string" },
+  { "column": "InitiatingProcessVersionInfoInternalFileName", "path": "$.InitiatingProcessVersionInfoInternalFileName", "datatype": "string" },
+  { "column": "InitiatingProcessVersionInfoOriginalFileName", "path": "$.InitiatingProcessVersionInfoOriginalFileName", "datatype": "string" },
+  { "column": "InitiatingProcessVersionInfoFileDescription", "path": "$.InitiatingProcessVersionInfoFileDescription", "datatype": "string" },
+  { "column": "InitiatingProcessId", "path": "$.InitiatingProcessId", "datatype": "long" },
+  { "column": "InitiatingProcessCommandLine", "path": "$.InitiatingProcessCommandLine", "datatype": "string" },
+  { "column": "InitiatingProcessCreationTime", "path": "$.InitiatingProcessCreationTime", "datatype": "datetime" },
+  { "column": "InitiatingProcessFolderPath", "path": "$.InitiatingProcessFolderPath", "datatype": "string" },
+  { "column": "InitiatingProcessParentId", "path": "$.InitiatingProcessParentId", "datatype": "long" },
+  { "column": "InitiatingProcessParentFileName", "path": "$.InitiatingProcessParentFileName", "datatype": "string" },
+  { "column": "InitiatingProcessParentCreationTime", "path": "$.InitiatingProcessParentCreationTime", "datatype": "datetime" },
+  { "column": "InitiatingProcessSignerType", "path": "$.InitiatingProcessSignerType", "datatype": "string" },
+  { "column": "InitiatingProcessSignatureStatus", "path": "$.InitiatingProcessSignatureStatus", "datatype": "string" },
+  { "column": "ReportId", "path": "$.ReportId", "datatype": "string" },
+  { "column": "AppGuardContainerId", "path": "$.AppGuardContainerId", "datatype": "string" },
+  { "column": "AdditionalFields", "path": "$.AdditionalFields", "datatype": "string" },
+  { "column": "InitiatingProcessSessionId", "path": "$.InitiatingProcessSessionId", "datatype": "long" },
+  { "column": "IsInitiatingProcessRemoteSession", "path": "$.IsInitiatingProcessRemoteSession", "datatype": "bool" },
+  { "column": "InitiatingProcessRemoteSessionDeviceName", "path": "$.InitiatingProcessRemoteSessionDeviceName", "datatype": "string" },
+  { "column": "InitiatingProcessRemoteSessionIP", "path": "$.InitiatingProcessRemoteSessionIP", "datatype": "string" },
+  { "column": "CreatedProcessSessionId", "path": "$.CreatedProcessSessionId", "datatype": "long" },
+  { "column": "IsProcessRemoteSession", "path": "$.IsProcessRemoteSession", "datatype": "bool" },
+  { "column": "ProcessRemoteSessionDeviceName", "path": "$.ProcessRemoteSessionDeviceName", "datatype": "string" },
+  { "column": "ProcessRemoteSessionIP", "path": "$.ProcessRemoteSessionIP", "datatype": "string" },
+  { "column": "ProcessUniqueId", "path": "$.ProcessUniqueId", "datatype": "string" },
+  { "column": "InitiatingProcessUniqueId", "path": "$.InitiatingProcessUniqueId", "datatype": "string" },
+  { "column": "RawJson", "path": "$", "datatype": "dynamic" }
+]```
 
 
-// let attachEvents = EmailAttachmentInfo
-//     | where ThreatTypes == "Malware"
-//     | project TimeGenerated, EventType="Email Attachment", Actor=RecipientEmailAddress, Detail=FileName, SHA256, ReportId;
-// let procEvents = DeviceProcessEvents
-//     | project Timestamp=TimeGenerated, EventType="Process", Actor=InitiatingProcessAccountUpn, Detail=InitiatingProcessFileName, Command=InitiatingProcessCommandLine, ProcessUniqueId;
-// let netEvents = DeviceNetworkEvents
-//     | project Timestamp=TimeGenerated, EventType="Network", Actor=InitiatingProcessAccountUpn, Detail=RemoteUrl, RemoteIP, RemotePort;
-// union attachEvents, procEvents, netEvents
-// | sort by Timestamp asc
+.ingest into table DeviceProcessEvents
+(
+    h@"https://raw.githubusercontent.com/Ashis-Palai/AI-Powered-Cloud-Threat-Hunting-Simulations/refs/heads/main/json_data/DeviceProcessEvents__Inlines_SpearPhishing.json"
+)
+with (
+    format = "multijson",
+    ingestionMappingReference = "DeviceProcessEvents_Mapping"
+);
 
 
-// Correlate email SHA256 -> AdditionalFields in network/process logs
-// let attach = EmailAttachmentInfo
-//     | where ThreatTypes == "Malware"
-//     | project attachSHA = SHA256, Recipient=RecipientEmailAddress, attachTime=TimeGenerated;
-// DeviceNetworkEvents
-// | extend add = parse_json(AdditionalFields)
-// | join kind=inner attach on $left.InitiatingProcessAccountUpn == $right.Recipient
-// | where tostring(add) contains attachSHA or tolower(RemoteUrl) has_any ("dropper.dll","telemetry")
-// | where TimeGenerated  >= attachTime - 5m and TimeGenerated <= attachTime + 60m
-// | project attachTime, TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP, attachSHA
+let attachments = EmailAttachmentInfo
+    | where ThreatTypes == "Malware"
+    | project Recipient=RecipientEmailAddress, attachTime=TimeGenerated, attachSHA=SHA256;
+attachments
+| join kind=inner DeviceProcessEvents on $left.Recipient == $right.InitiatingProcessAccountUpn
+| where TimeGenerated >= attachTime - 5m and TimeGenerated <= attachTime + 30m
+| project time_=TimeGenerated,child=FileName, parent=InitiatingProcessFileName,g_parent=InitiatingProcessParentFileName, child_cmd=ProcessCommandLine,parent_cmd=InitiatingProcessCommandLine, parent_accnt=InitiatingProcessAccountUpn,attachSHA
+| order by time_ asc
+
+
+
+let attachments = EmailAttachmentInfo
+    | where ThreatTypes == "Malware"
+    | project Recipient=RecipientEmailAddress, attachTime=TimeGenerated, attachSHA=SHA256;
+attachments
+| join kind=inner (
+    DeviceNetworkEvents
+    | where tolower(InitiatingProcessFileName) has_any("powershell","curl","certutil","bitsadmin","wget")
+    | where tolower(InitiatingProcessCommandLine) has_any("invoke-webrequest","downloadfile","-uri","curl","wget","bitsadmin","certutil -urlcache")
+    | project EventTime=TimeGenerated, InitiatingProcessAccountUpn, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP, RemotePort, ReportId
+) on $left.Recipient==$right.InitiatingProcessAccountUpn
+| where EventTime >= attachTime - 1h and EventTime <= attachTime + 1h
+| project Recipient, attachTime, attachSHA, EventTime, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP, RemotePort, ReportId
+| order by EventTime asc
+
+
+let attachEvents = EmailAttachmentInfo
+    | where ThreatTypes == "Malware"
+    | project TimeGenerated, EventType="Email Attachment", Actor=RecipientEmailAddress, Detail=FileName, SHA256, ReportId;
+let procEvents = DeviceProcessEvents
+    | project Timestamp=TimeGenerated, EventType="Process", Actor=InitiatingProcessAccountUpn, Detail=InitiatingProcessFileName, Command=InitiatingProcessCommandLine, ProcessUniqueId;
+let netEvents = DeviceNetworkEvents
+    | project Timestamp=TimeGenerated, EventType="Network", Actor=InitiatingProcessAccountUpn, Detail=RemoteUrl, RemoteIP, RemotePort;
+union attachEvents, procEvents, netEvents
+| sort by Timestamp asc
+
+
+Correlate email SHA256 -> AdditionalFields in network/process logs
+let attach = EmailAttachmentInfo
+    | where ThreatTypes == "Malware"
+    | project attachSHA = SHA256, Recipient=RecipientEmailAddress, attachTime=TimeGenerated;
+DeviceNetworkEvents
+| extend add = parse_json(AdditionalFields)
+| join kind=inner attach on $left.InitiatingProcessAccountUpn == $right.Recipient
+| where tostring(add) contains attachSHA or tolower(RemoteUrl) has_any ("dropper.dll","telemetry")
+| where TimeGenerated  >= attachTime - 5m and TimeGenerated <= attachTime + 60m
+| project attachTime, TimeGenerated, InitiatingProcessFileName, InitiatingProcessCommandLine, RemoteUrl, RemoteIP, attachSHA
 
 
 let MaliciousEmail = EmailAttachmentInfo
