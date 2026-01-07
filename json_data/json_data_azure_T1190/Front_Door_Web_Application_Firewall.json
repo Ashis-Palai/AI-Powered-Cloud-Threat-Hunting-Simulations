@@ -1,0 +1,25 @@
+{
+  "time": "2024-12-14T08:35:05.123Z",
+  "category": "FrontdoorWebApplicationFirewallLog",
+  "operationName": "Microsoft.Cdn/Profiles/Write",
+  "properties": {
+    "clientIP": "203.0.113.45",
+    "clientPort": "54321",
+    "socketIP": "203.0.113.45",
+    "requestUri": "https://myapp.com/api/v1/uploads?filename=shell.php",
+    "ruleName": "Microsoft_DefaultRuleSet-3.1-REQUEST-933-APPLICATION-ATTACK-PHP",
+    "policy": "fd-waf-policy-prod",
+    "action": "Log",
+    "host": "myapp.com",
+    "trackingReference": "08Q3gXgAAAAAe0s71BETQYwmqtpHO7uAU0pDRURHRTA1MDgANjMxNTAwZDAtOTRiNS00YzIwLTljY2YtNjFhNzMyOWQyYTgy",
+    "policyMode": "Detection",
+    "details": {
+      "matches": [
+        {
+          "matchVariableName": "QueryParam:filename",
+          "matchVariableValue": "shell.php"
+        }
+      ]
+    }
+  }
+}
