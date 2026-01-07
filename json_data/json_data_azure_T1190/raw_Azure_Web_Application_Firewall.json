@@ -1,0 +1,139 @@
+{
+  "type": "object",
+  "description": "Raw log schema for Azure Application Gateway Web Application Firewall events",
+  "properties": {
+    "timeStamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the WAF event was generated."
+    },
+    "resourceId": {
+      "type": "string",
+      "description": "Azure resource ID of the Application Gateway."
+    },
+    "operationName": {
+      "type": "string",
+      "const": "ApplicationGatewayFirewall",
+      "description": "Azure operation name for Application Gateway WAF events."
+    },
+    "category": {
+      "type": "string",
+      "const": "ApplicationGatewayFirewallLog",
+      "description": "Log category."
+    },
+    "properties": {
+      "type": "object",
+      "description": "WAF event properties.",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "description": "Application Gateway instance for which firewall data is generated."
+        },
+        "clientIp": {
+          "type": "string",
+          "description": "Originating IP address of the client."
+        },
+        "clientPort": {
+          "type": ["string", "null"],
+          "description": "Originating port of the client request."
+        },
+        "requestUri": {
+          "type": "string",
+          "description": "URL of the received request."
+        },
+        "ruleSetType": {
+          "type": "string",
+          "enum": ["OWASP"],
+          "description": "Rule set type used by the WAF."
+        },
+        "ruleSetVersion": {
+          "type": "string",
+          "enum": ["2.2.9", "3.0"],
+          "description": "OWASP CRS version applied to the request."
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "OWASP CRS rule ID that triggered the event."
+        },
+        "message": {
+          "type": "string",
+          "description": "User-friendly description of the triggering event."
+        },
+        "action": {
+          "type": "string",
+          "enum": ["Allowed", "Blocked", "Matched", "Detected"],
+          "description": "Action taken by the WAF for the request."
+        },
+        "site": {
+          "type": "string",
+          "enum": ["Global"],
+          "description": "Site scope for which the log was generated."
+        },
+        "details": {
+          "type": "object",
+          "description": "Detailed information about the rule match.",
+          "properties": {
+            "message": {
+              "type": "string",
+              "description": "Detailed description of the rule that triggered."
+            },
+            "data": {
+              "type": ["string", "null"],
+              "description": "Specific request data that matched the rule."
+            },
+            "file": {
+              "type": ["string", "null"],
+              "description": "OWASP CRS configuration file that contained the rule."
+            },
+            "line": {
+              "type": ["string", "null"],
+              "description": "Line number in the configuration file that triggered the rule."
+            }
+          },
+          "required": ["message"]
+        },
+        "hostname": {
+          "type": "string",
+          "description": "Hostname or IP address of the Application Gateway."
+        },
+        "transactionId": {
+          "type": "string",
+          "description": "Unique identifier used to correlate multiple rule matches within the same request."
+        },
+        "policyId": {
+          "type": ["string", "null"],
+          "description": "Identifier of the WAF policy applied to the request."
+        },
+        "policyScope": {
+          "type": ["string", "null"],
+          "enum": ["Global"],
+          "description": "Scope at which the policy is applied."
+        },
+        "policyScopeName": {
+          "type": ["string", "null"],
+          "description": "Human-readable name of the policy scope."
+        }
+      },
+      "required": [
+        "instanceId",
+        "clientIp",
+        "requestUri",
+        "ruleSetType",
+        "ruleSetVersion",
+        "ruleId",
+        "message",
+        "action",
+        "site",
+        "hostname",
+        "transactionId"
+      ]
+    }
+  },
+  "required": [
+    "timeStamp",
+    "resourceId",
+    "operationName",
+    "category",
+    "properties"
+  ]
+}
