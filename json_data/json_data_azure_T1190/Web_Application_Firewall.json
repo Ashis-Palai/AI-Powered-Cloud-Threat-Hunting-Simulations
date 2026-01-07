@@ -1,0 +1,29 @@
+{
+  "timeStamp": "2024-12-14T08:35:05.123Z",
+  "resourceId": "/SUBSCRIPTIONS/xxxx/RESOURCEGROUPS/rg-demo/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/appgw-demo",
+  "operationName": "ApplicationGatewayFirewall",
+  "category": "ApplicationGatewayFirewallLog",
+  "properties": {
+    "instanceId": "appgw_1",
+    "clientIp": "203.0.113.45",
+    "clientPort": "54321",
+    "requestUri": "/api/v1/uploads?filename=shell.php",
+    "ruleSetType": "OWASP",
+    "ruleSetVersion": "3.0",
+    "ruleId": "933100",
+    "message": "PHP injection attack detected",
+    "action": "Detected",
+    "site": "Global",
+    "details": {
+      "message": "PHP injection attack: PHP script file upload detected",
+      "data": "shell.php",
+      "file": "rules/REQUEST-933-APPLICATION-ATTACK-PHP.conf",
+      "line": "45"
+    },
+    "hostname": "myapp.com",
+    "transactionId": "b7c2e91a6f8d4a2db3f9a1c0e5d7a912",
+    "policyId": "default",
+    "policyScope": "Global",
+    "policyScopeName": "Global"
+  }
+}
