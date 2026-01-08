@@ -42,3 +42,18 @@ DeviceNetworkEvents
 | where RemoteIP in ("169.254.169.254","169.254.170.2") or RemoteUrlLower has "metadata" or RemoteUrlLower has "oauth2" or RemoteUrlLower has "identity" or CmdLine has_any ("curl","wget","http","https") or CmdLine matches regex @"(curl|wget|python3).*(http|https|connect)" or CmdLine matches regex @"(nc|ncat).*?-e" or CmdLine has_any ("docker.sock","/var/run/docker.sock","docker run","docker exec")
 | summarize FirstSeen=min(TimeGenerated), LastSeen=max(TimeGenerated), NetworkEvents=count(), RemoteIPs=make_set(RemoteIP,5), RemoteUrls=make_set(RemoteUrl,5), CommandsObserved=make_set(InitiatingProcessCommandLine,5), Processes=make_set(InitiatingProcessFileName), ParentProcesses=make_set(InitiatingProcessParentFileName), Accounts=make_set(InitiatingProcessAccountName), ContainerContext=make_set(AdditionalFields) by DeviceName, DeviceId, ActionType, Protocol
 | order by LastSeen asc;
+***********************************
+let HuntStartTime = datetime("2025-12-14T10:41:00.004Z");
+let MSI_Stage = SigninLogs_MSI
+| where TimeGenerated >= HuntStartTime and ResultType=="Success" and ClientCredentialType=="ManagedIdentity" and IPAddress in ("169.254.169.254","169.254.170.2")
+| project Stage="MSI Token Issued", EventTime=TimeGenerated, ServicePrincipalId, ResourceIdentity, Details=AuthenticationProcessingDetails, UserAgent, CorrelationId;
+let ARM_Stage = AzureActivity
+| where TimeGenerated >= HuntStartTime and ActivityStatus=="Succeeded"
+| where OperationNameValue has_any ("Microsoft.Authorization","Microsoft.Resources","Microsoft.Storage","Microsoft.Compute")
+| project Stage="ARM Control Plane Activity", EventTime=TimeGenerated, ServicePrincipalId=Caller, ResourceIdentity=tostring(Claims_d.aud), Details=OperationNameValue, UserAgent="ARM API", CorrelationId;
+let Storage_Stage = StorageBlobLogs
+| where TimeGenerated >= HuntStartTime and AuthenticationType=="OAuth"
+| project Stage="Storage Data Plane Access", EventTime=TimeGenerated, ServicePrincipalId=RequesterObjectId, ResourceIdentity=RequesterAudience, Details=strcat(OperationName," on ",AccountName), UserAgent=UserAgentHeader, CorrelationId;
+union MSI_Stage, ARM_Stage, Storage_Stage
+| order by EventTime asc;
+
