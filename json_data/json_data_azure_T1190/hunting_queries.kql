@@ -15,3 +15,21 @@ AppGatewayFirewallLogs
 | where TotalAttempts >= 1
 | order by LastSeen desc
 **********************************
+let SuspiciousInterpreters = dynamic(["cmd.exe","powershell.exe","pwsh.exe","bash","sh","curl","python.exe","python","python3","perl.exe","perl","php.exe","php","node.exe","node","java.exe","java"]);
+let WebServerProcesses     = dynamic(["w3wp.exe","php-fpm","httpd.exe","nginx.exe","apache.exe","tomcat.exe","java.exe"]);
+let SuspiciousCommandKeywords = dynamic(["shell","webshell","cmd","exec","wget","curl","nc","ncat","whoami","id","uname","chmod","chown","base64","echo","/tmp","/var/tmp"]);
+DeviceProcessEvents
+| extend ProcName=tolower(FileName), ParentProc=tolower(InitiatingProcessFileName), CmdLine=tolower(ProcessCommandLine), ParentCmd=tolower(InitiatingProcessCommandLine)
+| where TimeGenerated >= datetime("2025-12-14T10:41:00.004Z")
+| where ProcName in (SuspiciousInterpreters)
+    or ParentProc in (WebServerProcesses)
+    or CmdLine has_any (SuspiciousCommandKeywords)
+    or CmdLine matches regex @"(curl|wget).*(http|https)"
+    or CmdLine matches regex @"(cmd\.exe|powershell\.exe).*(-enc|-e|-nop|-w hidden)"
+    or CmdLine matches regex @"(bash|sh).*?/dev/tcp"
+| summarize FirstSeen=min(TimeGenerated), LastSeen=max(TimeGenerated), ExecutionCount=count(),
+           CommandsObserved=make_set(ProcessCommandLine,5),
+           ParentProcesses=make_set(InitiatingProcessFileName),
+           Devices=make_set(DeviceName)
+    by DeviceName, AccountName, FileName, InitiatingProcessFileName
+| order by LastSeen asc;
