@@ -1,0 +1,17 @@
+let SuspiciousFileExtensions = dynamic([".php",".phtml",".php5",".php7",".jsp",".jspx",".asp",".aspx",".exe",".dll",".so",".sh",".bash",".py",".pl"]);
+let InitialAccessRuleIds = dynamic(["930100","931130","932100","933100","942100","944130","932105"]);
+AppGatewayFirewallLogs
+| where category contains "firewall"
+| extend RequestUriLower=tolower(requestUri), MessageLower=tolower(message), DetailsLower=tolower(details_message), ClientIP=tostring(clientIp), Host=tostring(hostname)
+| where ruleId in (InitialAccessRuleIds)
+    or RequestUriLower has_any (SuspiciousFileExtensions)
+    or RequestUriLower matches regex @"(upload|import|attach|file|backup|dump|shell|cmd|exec)"
+    or RequestUriLower matches regex @"(/api/|/v1/|/v2/).*?(cmd|exec|payload|script|file|filename)"
+    or MessageLower has_any ("injection","remote code","command","file upload","webshell")
+    or DetailsLower has_any ("script","payload","shell","exploit")
+| summarize FirstSeen=min(timeStamp), LastSeen=max(timeStamp), TotalAttempts=count(), DistinctUris=dcount(requestUri),
+            TriggeredRules=make_set(ruleId), SampleUris=make_set(requestUri,5), SampleMessages=make_set(message,5)
+            by ClientIP, Host, site, action, ruleSetType, ruleSetVersion
+| where TotalAttempts >= 1
+| order by LastSeen desc
+**********************************
