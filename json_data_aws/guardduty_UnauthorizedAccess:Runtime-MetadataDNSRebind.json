@@ -41,8 +41,8 @@
     "detectorId": "12abc34d567e8fa901bc2d34e56789ab",
     "archived": false,
     "count": 2,
-    "eventFirstSeen": "2025-12-14T10:43:45.102Z",
-    "eventLastSeen": "2025-12-14T10:43:48.611Z",
+    "eventFirstSeen": "2025-12-14T10:42:50.642Z",
+    "eventLastSeen": "2025-12-14T10:42:54.642Z",
     "resourceRole": "TARGET",
 
     "action": {
