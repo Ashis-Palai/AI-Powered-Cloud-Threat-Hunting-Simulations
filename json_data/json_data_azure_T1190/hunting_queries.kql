@@ -33,3 +33,12 @@ DeviceProcessEvents
            Devices=make_set(DeviceName)
     by DeviceName, AccountName, FileName, InitiatingProcessFileName
 | order by LastSeen asc;
+
+******************************
+DeviceNetworkEvents
+| where TimeGenerated >= datetime("2025-12-14T10:41:00.004Z")
+| extend ProcName=tolower(InitiatingProcessFileName), ParentProc=tolower(InitiatingProcessParentFileName), CmdLine=tolower(InitiatingProcessCommandLine), RemoteUrlLower=tolower(RemoteUrl), Account=tostring(InitiatingProcessAccountName)
+| where ParentProc in ("sh","bash","dash","zsh","python","python3") or ProcName in ("curl","wget","nc","ncat","python","python3")
+| where RemoteIP in ("169.254.169.254","169.254.170.2") or RemoteUrlLower has "metadata" or RemoteUrlLower has "oauth2" or RemoteUrlLower has "identity" or CmdLine has_any ("curl","wget","http","https") or CmdLine matches regex @"(curl|wget|python3).*(http|https|connect)" or CmdLine matches regex @"(nc|ncat).*?-e" or CmdLine has_any ("docker.sock","/var/run/docker.sock","docker run","docker exec")
+| summarize FirstSeen=min(TimeGenerated), LastSeen=max(TimeGenerated), NetworkEvents=count(), RemoteIPs=make_set(RemoteIP,5), RemoteUrls=make_set(RemoteUrl,5), CommandsObserved=make_set(InitiatingProcessCommandLine,5), Processes=make_set(InitiatingProcessFileName), ParentProcesses=make_set(InitiatingProcessParentFileName), Accounts=make_set(InitiatingProcessAccountName), ContainerContext=make_set(AdditionalFields) by DeviceName, DeviceId, ActionType, Protocol
+| order by LastSeen asc;
